@@ -22,7 +22,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary ">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link text-center">
       EMTL V1.0
@@ -41,7 +41,7 @@
       </div>
 
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <span class="text-white ml-3">Current Session: 2077-2078</span>
+        <span class="text-white ml-3">Current Session: August 20,2020</span>
       </div>
 
       <!-- Sidebar Menu -->

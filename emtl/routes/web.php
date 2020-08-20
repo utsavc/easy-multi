@@ -24,6 +24,11 @@ Route::group(['prefix'=>'admin'], function(){
 	Route::get('/', 'AdminController@dashBoard')->name('dashboard');
 
 
+	Route::get('/add-dealer', 'AdminController@createDealer');
+	Route::get('/add-retailer', 'AdminController@createRetailer');
+	Route::get('/product', 'AdminController@dashBoard');
+
+
 });
 
 

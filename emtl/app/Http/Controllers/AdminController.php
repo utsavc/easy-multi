@@ -11,4 +11,19 @@ class AdminController extends Controller
 		return view('admin.dashboard');
 	}
 
+
+	function createDealer(){
+
+		return view('admin.createdealer');
+
+	}
+
+
+
+	function createRetailer(){
+
+		return view('admin.createretailer');
+
+	}
+
 }
