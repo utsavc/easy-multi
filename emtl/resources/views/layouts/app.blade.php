@@ -12,7 +12,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>Institution's Name- Home</title>
 
 
-    <!-- Font Awesome Icons -->
+  
+
+
+
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
@@ -43,21 +47,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-  
+<!-- REQUIRED SCRIPTS -->
+<!-- jQuery -->
+<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap -->
+<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- overlayScrollbars -->
+<script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('js/adminlte.js') }}"></script>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <!-- PAGE SCRIPTS -->
+  <script src="{{ asset('js/pages/dashboard.js') }}"></script>
 </body>
 </html>

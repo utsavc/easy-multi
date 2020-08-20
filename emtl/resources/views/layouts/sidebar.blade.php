@@ -89,7 +89,7 @@
               <li class="nav-item">
                 <a href="pages/layout/boxed.html" class="nav-link">
                   <i class="fa fa-angle-double-right nav-icon"></i>
-                  <p>Retailer</p>
+                  <p>Retailerasfasfs</p>
                 </a>
               </li>
             </ul>
@@ -100,7 +100,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-money-bill-alt"></i>   
               <p>
-                Collect Fees
+                Product
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -108,7 +108,7 @@
               <li class="nav-item">
                 <a href="pages/charts/chartjs.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>ChartJS</p>
+                  <p>Add Product</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -162,7 +162,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-credit-card"></i>   
               <p>
-                Expenses
+                Dealer
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -194,7 +194,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-calendar-check"></i>   
               <p>
-                Attendance
+                Retailer
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
