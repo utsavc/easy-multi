@@ -81,6 +81,12 @@ Route::group(['prefix'=>'admin'], function(){
 
 
 Route::group(['prefix'=>'dealer'], function(){
+	
+	Route::get('/', 'DealerController@dashboard');
+	Route::get('/productreport', 'DealerController@productreport');
+	Route::get('/commission', 'DealerController@commission');
+	Route::get('/stock', 'DealerController@stock');
+	
 });
 
 
