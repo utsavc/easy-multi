@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -10,11 +6,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
   <title>Institution's Name- Home</title>
-
-
-  
-
-
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
@@ -38,11 +29,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <body class="hold-transition {{ Route::currentRouteNamed('login') ? 'login-page' : 'sidebar-mini layout-fixed' }} ">
 
+  @yield('sidebar')
+
   @yield('content')
 
 
-  <!-- pace-progress -->
-  <script src="{{asset('plugins/pace-progress/pace.min.js')}}"></script>
+  
+
+
+</body>
+<!-- pace-progress -->
+<script src="{{asset('plugins/pace-progress/pace.min.js')}}"></script>
 
 
 
@@ -58,7 +55,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('js/adminlte.js') }}"></script>
 
 
-  <!-- PAGE SCRIPTS -->
-  <script src="{{ asset('js/pages/dashboard.js') }}"></script>
+
+
+ <!-- data table JS
+  ============================================ -->
+  <script src="{{ asset('js/data-table/bootstrap-table.js') }}"></script>
+  <script src="{{ asset('js/data-table/tableExport.js') }}"></script>
+  <script src="{{ asset('js/data-table/data-table-active.js') }}"></script>
+  <script src="{{ asset('js/data-table/bootstrap-table-resizable.js') }}"></script>
+  <script src="{{ asset('js/data-table/colResizable-1.5.source.js') }}"></script>
+  <script src="{{ asset('js/data-table/bootstrap-table-export.js') }}"></script>
+
+
+<!-- PAGE SCRIPTS -->
+<script src="{{ asset('js/pages/dashboard.js') }}"></script>
 </body>
 </html>

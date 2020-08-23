@@ -17,13 +17,13 @@
 					<div class="card-body">
 
 						<div class="form-group">
-							<label for="exampleInputPassword1">Dealer Name</label>
+							<label for="exampleInputPassword1">Product Name</label>
 							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. ABC Traders">
 						</div>
 
 
 						<div class="form-group">
-							<label for="exampleInputPassword1">Dealer Id</label>
+							<label for="exampleInputPassword1">Qty</label>
 							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. 1002345">
 						</div>
 
@@ -32,16 +32,9 @@
 
 
 						<div class="form-group">
-							<label for="exampleInputPassword1">Address</label>
+							<label for="exampleInputPassword1">Date</label>
 							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. Bharatpur">
 						</div>
-
-
-
-						<div class="form-group">
-							<label for="exampleInputPassword1">Phone Number</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. 900010001">
-						</div>		
 
 
 						<button type="submit" class="btn btn-primary">Create</button>
@@ -207,10 +200,6 @@
 		</div>
 		<!-- /.card-body -->
 	</div>
-
-
-
-
 
 
 

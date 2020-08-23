@@ -22,14 +22,62 @@ Auth::routes();
 Route::group(['prefix'=>'admin'], function(){
 
 	Route::get('/', 'AdminController@dashBoard')->name('dashboard');
+	Route::get('/report', 'AdminController@report');
 
 
-	Route::get('/add-dealer', 'AdminController@createDealer');
-	Route::get('/add-retailer', 'AdminController@createRetailer');
-	Route::get('/product', 'AdminController@dashBoard');
+	Route::group(['prefix'=>'user'], function(){
+		Route::get('/create-user', 'AdminController@createUser');
+		Route::get('/add-dealer', 'AdminController@createDealer');
+		Route::get('/add-retailer', 'AdminController@createRetailer');
+	});
 
+
+	Route::group(['prefix'=>'product'], function(){
+		Route::get('/create', 'AdminController@createProduct');
+		Route::get('/add', 'AdminController@addProductStock');
+		Route::get('/stock', 'AdminController@stockReport');
+	});
+
+
+
+	Route::group(['prefix'=>'dealer'], function(){
+
+		Route::get('/transfer', 'AdminController@dealerTransfer');
+		Route::get('/product-report/1', 'AdminController@dealerReport');
+		Route::get('/comission', 'AdminController@dealerComission');
+		Route::get('/stock', 'AdminController@dealerStock');
+
+	});
+
+
+
+	Route::group(['prefix'=>'retailer'], function(){
+
+		Route::get('/transfer', 'AdminController@retailerTransfer');
+		Route::get('/product-report/1', 'AdminController@retailerReport');
+		Route::get('/comission', 'AdminController@retailerComission');
+		Route::get('/stock', 'AdminController@retailerStock');
+
+	});
+
+
+	Route::group(['prefix'=>'customer'], function(){
+
+		Route::get('/purchase', 'CustomerController@purchase');
+		Route::get('/purchase/report', 'CustomerController@purchaseReport');
+		Route::get('/comission', 'CustomerController@comission');
+		Route::get('/deposit', 'CustomerController@deposit');
+		Route::get('/deposit/report', 'CustomerController@depositReport');
+		Route::get('/withdraw', 'CustomerController@withdraw');
+		Route::get('/withdraw/report', 'CustomerController@withdrawReport');
+		Route::get('/sales', 'CustomerController@sales');
+		Route::get('/sales/report', 'CustomerController@salesReport');
+
+	});
 
 });
+
+
 
 
 Route::group(['prefix'=>'dealer'], function(){

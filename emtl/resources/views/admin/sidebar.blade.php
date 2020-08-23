@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('sidebar')
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -21,6 +24,8 @@
   </nav>
   <!-- /.navbar -->
 
+
+
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary ">
     <!-- Brand Logo -->
@@ -41,26 +46,13 @@
       </div>
 
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <span class="text-white ml-3">Current Session: August 20,2020</span>
+        <span class="text-white ml-3">Date: August 20,2020</span>
       </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-           with font-awesome or any other icon font library -->
 
-           
-          
-          <!--<li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Widgets
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>-->
 
 
 
@@ -74,24 +66,34 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('admin/student-search') }}" class="nav-link">
+                <a href="{{ url('admin/user/add-manager') }}" class="nav-link">
                   <i class="fa fa-angle-double-right nav-icon"></i>
                   <p>Manager</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                <a href="{{ url('admin/user/add-dealer') }}" class="nav-link">
                   <i class="fa fa-angle-double-right nav-icon"></i>
                   <p>Dealer</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/boxed.html" class="nav-link">
+                <a href="{{ url('admin/user/add-retailer') }}" class="nav-link">
                   <i class="fa fa-angle-double-right nav-icon"></i>
                   <p>Retailer</p>
                 </a>
               </li>
+
+
+              <li class="nav-item">
+                <a href="{{ url('admin/user/create-user') }}" class="nav-link">
+                  <i class="fa fa-angle-double-right nav-icon"></i>
+                  <p>Create System User</p>
+                </a>
+              </li>
+
+
             </ul>
           </li>
 
@@ -106,21 +108,22 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="{{ url('admin/product/create') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>ChartJS</p>
+                  <p>Add Product</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="{{ url('admin/product/add') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Flot</p>
+                  <p>Add to Stock</p>
                 </a>
               </li>
+
               <li class="nav-item">
-                <a href="pages/charts/inline.html" class="nav-link">
+                <a href="{{ url('admin/product/stock') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Inline</p>
+                  <p>Report</p>
                 </a>
               </li>
             </ul>
@@ -137,30 +140,49 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="{{ url('admin/dealer/transfer') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>ChartJS</p>
+                  <p>Transfer</p>
                 </a>
               </li>
+            </ul>
+            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="{{ url('admin/dealer/comission') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Flot</p>
+                  <p>Comission</p>
                 </a>
               </li>
+            </ul>
+
+
+
+            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/inline.html" class="nav-link">
+                <a href="{{ url('admin/dealer/stock') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Inline</p>
+                  <p>Stock</p>
+                </a>
+              </li>
+            </ul>
+
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('admin/dealer/product-report/1') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report</p>
                 </a>
               </li>
             </ul>
           </li>
 
 
+
+        
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon far fa-credit-card"></i>   
+              <i class="nav-icon fa fa-rupee-sign"></i>   
               <p>
                 Retailer
                 <i class="right fas fa-angle-left"></i>
@@ -168,21 +190,38 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="{{ url('admin/retailer/transfer') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>ChartJS</p>
+                  <p>Transfer</p>
                 </a>
               </li>
+            </ul>
+            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="{{ url('admin/retailer/comission') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Flot</p>
+                  <p>Comission</p>
                 </a>
               </li>
+            </ul>
+
+
+
+            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/inline.html" class="nav-link">
+                <a href="{{ url('admin/retailer/stock') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Inline</p>
+                  <p>Stock</p>
+                </a>
+              </li>
+            </ul>
+
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('admin/retailer/product-report/1') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report</p>
                 </a>
               </li>
             </ul>
@@ -200,23 +239,70 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="{{ url('admin/customer/purchase') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>ChartJS</p>
+                  <p>Purchase</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="{{ url('admin/customer/comission') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Flot</p>
+                  <p>Customer Comission</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/inline.html" class="nav-link">
+                <a href="{{ url('admin/customer/deposit') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Inline</p>
+                  <p>Cash Deposit</p>
                 </a>
               </li>
+
+
+              <li class="nav-item">
+                <a href="{{ url('admin/customer/deposit/report') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Cash Deposit Report</p>
+                </a>
+              </li>
+
+
+              <li class="nav-item">
+                <a href="{{ url('admin/customer/sales') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sales</p>
+                </a>
+              </li>
+
+
+               <li class="nav-item">
+                <a href="{{ url('admin/customer/sales/report') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sales Report</p>
+                </a>
+              </li>
+
+
+
+              <li class="nav-item">
+                <a href="{{ url('admin/customer/withdraw') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Withdraw</p>
+                </a>
+              </li>
+
+
+
+              <li class="nav-item">
+                <a href="{{ url('admin/customer/withdraw/report') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Withdraw Report</p>
+                </a>
+              </li>
+
+
+
+
+
             </ul>
           </li>
 
@@ -237,38 +323,10 @@
                   <p>Exam List</p>
                 </a>
               </li>
-
-              <li class="nav-item">
-                <a href="{{ url('admin/exam-schdeule') }}" class="nav-link">
-                  <i class="fa fa-angle-double-right nav-icon"></i>
-                  <p>Exam Schedule</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ url('admin/exams') }}" class="nav-link">
-                  <i class="fa fa-angle-double-right nav-icon"></i>
-                  <p>Marks Register</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                  <i class="fa fa-angle-double-right nav-icon"></i>
-                  <p>Marks Grade</p>
-                </a>
-              </li>
             </ul>
 
 
           </li>
-
-
-
-
-
-
-
-         
-
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -278,7 +336,6 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-
 
     @yield('bodycontent')
 
@@ -290,7 +347,7 @@
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
-
-
 </div>
 <!-- ./wrapper -->
+
+@endsection

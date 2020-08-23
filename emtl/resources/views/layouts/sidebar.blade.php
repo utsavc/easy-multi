@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('sidebar')
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -51,7 +53,7 @@
            with font-awesome or any other icon font library -->
 
            
-          
+           
           <!--<li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -712,10 +714,7 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-
-
     @yield('bodycontent')
-
   </div>
   <!-- /.content-wrapper -->
 
@@ -728,3 +727,6 @@
 
 </div>
 <!-- ./wrapper -->
+
+
+@endsection

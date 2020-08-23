@@ -16,33 +16,32 @@
 				<form role="form">
 					<div class="card-body">
 
+						
 						<div class="form-group">
-							<label for="exampleInputPassword1">Dealer Name</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. ABC Traders">
+							<label for="exampleInputEmail1">Username</label>
+							<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Username">
 						</div>
 
-
 						<div class="form-group">
-							<label for="exampleInputPassword1">Dealer Id</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. 1002345">
+							<label for="exampleInputPassword1">Password</label>
+							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 						</div>
 
-
-
-
-
 						<div class="form-group">
-							<label for="exampleInputPassword1">Address</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. Bharatpur">
+							<label for="exampleInputPassword1">Re-type Password</label>
+							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 						</div>
 
-
-
 						<div class="form-group">
-							<label for="exampleInputPassword1">Phone Number</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. 900010001">
-						</div>		
-
+							<label>Select User Type</label>
+							<select class="form-control">
+								<option>option 1</option>
+								<option>option 2</option>
+								<option>option 3</option>
+								<option>option 4</option>
+								<option>option 5</option>
+							</select>
+						</div>
 
 						<button type="submit" class="btn btn-primary">Create</button>
 
@@ -208,13 +207,7 @@
 		<!-- /.card-body -->
 	</div>
 
-
-
-
-
-
-
-
+	
 </div>
 
 
