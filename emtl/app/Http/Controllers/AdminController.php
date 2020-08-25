@@ -17,11 +17,7 @@ class AdminController extends Controller
 	}
 
 
-	function createDealer(){
 
-		return view('admin.createdealer');
-
-	}
 
 
 

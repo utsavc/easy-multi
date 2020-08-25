@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class DealerController extends Controller
 {
+
     function dashboard(){
 		return view('dealer.index');
 	}
@@ -21,4 +22,11 @@ class DealerController extends Controller
 	function productreport(){
 		return view('dealer.productreport');
 	}
+
+	function createDealerForm(){
+		return view('admin.createdealer');
+
+	}
+
+
 }

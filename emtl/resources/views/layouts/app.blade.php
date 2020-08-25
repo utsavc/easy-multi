@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>Institution's Name- Home</title>
+  <title>Haate Maalo- Home</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
@@ -67,7 +69,15 @@
   <script src="{{ asset('js/data-table/bootstrap-table-export.js') }}"></script>
 
 
-<!-- PAGE SCRIPTS -->
-<script src="{{ asset('js/pages/dashboard.js') }}"></script>
+  <!-- PAGE SCRIPTS -->
+  <script src="{{ asset('js/pages/dashboard.js') }}"></script>
+
+  <script type="text/javascript">
+    $('div.alert').delay(3000).slideUp(300);
+  </script>
+</script>
+
+
+
 </body>
 </html>
