@@ -84,9 +84,14 @@ Route::group(['prefix'=>'dealer'], function(){
 });
 
 
-Route::group(['prefix'=>'retailer'], function(){
 
+Route::group(['prefix'=>'retailer'], function(){
+	Route::get('/transfer', 'RetailerController@transfer');
+	Route::get('/report', 'RetailerController@productreport');
+	Route::get('/commission', 'RetailerController@commission');
+	Route::get('/stock', 'RetailerController@stock');
 });
+
 
 
 /*For Tests Customer 
