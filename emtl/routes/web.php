@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-	return view('welcome');
-});
 
 Auth::routes();
 
@@ -27,7 +24,7 @@ Route::group(['prefix'=>'admin'], function(){
 
 	Route::group(['prefix'=>'user'], function(){
 		Route::get('/create-user', 'AdminController@createUser');
-		Route::get('/add-dealer', 'AdminController@createDealer');
+		Route::get('/add-dealer', 'DealerController@createDealerForm');
 		Route::get('/add-retailer', 'AdminController@createRetailer');
 	});
 
@@ -96,7 +93,16 @@ Route::group(['prefix'=>'customer'], function(){
 
 
 
-//Testing Login Pages
-Route::get('/test', function () {
-	return view('test');
-})->name('login');
+//login
+Route::get('/', 'customAuth\UsersLoginController@login')->name('login');
+Route::post('/login', 'customAuth\UsersLoginController@authenticate')->name('logins');
+
+
+
+
+Route::group(['prefix'=>'auth'], function(){
+
+	Route::get('/login', 'CustomerController@purchase');
+	Route::get('/purchase/report', 'CustomerController@purchaseReport');
+
+});
