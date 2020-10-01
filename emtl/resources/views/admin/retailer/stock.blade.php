@@ -25,8 +25,9 @@
 						<thead>
 							<tr>
 								<th data-field="id">SN</th>
-								<th data-field="name" >Date</th>
+								<th data-field="name" >Product Name</th>
 								<th data-field="email" >Quanity</th>
+								<th data-field="name" >Report</th>
 							</tr>
 						</thead>
 						<tbody>

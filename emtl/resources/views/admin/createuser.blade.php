@@ -1,8 +1,8 @@
 @extends('admin.sidebar')
 
 @section('bodycontent')
-
-<div class="container-fluid mt-2">
+<br>
+<div class="container-fluid">
 
 	<div class="row">
 
@@ -15,6 +15,30 @@
 				<!-- form start -->
 				<form role="form">
 					<div class="card-body">
+
+							<div class="form-group">
+							<label>Select User Type</label>
+							<select class="form-control">
+								<option>option 1</option>
+								<option>option 2</option>
+								<option>option 3</option>
+								<option>option 4</option>
+								<option>option 5</option>
+							</select>
+						</div>
+
+
+
+						<div class="form-group">
+							<label>Choose</label>
+							<select class="form-control">
+								<option>option 1</option>
+								<option>option 2</option>
+								<option>option 3</option>
+								<option>option 4</option>
+								<option>option 5</option>
+							</select>
+						</div>
 
 						
 						<div class="form-group">
@@ -32,16 +56,10 @@
 							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 						</div>
 
-						<div class="form-group">
-							<label>Select User Type</label>
-							<select class="form-control">
-								<option>option 1</option>
-								<option>option 2</option>
-								<option>option 3</option>
-								<option>option 4</option>
-								<option>option 5</option>
-							</select>
-						</div>
+					
+
+
+
 
 						<button type="submit" class="btn btn-primary">Create</button>
 

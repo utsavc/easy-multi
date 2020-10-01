@@ -21,11 +21,7 @@ class AdminController extends Controller
 
 
 
-	function createRetailer(){
 
-		return view('admin.createretailer');
-
-	}
 
 
 	function createProduct(){

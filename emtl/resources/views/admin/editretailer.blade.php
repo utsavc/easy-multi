@@ -26,33 +26,26 @@
 
 		<div class="card-body">	
 
-			<form role="form" class="form-inline" method="post" action="{{ url('admin/user/add-retailer') }}">
+			<form role="form" class="form-inline" method="post" action="{{ route('retailerUpdate',$retailer->id) }}">
 
 				{{ csrf_field() }}					
 				<div class="input-group mr-2">
 					<label >Retailer Name</label>
-					<input type="text" name="name" class="form-control ml-2" placeholder="Eg. ABC Traders" value="{{old('name')}}">
+					<input type="text" name="name" class="form-control ml-2" placeholder="Eg. ABC Traders" value="{{ old('name', $retailer->name) }} "> 
 				</div>
+
 
 				<div class="input-group mr-2">
 					<label >Retailer Id</label>
-					<input type="text" name="retailerid" class="form-control ml-2" placeholder="Eg. 1002345"  value="{{old('retailerid')}}">
+					<input type="text" name="retailerid" class="form-control ml-2" placeholder="Eg. 1002345"  value="{{ old('retailerid', $retailer->retailerid) }} "> 
 				</div>
 
 
 
-				<div class="form-group mr-2">
-					<label>Dealer Id</label>
-					<select class="form-control ml-2" name="dealer_id">
-						<option>Choose Dealer ID</option>
-
-						@foreach ($dealers as $dealer)
-						<option value="{{$dealer->id}}">{{$dealer->name }} --{{$dealer->dealerid}}  </option>
-						@endforeach
-					</select>
+				<div class="input-group mr-2">
+					<label >Dealer Id</label>
+					<input type="text" name="dealerid" class="form-control ml-2" placeholder="Eg. 10101" value="{{ old('dealerid', $retailer->dealerid) }} "> 
 				</div>
-
-
 
 
 				<div class="mt-5 mb-5"></div>
@@ -61,22 +54,23 @@
 
 				<div class="input-group mr-2">
 					<label >Address</label>
-					<input type="text" name="address" class="form-control ml-2" placeholder="Eg. Bharatpur" value="{{old('address')}}">
+					<input type="text" name="address" class="form-control ml-2" placeholder="Eg. Bharatpur" value="{{ old('address', $retailer->address) }} "> 
 				</div>
 
 
 
 				<div class="input-group mr-2">
 					<label >Phone Number</label>
-					<input type="text" name="phone" class="form-control ml-2" placeholder="Eg. 900010001" value="{{old('phone')}}">
+					<input type="text" name="phone" class="form-control ml-2" placeholder="Eg. 900010001" value="{{ old('phone', $retailer->phone) }} "> 
 				</div>	
 
 				<div class="input-group mr-2">
 					<label >Email</label>
-					<input type="email" name="email" class="form-control ml-2" placeholder="Eg. 900010001" value="{{old('email')}}">
+					<input type="email" name="email" class="form-control ml-2" placeholder="Eg. 900010001" value="{{ old('email', $retailer->email) }} "> 
 				</div>		
 
-				<div class="ml-5 mt-3">
+
+				<div class="mt-3">
 
 					<button type="submit" class="btn btn-primary">Add</button>
 
@@ -114,7 +108,7 @@
 				<thead>
 					<tr>
 						<th>SN</th>
-						<th>Retailer Name</th>
+						<th>Dealer Name</th>
 						<th>Dealer Id</th>
 						<th>Address</th>
 						<th>Phone</th>
@@ -124,15 +118,14 @@
 				</thead>
 				<tbody>
 
-					@foreach ($retailers as $retailer)
+					@foreach ($allretailer as $retailer)
 					<tr>
 						<td>{{ $loop->iteration }}</td>
 						<td>{{ $retailer->name }}</td>
-						<td>{{ $retailer->dealer->name }}</td>
+						<td>{{ $retailer->dealerid }}</td>
 						<td>{{ $retailer->address }}</td>
 						<td>{{ $retailer->phone }}</td>
 						<td>{{ $retailer->email }}</td>
-						
 						<td>
 							<a href="{{ route('retailerEdit',['id' => $retailer->id]) }}" class="btn btn-success btn-sm">Edit</a>
 

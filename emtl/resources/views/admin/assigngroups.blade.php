@@ -44,7 +44,7 @@
 
 
 				<div class="input-group mr-2">
-					<label >Dealer Name</label>
+					<label >Group Name</label>
 					<input type="text" name="name" class="form-control ml-2" placeholder="Eg. ABC Traders" value="{{old('name')}}">
 				</div>
 

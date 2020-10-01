@@ -50,7 +50,7 @@
            with font-awesome or any other icon font library -->
 
            
-          
+
           <!--<li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -73,48 +73,61 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('dealer/') }}" class="nav-link">
+
+               <li class="nav-item">
+                <a href="{{ url('dealer/transfer') }}" class="nav-link">
                   <i class="fa fa-angle-double-right nav-icon"></i>
-                  <p>Report</p>
+                  <p>Transfer to Retailer</p>
                 </a>
               </li>
 
-              <li class="nav-item">
-                <a href="{{ url('dealer/commission') }}" class="nav-link">
-                  <i class="fa fa-angle-double-right nav-icon"></i>
-                  <p>Commission</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ url('dealer/stock') }}" class="nav-link">
-                  <i class="fa fa-angle-double-right nav-icon"></i>
-                  <p>Stock</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
 
 
-    @yield('bodycontent')
 
+              <a href="{{ url('dealer/') }}" class="nav-link">
+                <i class="fa fa-angle-double-right nav-icon"></i>
+                <p>Report</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="{{ url('dealer/commission') }}" class="nav-link">
+                <i class="fa fa-angle-double-right nav-icon"></i>
+                <p>Commission</p>
+              </a>
+            </li>
+
+
+            <li class="nav-item">
+              <a href="{{ url('dealer/stock') }}" class="nav-link">
+                <i class="fa fa-angle-double-right nav-icon"></i>
+                <p>Stock</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
   </div>
-  <!-- /.content-wrapper -->
+  <!-- /.sidebar -->
+</aside>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+
+  @yield('bodycontent')
+
+</div>
+<!-- /.content-wrapper -->
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
 
 </div>
 <!-- ./wrapper -->

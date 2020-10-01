@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDealersTable extends Migration
+class CreateRetailersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateDealersTable extends Migration
      */
     public function up()
     {
-        Schema::create('dealers', function (Blueprint $table) {
-            $table->bigIncrements('id');            
+        Schema::create('retailers', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('name');
-            $table->string('dealerid')->unique();
+            $table->string('retailerid')->unique();
             $table->string('address');
             $table->string('phone');
             $table->string('email');
+            $table->string('dealer_id');
+            $table->foreign('dealer_id')->references('id')->on('dealers')->onDelete('cascade');
             $table->string('status')->default('active');
             $table->timestamps();
         });
@@ -32,6 +34,6 @@ class CreateDealersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dealers');
+        Schema::dropIfExists('retailers');
     }
 }

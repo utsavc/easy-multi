@@ -39,7 +39,7 @@
 
 
 						<div class="form-group">
-							<label for="exampleInputPassword1">Distributor Comission</label>
+							<label for="exampleInputPassword1">Retailer Comission</label>
 							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. 900010001">
 						</div>		
 

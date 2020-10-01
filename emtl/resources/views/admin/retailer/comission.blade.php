@@ -9,7 +9,7 @@
 
 			<div class="card">
 				<div class="card-header">
-					<h3 class="card-title font-weight-bold">Showing List of Products</h3>
+					<h3 class="card-title font-weight-bold">Showing List of Retailer's Comission</h3>
 				</div>
 				<div class="card-body">
 					<div class="datatable-dashv1-list custom-datatable-overright">
@@ -25,7 +25,7 @@
 						<thead>
 							<tr>
 								<th data-field="id">SN</th>
-								<th data-field="name" >Dealer Name</th>
+								<th data-field="name" >Retailer Name</th>
 								<th data-field="email" >Item</th>
 								<th data-field="phone" >Quantity</th>
 								<th data-field="complete">Price</th>

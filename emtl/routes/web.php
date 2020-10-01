@@ -24,8 +24,20 @@ Route::group(['prefix'=>'admin'], function(){
 
 	Route::group(['prefix'=>'user'], function(){
 		Route::get('/create-user', 'AdminController@createUser');
-		Route::get('/add-dealer', 'DealerController@createDealerForm');
-		Route::get('/add-retailer', 'AdminController@createRetailer');
+		Route::get('/add-dealer', 'DealerController@createDealerForm')->name('createDealer');
+		Route::post('/add-dealer', 'DealerController@addDealer');
+		Route::get('/edit-dealer/{id}', 'DealerController@editDealer')->name('dealerEdit');
+		Route::post('/edit-dealer/{id}', 'DealerController@updateDealer')->name('dealerUpdate');
+		Route::post('/delete-dealer/{id}', 'DealerController@deleteDealer')->name('dealerDelete');
+
+
+		Route::get('/add-retailer', 'RetailerController@createRetailer')->name('createRetailer');
+		Route::post('/add-retailer', 'RetailerController@addRetailer');
+		Route::get('/edit-retailer/{id}', 'RetailerController@editRetailer')->name('retailerEdit');
+		Route::post('/edit-retailer/{id}', 'RetailerController@updateRetailer')->name('retailerUpdate');
+		Route::post('/delete-retailer/{id}', 'RetailerController@deleteRetailer')->name('retailerDelete');
+
+
 	});
 
 
@@ -83,6 +95,7 @@ Route::group(['prefix'=>'dealer'], function(){
 	Route::get('/productreport', 'DealerController@productreport');
 	Route::get('/commission', 'DealerController@commission');
 	Route::get('/stock', 'DealerController@stock');
+	Route::get('/transfer', 'DealerController@transferbyDealer');
 	
 });
 

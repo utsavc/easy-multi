@@ -46,16 +46,12 @@
       </div>
 
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <span class="text-white ml-3">Date: August 20,2020</span>
+        <span class="text-white ml-3">Date: {{ date('d M Y') }}</span>
       </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-
-
-
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-plus"></i>
@@ -78,10 +74,20 @@
                   <p>Dealer</p>
                 </a>
               </li>
+
+
               <li class="nav-item">
                 <a href="{{ url('admin/user/add-retailer') }}" class="nav-link">
                   <i class="fa fa-angle-double-right nav-icon"></i>
                   <p>Retailer</p>
+                </a>
+              </li>
+
+
+              <li class="nav-item">
+                <a href="{{ url('admin/user/add-retailer') }}" class="nav-link">
+                  <i class="fa fa-angle-double-right nav-icon"></i>
+                  <p>Customer</p>
                 </a>
               </li>
 
@@ -179,7 +185,7 @@
 
 
 
-        
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-rupee-sign"></i>   
@@ -274,7 +280,7 @@
               </li>
 
 
-               <li class="nav-item">
+              <li class="nav-item">
                 <a href="{{ url('admin/customer/sales/report') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sales Report</p>

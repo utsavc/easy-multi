@@ -1,15 +1,15 @@
 @extends('admin.sidebar')
 
 @section('bodycontent')
-
-<div class="container-fluid mt-2">
+<br>
+<div class="container-fluid">
 
 	<div class="row">
 
 		<div class="col-lg-8">
 			<div class="card card-primary">
 				<div class="card-header">
-					<h3 class="card-title">Add Dealer</h3>
+					<h3 class="card-title">Customer Purchase Entry</h3>
 				</div>
 				<!-- /.card-header -->
 				<!-- form start -->
@@ -17,10 +17,22 @@
 					<div class="card-body">
 
 						<div class="form-group">
-							<label for="exampleInputPassword1">Product Name</label>
+							<label for="exampleInputPassword1">Customer Id</label>
 							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. ABC Traders">
 						</div>
 
+
+						<div class="form-group">
+							<label for="exampleInputPassword1">Customer Name</label>
+							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. ABC Traders">
+						</div>
+
+
+
+						<div class="form-group">
+							<label for="exampleInputPassword1">Product Name</label>
+							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. ABC Traders">
+						</div>
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">Qty</label>
@@ -29,7 +41,23 @@
 
 
 
+						<div class="form-group">
+							<label for="exampleInputPassword1">MRP</label>
+							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. 1002345">
+						</div>
 
+
+
+						<div class="form-group">
+							<label for="exampleInputPassword1">Retailer ID</label>
+							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. 1002345">
+						</div>
+
+
+						<div class="form-group">
+							<label for="exampleInputPassword1">Dealer ID</label>
+							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. 1002345">
+						</div>
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">Date</label>
@@ -74,8 +102,8 @@
 				<thead>
 					<tr>
 						<th data-field="id">SN</th>
-						<th data-field="name" >ID</th>
 						<th data-field="name" >Customer</th>
+						<th data-field="name" >Customer ID</th>
 						<th data-field="email" >Retailer ID</th>
 						<th data-field="phone" >Dealer Id</th>
 						<th >Product</th>

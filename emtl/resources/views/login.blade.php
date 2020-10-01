@@ -12,6 +12,7 @@
             <p class="login-box-msg">Sign in to start your session</p>           
 
             <form action="/login" method="post"> 
+                
                 {{csrf_field()}}
 
                 <div class="input-group mb-3">
@@ -62,14 +63,6 @@
         @foreach ($errors->all() as $error)
         <li>{{ $error }}</li>
         @endforeach
-    </div>
-    @endif
-
-
-    @if (Session::has('flashMessage'))
-    <div class="alert {{ Session::has('flashType') ? 'alert-'.session('flashType') : '' }}">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        {{ session('flashMessage') }}
     </div>
     @endif
 

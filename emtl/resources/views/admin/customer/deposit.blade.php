@@ -9,21 +9,34 @@
 		<div class="col-lg-8">
 			<div class="card card-primary">
 				<div class="card-header">
-					<h3 class="card-title">Add Dealer</h3>
+					<h3 class="card-title">Customer Deposit Entry</h3>
 				</div>
 				<!-- /.card-header -->
 				<!-- form start -->
 				<form role="form">
 					<div class="card-body">
 
+
+
 						<div class="form-group">
-							<label for="exampleInputPassword1">Product Name</label>
+							<label for="exampleInputPassword1">Customer Id</label>
 							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. ABC Traders">
 						</div>
 
 
 						<div class="form-group">
-							<label for="exampleInputPassword1">Qty</label>
+							<label for="exampleInputPassword1">Customer Name</label>
+							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. ABC Traders">
+						</div>
+
+						<div class="form-group">
+							<label for="exampleInputPassword1">Date</label>
+							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. ABC Traders">
+						</div>
+
+
+						<div class="form-group">
+							<label for="exampleInputPassword1">Amount</label>
 							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. 1002345">
 						</div>
 
@@ -32,7 +45,7 @@
 
 
 						<div class="form-group">
-							<label for="exampleInputPassword1">Date</label>
+							<label for="exampleInputPassword1">Retailer Id</label>
 							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. Bharatpur">
 						</div>
 
@@ -57,7 +70,7 @@
 
 	<div class="card">
 		<div class="card-header">
-			<h3 class="card-title font-weight-bold">Showing List of Products</h3>
+			<h3 class="card-title font-weight-bold">Customer Deposits </h3>
 		</div>
 		<div class="card-body">
 			<div class="datatable-dashv1-list custom-datatable-overright">
@@ -73,11 +86,11 @@
 				<thead>
 					<tr>
 						<th data-field="id">SN</th>
-						<th data-field="name" >Product Name</th>
-						<th data-field="email" >MRP</th>
-						<th data-field="phone" >Dealer Comission</th>
-						<th data-field="complete">Retailer Comission</th>
-						<th data-field="completes">Customer Comission</th>
+						<th data-field="name" >Customer Name</th>
+						<th data-field="email" >Customer Id</th>
+						<th data-field="complete">Retailer Id</th>
+						<th data-field="completes">Date</th>
+						<th data-field="completes">Amount</th>
 						<th data-field="completess">Remarks</th>
 					</tr>
 				</thead>
