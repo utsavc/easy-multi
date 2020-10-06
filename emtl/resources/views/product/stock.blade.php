@@ -9,7 +9,7 @@
 
 			<div class="card">
 				<div class="card-header">
-					<h3 class="card-title font-weight-bold">Showing List of Products</h3>
+					<h3 class="card-title font-weight-bold">Showing Reports of <span class="text-info">{{$product->productname}}</span></h3>
 				</div>
 				<div class="card-body">
 					<div class="datatable-dashv1-list custom-datatable-overright">
@@ -30,11 +30,20 @@
 							</tr>
 						</thead>
 						<tbody>
+
+							@foreach ($product->productStocks as $productStock)
 							<tr>
-								<td>1</td>
-								<td>2020-10-10</td>
-								<td>12344</td>
+								<td>{{ $loop->iteration }}</td>
+								<td>
+
+									@php
+									$dt = new DateTime($productStock->created_at);
+									echo $dt->format('Y-m-d');
+									@endphp
+								</td>
+								<td>{{$productStock->qty}}</td>
 							</tr>
+							@endforeach
 						</tbody>
 					</table>
 				</div>

@@ -18,30 +18,30 @@
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">Date</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. 900010001">
+							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Eg. 900010001">
 						</div>		
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">Product Name</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. ABC Traders">
+							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Eg. ABC Traders">
 						</div>
 
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">Quantity</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. 1002345">
+							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Eg. 1002345">
 						</div>
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">Dealer Id</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. Bharatpur">
+							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Eg. Bharatpur">
 						</div>
 
 
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">Retailer Id</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. Bharatpur">
+							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Eg. Bharatpur">
 						</div>
 
 						

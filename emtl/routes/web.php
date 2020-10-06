@@ -30,25 +30,37 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::post('/edit-dealer/{id}', 'DealerController@updateDealer')->name('dealerUpdate');
 		Route::post('/delete-dealer/{id}', 'DealerController@deleteDealer')->name('dealerDelete');
 
-
 		Route::get('/add-retailer', 'RetailerController@createRetailer')->name('createRetailer');
 		Route::post('/add-retailer', 'RetailerController@addRetailer');
+
+
 		Route::get('/edit-retailer/{id}', 'RetailerController@editRetailer')->name('retailerEdit');
 		Route::post('/edit-retailer/{id}', 'RetailerController@updateRetailer')->name('retailerUpdate');
 		Route::post('/delete-retailer/{id}', 'RetailerController@deleteRetailer')->name('retailerDelete');
+
+
+
+
+		Route::get('/create-group', 'GroupController@createGroupForm')->name('createGroupForm');
+		Route::post('/create-group', 'GroupController@createGroup')->name('createGroup');
 
 
 	});
 
 
 	Route::group(['prefix'=>'product'], function(){
-		Route::get('/create', 'AdminController@createProduct');
-		Route::get('/add', 'AdminController@addProductStock');
-		Route::get('/stock', 'AdminController@stockReport');
+		Route::get('/create', 'ProductController@createProductForm')->name('creaeteProductForm');
+		Route::post('/create', 'ProductController@createProduct')->name('createProduct');
+		Route::get('/add', 'ProductController@addProductStockForm')->name('addProductStockForm');
+		Route::post('/add', 'ProductController@addProductStock')->name('addProductStock');
+		Route::get('/stock/{id}', 'ProductController@stockReport')->name('viewStocksReport');
+		Route::get('/outstock/{id}', 'ProductController@outStockReport')->name('viewOutStockReport');
+		Route::get('/transfer', 'ProductController@dealerTransferForm')->name('dealerTransferForm');
+		Route::post('/transfer', 'ProductController@dealerTransfer')->name('dealerTransfer');
 	});
 
 
-
+/*
 	Route::group(['prefix'=>'dealer'], function(){
 
 		Route::get('/transfer', 'AdminController@dealerTransfer');
@@ -57,7 +69,6 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::get('/stock', 'AdminController@dealerStock');
 
 	});
-
 
 
 	Route::group(['prefix'=>'retailer'], function(){
@@ -82,7 +93,7 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::get('/sales', 'CustomerController@sales');
 		Route::get('/sales/report', 'CustomerController@salesReport');
 
-	});
+	});*/
 
 });
 

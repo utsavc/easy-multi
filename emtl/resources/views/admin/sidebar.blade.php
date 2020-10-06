@@ -93,6 +93,14 @@
 
 
               <li class="nav-item">
+                <a href="{{ route('createGroupForm') }}" class="nav-link">
+                  <i class="fa fa-angle-double-right nav-icon"></i>
+                  <p>Group</p>
+                </a>
+              </li>
+
+
+              <li class="nav-item">
                 <a href="{{ url('admin/user/create-user') }}" class="nav-link">
                   <i class="fa fa-angle-double-right nav-icon"></i>
                   <p>Create System User</p>
@@ -133,25 +141,32 @@
                 </a>
               </li>
             </ul>
+
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('admin/product/transfer') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Transfer</p>
+                </a>
+              </li>
+            </ul>
+
+
+
           </li>
+
 
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-rupee-sign"></i>   
               <p>
-                Dealer
+                Reports
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ url('admin/dealer/transfer') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Transfer</p>
-                </a>
-              </li>
-            </ul>
+
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ url('admin/dealer/comission') }}" class="nav-link">
@@ -160,8 +175,6 @@
                 </a>
               </li>
             </ul>
-
-
 
             <ul class="nav nav-treeview">
               <li class="nav-item">
@@ -184,7 +197,44 @@
           </li>
 
 
+          <!--
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-rupee-sign"></i>   
+              <p>
+                Dealer
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
 
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('admin/dealer/comission') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Comission</p>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('admin/dealer/stock') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Stock</p>
+                </a>
+              </li>
+            </ul>
+
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('admin/dealer/product-report/1') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report</p>
+                </a>
+              </li>
+            </ul>
+          </li>
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -231,7 +281,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li>  
 
 
 
@@ -312,6 +362,8 @@
             </ul>
           </li>
 
+          -->
+
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -326,7 +378,7 @@
               <li class="nav-item">
                 <a href="{{ url('admin/exams') }}" class="nav-link">
                   <i class="fa fa-angle-double-right nav-icon"></i>
-                  <p>Exam List</p>
+                  <p>Roles</p>
                 </a>
               </li>
             </ul>
