@@ -1,21 +1,50 @@
 @extends('admin.sidebar')
 
 @section('bodycontent')
+<br>
+<div class="container-fluid">
 
-<div class="container-fluid mt-2">
+
+
+	<!-- Displaying Error Messages-->
+	@if ($errors->any())
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">		
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		@foreach ($errors->all() as $error)
+		<li>{{ $error }}</li>
+		@endforeach
+	</div>
+	@endif
+
+	
+	@if ($message = Session::get('success'))
+	<div class="alert alert-success alert-dismissible fade show" role="alert">		
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		<strong>{{ $message }}</strong>
+	</div>
+	@endif
+
+
+
+
 
 	<div class="row">
-
-		<div class="col-lg-8">
+		<div class="col-lg-5">
 			<div class="card card-primary">
 				<div class="card-header">
 					<h3 class="card-title">Create Product</h3>
 				</div>
 				<!-- /.card-header -->
 				<!-- form start -->
-				<form role="form">
-					<div class="card-body">
+				<form role="form" action="{{ route('createProduct') }}" method="post" autocomplete="off">
 
+					@csrf
+
+					<div class="card-body">
 						<div class="form-group">
 							<label for="exampleInputPassword1">Product Name</label>
 							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Eg. ABC Traders">
@@ -27,23 +56,15 @@
 							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Eg. 12345678">
 						</div>
 
-
-
-
-
 						<div class="form-group">
 							<label for="exampleInputPassword1">Dealer Comission</label>
 							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Eg. 123456">
 						</div>
 
-
-
 						<div class="form-group">
 							<label for="exampleInputPassword1">Retailer Comission</label>
 							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Eg. 123456">
 						</div>		
-
-
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">Customer Comission</label>
@@ -61,13 +82,11 @@
 				</form>
 			</div>
 		</div>
-
 		<div class="col-lg-4"></div>
-
 	</div>
 
 
-
+	@if(!$products->isEmpty())
 
 	<div class="card">
 		<div class="card-header">
@@ -96,30 +115,29 @@
 					</tr>
 				</thead>
 				<tbody>
+
+					@foreach ($products as $product)
+
 					<tr>
-						<td>1</td>
-						<td>Utsav</td>
-						<td>12344</td>
-						<td>2</td>
-						<td>2</td>
-						<td>2</td>
+						
+						<td>{{ $loop->iteration }}</td>
+						<td>{{$product->productname}}</td>
+						<td>{{$product->mrp}}</td>
+						<td>{{$product->dealerComission}}</td>
+						<td>{{$product->retailerComission}}</td>
+						<td>{{$product->customerComission}}</td>
 						<td>
 							<a href="" class="btn btn-success btn-sm">Edit</a>
 							<a href="" class="btn btn-danger btn-sm">Delete</a>
 						</td>
 					</tr>
+					@endforeach
 				</tbody>
 			</table>
 		</div>
 	</div>
 </div>
-
-
-
-
-
-
-
+@endif
 
 </div>
 

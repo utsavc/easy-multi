@@ -13,10 +13,15 @@ class Dealer extends Model
 	];
 
 
-
 	public function retailer(){
 		return $this->hasMany('App\Retailer');
 	}
+
+
+	public function dealerStock(){
+		return $this->hasMany('App\DealerStock');
+	}
+
 
 
 

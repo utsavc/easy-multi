@@ -51,9 +51,7 @@ class AdminController extends Controller
 
 
 	function dealerTransfer(){
-
-		return view('admin.dealer.transfer');
-
+		return view('admin.product.transfer');
 	}
 
 

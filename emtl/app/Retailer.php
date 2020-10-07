@@ -18,5 +18,11 @@ class Retailer extends Model
     }
 
 
+      public function group()
+    {
+        return $this->hasMany('App\Group');
+    }
+
+
 
 }
