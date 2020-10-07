@@ -1,3 +1,5 @@
+@if (session('usertype') == 'Retailer')
+    
 @extends('layouts.app')
 
 @section('sidebar')
@@ -15,8 +17,8 @@
     <ul class="navbar-nav ml-auto">
 
       <li class="nav-item d-none d-sm-inline-block">
-        <form>
-          <button class="btn btn-sm btn-danger p-1">Logout</button>
+        <form method="GET" action="<?php if(isset($_GET['logout'])) { session()->forget('usertype'); echo redirect()->route('login'); }?>">
+          <button type="submit" class="btn btn-sm btn-danger p-1" name="logout">Logout</button>
         </form>
       </li>
 
@@ -41,12 +43,12 @@
           <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="{{url('profile')}}" class="d-block">Utsav Chaudhary</a>
+          <a href="{{url('retailer/profile')}}" class="d-block">Subash Khatiwada</a>
         </div>
       </div>
 
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <span class="text-white ml-3">Date: August 20,2020</span>
+        <span class="text-white ml-3">Date: {{ date('d M Y') }}</span>
       </div>
 
       <!-- Sidebar Menu -->
@@ -73,7 +75,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('admin/retailer/transfer') }}" class="nav-link">
+                <a href="{{ url('retailer/transfer') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Transfer</p>
                 </a>
@@ -81,7 +83,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('admin/retailer/comission') }}" class="nav-link">
+                <a href="{{ url('retailer/commission') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Comission</p>
                 </a>
@@ -92,7 +94,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('admin/retailer/stock') }}" class="nav-link">
+                <a href="{{ url('retailer/stock') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Stock</p>
                 </a>
@@ -102,7 +104,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('admin/retailer/product-report/1') }}" class="nav-link">
+                <a href="{{ url('retailer/product-report') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Report</p>
                 </a>
@@ -126,9 +128,9 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('admin/exams') }}" class="nav-link">
+                <a href="{{ url('retailer/settings') }}" class="nav-link">
                   <i class="fa fa-angle-double-right nav-icon"></i>
-                  <p>Exam List</p>
+                  <p>Settings</p>
                 </a>
               </li>
             </ul>
@@ -159,3 +161,16 @@
 <!-- ./wrapper -->
 
 @endsection
+
+@else
+
+<?php
+$message = [
+  'flashType'    => 'danger',
+  'flashMessage' => 'Session expired!'
+];
+
+echo redirect()->route('login')->with($message);
+?>
+
+@endif

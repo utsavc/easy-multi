@@ -1,71 +1,76 @@
 @extends('dealer.sidebar')
+<?php
+$y = date('Y', time()); //Getting Year
+$m = date('m', time()); //Getting Month
+$d = date('d', time()); //Getting Day
+include(app_path().'/includes/nepali-date.php'); //Including library
+$date = new nepali_date;
+$date = $date->get_nepali_date($y, $m, $d);
+$currentdate= $date['y'].'-'.$date['m'].'-'.$date['d']; //Formatting Date
+?>
 
 @section('bodycontent')
 
 <div class="container-fluid mt-2">
 
-	<div class="row">
+	<div class="col-lg-8">
+		<div class="card card-primary">
+			<div class="card-header">
+				<h3 class="card-title">Transfer Product</h3>
+			</div>
+			<!-- /.card-header -->
 
-		<div class="col-lg-8">
-			<div class="card card-primary">
-				<div class="card-header">
-					<h3 class="card-title">Transfer Product</h3>
-				</div>
-				<!-- /.card-header -->
+			<div class="card-body">
 				<!-- form start -->
-				<form role="form">
-					<div class="card-body">
+				<form role="form" method="GET" action="transfertoretailer">
+					{{csrf_field()}}
 
-						<div class="form-group">
-							<label for="exampleInputPassword1">Date</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. 900010001">
-						</div>		
-
-						<div class="form-group">
-							<label for="exampleInputPassword1">Product Name</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. ABC Traders">
-						</div>
-
-
-						<div class="form-group">
-							<label for="exampleInputPassword1">Quantity</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. 1002345">
-						</div>
-
-						<div class="form-group">
-							<label for="exampleInputPassword1">Dealer Id</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. Bharatpur">
-						</div>
-
-
-
-						<div class="form-group">
-							<label for="exampleInputPassword1">Retailer Id</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. Bharatpur">
-						</div>
-
+					<div class="form-group">
+						<label for="exampleInputPassword1">Retailer Id</label>
 						
-
-
-						<button type="submit" class="btn btn-primary">Create</button>
-
-						<button type="submit" class="btn btn-warning">Reset</button>
-
+						<select name="retailerid" class="form-control" required id="exampleInputPassword1">
+							@if (count($products[1]) > 0)
+								@foreach ($products[1] as $retailer)
+									<option value="{{ $retailer->id }}">{{ $retailer->id." - ".$retailer->name }}</option>
+								@endforeach
+							@endif
+						</select>
 					</div>
-					<!-- /.card-body -->
 
+					
+					<div class="form-group">
+						<label for="exampleInputPassword1">Product Name</label>
+						
+						<select name="name" class="form-control" required id="exampleInputPassword1">
+						@if (count($products[0]) > 0)
+							@foreach ($products[0] as $stock)
+								<option value="{{ $stock->name }}">{{ $stock->name }}</option>
+							@endforeach
+						@endif
+						</select>
+					</div>
+
+
+					<div class="form-group">
+						<label for="exampleInputPassword1">Quantity</label>
+						<input type="text" name="quantity" class="form-control" required id="exampleInputPassword1" placeholder="Eg. 12345">
+					</div>
+
+
+					<button type="submit" class="btn btn-primary">Transfer</button>
+
+					<button type="reset" class="btn btn-warning">Reset</button>
+				
 				</form>
 			</div>
+			<!-- /.card-body -->
+
 		</div>
-
-		<div class="col-lg-4"></div>
-
 	</div>
 
 
 
-
-	<div class="card">
+	<div class="card card-info">
 		<div class="card-header">
 			<h3 class="card-title font-weight-bold">Showing List of Products</h3>
 		</div>
@@ -84,31 +89,51 @@
 					<tr>
 						<th data-field="id">SN</th>
 						<th data-field="name" >Product Name</th>
-						<th data-field="email" >Quantity</th>
-						<th data-field="phone" >Report</th>
-						<th data-field="complete">Remarks</th>
+						<th data-field="quantity">Quantity</th>
+						<th data-field="report" >Report</th>
+						<th data-field="remarks">Remarks</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>1</td>
-						<td>Utsav</td>
-						<td>12344</td>
-						<td><a href="">View Report</a></td>
-						<td>
-							<a href="" class="btn btn-success btn-sm">Edit</a>
-							<a href="" class="btn btn-danger btn-sm">Delete</a>
-						</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>Utsav</td>
-						<td>12344</td>
-						<td><a href="">View Report</a></td>
-						<td>
-							<a href="" class="btn btn-success btn-sm">Edit</a>
-							<a href="" class="btn btn-danger btn-sm">Delete</a>
-						</td>
+						<?php $countdata = 0 ?>
+						@if (count($products[2]) > 0)
+							@foreach ($products[2] as $product)
+								<?php $countdata++ ?>
+								@if (!($countdata % 2 == 0))
+									<tr role="row" class="odd">
+										<td tabindex="0" class="sorting_1">{{ $countdata }}</td>
+										<td>{{ $product->name }}</td>
+										<td>{{ $product->quantity }}</td>
+										<td><a href="dealer/productreport/{{ $product->id }}"><button class="btn btn-primary">View Report</button></a></td>
+										<td>
+											<a href="{{ route('transferproductEdit', ['id' => $product->id]) }}" class="btn btn-success btn-sm">Edit</a>
+				
+											<form class="form-inline d-inline" method="post" action="{{ route('transferproductDelete', $product->id) }}" onclick="return confirm('Are you sure you want to delete this item?');">
+												@csrf
+												<button type="submit" class="btn btn-danger btn-sm">Delete</button>
+											</form>
+										</td>
+									</tr>
+								@else
+									<tr role="row" class="even">
+										<td tabindex="0" class="sorting_1">{{ $countdata }}</td>
+										<td>{{ $product->name }}</td>
+										<td>{{ $product->quantity }}</td>
+										<td><a href="dealer/productreport/{{ $product->id }}"><button class="btn btn-primary">View Report</button></a></td>
+										<td>
+											<a href="{{ route('transferproductEdit', ['id' => $product->id]) }}" class="btn btn-success btn-sm">Edit</a>
+				
+											<form class="form-inline d-inline" method="post" action="{{ route('transferproductDelete', $product->id) }}" onclick="return confirm('Are you sure you want to delete this item?');">
+												@csrf
+												<button type="submit" class="btn btn-danger btn-sm">Delete</button>
+											</form>
+										</td>
+									</tr>
+								@endif											
+							@endforeach
+						@endif
+						
 					</tr>
 				</tbody>
 			</table>

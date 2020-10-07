@@ -18,13 +18,13 @@
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">Product Name</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. ABC Traders">
+							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Eg. ABC Traders">
 						</div>
 
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">MRP</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. 1002345">
+							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Eg. 12345678">
 						</div>
 
 
@@ -33,21 +33,21 @@
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">Dealer Comission</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. Bharatpur">
+							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Eg. 123456">
 						</div>
 
 
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">Retailer Comission</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. 900010001">
+							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Eg. 123456">
 						</div>		
 
 
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">Customer Comission</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Eg. 900010001">
+							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Eg. 123456">
 						</div>		
 
 

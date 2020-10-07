@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 use App\Dealer;
+use App\Retailer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\DealerProduct;
+use App\RetailerProduct;
+use App\DealerCommission;
 
 class DealerController extends Controller
 {
 
 	function createDealerForm(){
-		$dealer=Dealer::orderBy('id','DESC')->get();
+		$dealer= Dealer::orderBy('id','DESC')->get();
 		return view('admin.createdealer',['dealers'=>$dealer]);
 	}
 
@@ -24,28 +28,28 @@ class DealerController extends Controller
 			'email' => 'required|string',
 		]);
 
-		/*$dealer= new Dealer;
+		/* $dealer = new Dealer;
 		$dealer->name=$request->name;
 		$dealer->dealerid=$request->dealerid;
 		$dealer->address=$request->address;
 		$dealer->phone=$request->phone;
 		$dealer->email=$request->email;
-		$dealer->updateorCreate();		*/
+		$dealer->updateorCreate();	*/
 
 		Dealer::create($validated);
 		return back()->with('success','Item created successfully!');
 	}
 
 	function editDealer($id, Request $request){
-		$dealer=Dealer::firstWhere('id', $id);	
-		$alldealer=Dealer::orderBy('id','DESC')->get();
+		$dealer= Dealer::firstWhere('id', $id);	
+		$alldealer= Dealer::orderBy('id','DESC')->get();
 		return view('admin.editdealer',['dealer'=>$dealer,'alldealer'=>$alldealer]);
 	}
 
 
 	function updateDealer(Request $request, $id){
-		$dealer = Dealer::findOrFail($id);
-		$validated=$request->validate([
+		$dealer= Dealer::findOrFail($id);
+		$validated= $request->validate([
 			'name' => 'required|string',
 			'dealerid' => 'required|string',
 			'address' => 'required|string',
@@ -58,7 +62,7 @@ class DealerController extends Controller
 
 
 	function deleteDealer($id){
-		$dealer=Dealer::findOrFail($id);
+		$dealer= Dealer::findOrFail($id);
 		$status=$dealer->status;
 		if ($status=="active") {
 			$dealer->status="inactive";
@@ -73,18 +77,22 @@ class DealerController extends Controller
 
 
 	function dashboard(){
-		return view('dealer.index');
+		$products= DealerProduct::orderBy('id','DESC')->get();
+		return view('dealer.index')->with('products', $products);
 	}
-
 
 
 	function commission(){
-		return view('dealer.commission');
+		$commissions= DealerCommission::orderBy('id','DESC')->get();
+		return view('dealer.commission')->with('commissions', $commissions);
 	}
 
+
 	function stock(){
-		return view('dealer.stock');
+		$products= DealerProduct::orderBy('id','DESC')->get();
+		return view('dealer.stock')->with('products', $products);
 	}
+
 
 	function productreport(){
 		return view('dealer.productreport');
@@ -92,7 +100,77 @@ class DealerController extends Controller
 
 
 	function transferbyDealer(){
-		return view('dealer.transfer');
+		$products= RetailerProduct::orderBy('id','DESC')->get();
+		$stocks= DealerProduct::orderBy('id','DESC')->get();
+		$retailers= Retailer::orderBy('id','DESC')->get();
+
+		$products= [$stocks, $retailers, $products];
+		return view('dealer.transfer')->with('products', $products);
+	}
+
+
+	function createTransfer(Request $request){
+
+		$validated= $request->validate([
+			'name' => 'required|string',
+			'quantity' => 'required|string',
+			'retailerid' => 'required|string',
+			'date' => 'required|string'
+		]);
+
+		$dealerproduct= DealerProduct::orderBy('id','DESC')->where('name', $request->name)->first();
+		$checkdataexistance= RetailerProduct::orderBy('id','DESC')->where('name', $request->name)->get();
+
+		if ($request->quantity <= $dealerproduct->quantity){
+			if(count($checkdataexistance) == 0){
+				RetailerProduct::create($validated);
+				$dealerproduct->update(array('quantity' => $dealerproduct->quantity - $request->quantity));
+				return back()->with('success', 'Item created successfully!');
+			} else{
+				return back()->with('errors', 'Product name already exist!');
+			}
+		} else{
+			return back()->with('errors', 'Quantity should be in range of 1 to '.$dealerproduct->quantity.'for '.$request->name.'.');
+		}
+	
+	}
+
+
+	function editTransfer($id, Request $request){
+		$retailer= RetailerProduct::firstWhere('id', $id);	
+		$allretailer= RetailerProduct::orderBy('id','DESC')->get();
+
+		return view('dealer.edittransferproduct', ['retailer'=>$retailer,'allretailer'=>$allretailer]);
+	}
+
+
+	function updateTransfer($id, Request $request){
+		$retailer= RetailerProduct::findOrFail($id);
+
+		$dealerproduct= DealerProduct::firstWhere('name', $request->name);
+
+		if (($request->quantity - $customer->quantity) <= $dealerproduct->quantity){
+			$finalquantity= $dealerproduct->quantity - ($request->quantity - $retailer->quantity);
+			$retailer->update(array('quantity' => $request->quantity));
+			$dealerproduct->update(array('quantity' => $finalquantity));
+			return redirect('dealer/transfer')->with('success', 'Item updated successfully!');
+		} else{
+			return redirect()->route('transferproductEdit')->with('errors', 'Quantity should be in range of 1 to '.$dealerproduct->quantity.'for '.$request->name.'.');
+		}
+	}
+
+
+	function deleteTransfer($id){
+		$retailer= RetailerProduct::findOrFail($id);
+
+		$retailer->delete();
+
+		return redirect()->route('createTransfer');
+	}
+
+	
+	function profile()	{
+		return view('dealer.profile');
 	}
 
 

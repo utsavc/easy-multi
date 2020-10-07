@@ -141,8 +141,8 @@
 							@csrf
 							<button type="submit" class="btn btn-danger btn-sm">{{ $dealer->status =='inactive' ? 'Enable': 'Disable'}}</button>
 						</form>
-					</td>
-				</tr>
+						</td>
+					</tr>
 				@endforeach
 			</tbody>
 		</table>

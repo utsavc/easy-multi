@@ -1,3 +1,5 @@
+@if (session('usertype') == 'Admin')
+    
 @extends('layouts.app')
 
 @section('sidebar')
@@ -15,8 +17,8 @@
     <ul class="navbar-nav ml-auto">
 
       <li class="nav-item d-none d-sm-inline-block">
-        <form>
-          <button class="btn btn-sm btn-danger p-1">Logout</button>
+        <form method="GET" action="<?php if(isset($_GET['logout'])) { session()->forget('usertype'); echo redirect()->route('login'); }?>">
+          <button type="submit" class="btn btn-sm btn-danger p-1" name="logout">Logout</button>
         </form>
       </li>
 
@@ -29,7 +31,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary ">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link text-center">
+    <a href="/admin" class="brand-link text-center">
       EMTL V1.0
     </a>
 
@@ -41,7 +43,7 @@
           <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="{{url('profile')}}" class="d-block">Utsav Chaudhary</a>
+          <a href="{{ url('admin/profile') }}" class="d-block">Utsav Chaudhary</a>
         </div>
       </div>
 
@@ -324,9 +326,9 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('admin/exams') }}" class="nav-link">
+                <a href="{{ url('admin/settings') }}" class="nav-link">
                   <i class="fa fa-angle-double-right nav-icon"></i>
-                  <p>Exam List</p>
+                  <p>Settings</p>
                 </a>
               </li>
             </ul>
@@ -357,3 +359,11 @@
 <!-- ./wrapper -->
 
 @endsection
+
+@else
+
+<script>
+  window.location.href = '{{ route("login") }}';
+</script>
+
+@endif

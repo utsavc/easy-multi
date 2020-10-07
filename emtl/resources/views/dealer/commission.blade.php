@@ -22,26 +22,40 @@
 						<table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
 						data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
 						<thead>
-              <tr>
-                <th>SN</th>
-                <th>DEALER NAME</th>
-                <th>ITEM</th>
-                <th>QTY</th>
-                <th>PRICE</th>
-                <th>COMMISSION AMOUNT</th>
-              </tr>
-            </thead>
-  
-            <tbody>
-              <tr>
-                  <td> 1 </td>
-                  <td> Subash </td>
-                  <td> XYZ </td>
-                  <td> 5 </td>
-                  <td> $100 </td>
-                  <td> $12 </td>
-              </tr>
-            </tbody>
+						<tr>
+							<th>SN</th>
+							<th>PRODUCT NAME</th>
+							<th>QUANTITY</th>
+							<th>COMMISSION AMOUNT</th>
+						</tr>
+						</thead>
+			
+						<tbody>
+						<tr>
+							<?php $countdata = 0 ?>
+							@if (count($commissions)>0)
+								@foreach ($commissions as $commission)
+									<?php $countdata++ ?>
+									@if (!($countdata % 2 == 0))
+										<tr role="row" class="odd">
+											<td tabindex="0" class="sorting_1">{{ $countdata }}</td>
+											<td>{{ $commission->productname }}</td>
+											<td>{{ $commission->quantity }}</td>
+											<td>{{ $commission->commission }}</td>
+										</tr>
+									@else
+										<tr role="row" class="even">
+											<td tabindex="0" class="sorting_1">{{ $countdata }}</td>
+											<td>{{ $commission->productname }}</td>
+											<td>{{ $commission->quantity }}</td>
+											<td>{{ $commission->commission }}</td>
+										</tr>
+									@endif											
+								@endforeach
+							@endif
+
+						</tr>
+						</tbody>
 					</table>
 				</div>
 			</div>

@@ -4,17 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class DealerCommission extends Model
 {
     protected $fillable = [
-        'username',
-        'password',
-        'usertype'
+        'dealerid',
+        'productname',
+        'quantity',
+        'commission'
         // add all other fields
     ];
 
     //Table name
-    protected $table= 'user';
+    protected $table= 'dealer_commissions';
 
     //Primary key
     public $primaryKey= 'id';

@@ -22,22 +22,38 @@
 						<table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
 						data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
 						<thead>
-              <tr>
-                <th>SN</th>
-                <th>PRODUCT NAME</th>
-                <th>QTY</th>
-                <th>REPORT</th>
-              </tr>
-            </thead>
-  
-            <tbody>
-              <tr>
-                  <td> 1 </td>
-                  <td> Stock XYZ </td>
-                  <td> 100 </td>
-                  <td> <a href="dealer/productreport"><button class="btn btn-primary">View Report</button></a> </td>
-              </tr>
-            </tbody>
+							<tr>
+								<th>SN</th>
+								<th>PRODUCT NAME</th>
+								<th>QTY</th>
+								<th>REPORT</th>
+							</tr>
+						</thead>
+			
+						<tbody>
+							<?php $countdata = 0 ?>
+							@if (count($products) > 0)
+								@foreach ($products as $product)
+									<?php $countdata++ ?>
+									@if (!($countdata%2 == 0))
+										<tr role="row" class="odd">
+											<td tabindex="0" class="sorting_1">{{ $countdata }}</td>
+											<td>{{ $product->name }}</td>
+											<td>{{ $product->quantity }}</td>
+											<td><a href="dealer/productreport/{{ $product->id }}"><button class="btn btn-primary">View Report</button></a></td>
+										</tr>
+									@else
+										<tr role="row" class="even">
+											<td tabindex="0" class="sorting_1">{{ $countdata }}</td>
+											<td>{{ $product->name }}</td>
+											<td>{{ $product->quantity }}</td>
+											<td><a href="dealer/productreport/{{ $product->id }}"><button class="btn btn-primary">View Report</button></a></td>
+										</tr>
+									@endif											
+								@endforeach
+							@endif
+							
+						</tbody>
 					</table>
 				</div>
 			</div>

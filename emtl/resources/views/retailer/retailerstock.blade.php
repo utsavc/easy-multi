@@ -19,27 +19,42 @@
                                 <option value="selected">Export Selected</option>
                             </select>
                         </div>
-                        <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
-                        data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
-                        <thead>
-                            <tr>
-                                <th data-field="id">SN</th>
-                                <th data-field="id">Product Name</th>
-                                <th data-field="name" >QTY</th>
-                                <th data-field="id">Report</th>
-                                <th data-field="id"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Utsav</td>
-                                <td>12344</td>
-                                <td>12344</td>
-                                <td>12344</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
+						data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+						<thead>
+							<tr>
+								<th>SN</th>
+								<th>PRODUCT NAME</th>
+								<th>QTY</th>
+								<th>REPORT</th>
+							</tr>
+						</thead>
+			
+						<tbody>
+							<?php $countdata = 0 ?>
+							@if (count($products) > 0)
+								@foreach ($products as $product)
+									<?php $countdata++ ?>
+									@if (!($countdata%2 == 0))
+										<tr role="row" class="odd">
+											<td tabindex="0" class="sorting_1">{{ $countdata }}</td>
+											<td>{{ $product->name }}</td>
+											<td>{{ $product->quantity }}</td>
+											<td><a href="dealer/productreport/{{ $product->id }}"><button class="btn btn-primary">View Report</button></a></td>
+										</tr>
+									@else
+										<tr role="row" class="even">
+											<td tabindex="0" class="sorting_1">{{ $countdata }}</td>
+											<td>{{ $product->name }}</td>
+											<td>{{ $product->quantity }}</td>
+											<td><a href="dealer/productreport/{{ $product->id }}"><button class="btn btn-primary">View Report</button></a></td>
+										</tr>
+									@endif											
+								@endforeach
+							@endif
+							
+						</tbody>
+					</table>
                 </div>
             </div>
         </div>    

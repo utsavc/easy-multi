@@ -24,10 +24,10 @@
                         <thead>
                             <tr>
                                 <th data-field="id">SN</th>
-                                <th data-field="id">Date</th>
-                                <th data-field="name" >Dealer ID</th>
-                                <th data-field="id">QTY</th>
-                                <th data-field="id"></th>
+                                <th data-field="date">Date</th>
+                                <th data-field="dealerid">Dealer ID</th>
+                                <th data-field="quantity">QTY</th>
+                                <th data-field="report">Report</th>
                             </tr>
                         </thead>
                         <tbody>
