@@ -159,9 +159,22 @@ class RetailerController extends Controller{
 
 
 	function deleteTransfer($id){
-		$customer= CustomerProduct::findOrFail($id);
+		$customerproduct= CustomerProduct::findOrFail($id);
+		$retailerproduct= RetailerProduct::firstWhere('name', $customerproduct->name);
 
-		$customer->delete();
+		if(count($retailerproduct) > 0){
+			$finalquantity= $retailerproduct->quantity + $customerproduct->quantity;
+			$retailerproduct->update(array('quantity' => $finalquantity));
+			$customerproduct->delete();		
+		} else{
+			$retailer = new RetailerProduct;
+			$retailer->name= $customerproduct->name;
+			$retailer->dealerid= $customerproduct->dealerid;
+			$retailer->quantity= $customerproduct->quantity;
+			$retailer->date= $customerproduct->date;
+			$retailer->save();
+			$customerproduct->delete();
+		}
 
 		return redirect()->route('createTransfer');
 	}
