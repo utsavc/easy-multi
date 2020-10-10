@@ -85,7 +85,7 @@
 
 
               <li class="nav-item">
-                <a href="{{ url('admin/user/add-retailer') }}" class="nav-link">
+                <a href="{{ url('admin/user/add-customer') }}" class="nav-link">
                   <i class="fa fa-angle-double-right nav-icon"></i>
                   <p>Customer</p>
                 </a>

@@ -32,5 +32,12 @@ class GroupController extends Controller
 	}
 
 
+	function groupDetails(Request $request, $id){
+
+		$group=Group::findorFail($id);
+		return view('admin.groupdetails',['group'=>$group,]);
+	}
+
+
 
 }

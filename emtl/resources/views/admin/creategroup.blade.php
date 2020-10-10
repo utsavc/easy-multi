@@ -98,7 +98,7 @@
 									<td>{{ $loop->iteration }}</td>
 									<td>{{$group->name}}</td>
 									<td>{{$group->retailer->name}}</td>
-									<td><a href="">View Details</a></td>
+									<td><a href="{{route('groupDetails',$group->id)}}">View Details</a></td>
 								</tr>
 								@endforeach
 							</tbody>

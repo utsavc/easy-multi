@@ -26,6 +26,14 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::get('/create-user', 'AdminController@createUser');
 		Route::get('/add-dealer', 'DealerController@createDealerForm')->name('createDealer');
 		Route::post('/add-dealer', 'DealerController@addDealer');
+
+
+		Route::get('/add-customer', 'CustomerController@createCustomerForm')->name('createCustomerForm');
+		Route::post('/add-customer', 'CustomerController@createCustomer')->name('createCustomer');
+
+
+
+
 		Route::get('/edit-dealer/{id}', 'DealerController@editDealer')->name('dealerEdit');
 		Route::post('/edit-dealer/{id}', 'DealerController@updateDealer')->name('dealerUpdate');
 		Route::post('/delete-dealer/{id}', 'DealerController@deleteDealer')->name('dealerDelete');
@@ -43,6 +51,8 @@ Route::group(['prefix'=>'admin'], function(){
 
 		Route::get('/create-group', 'GroupController@createGroupForm')->name('createGroupForm');
 		Route::post('/create-group', 'GroupController@createGroup')->name('createGroup');
+		Route::get('/group-details/{id}', 'GroupController@groupDetails')->name('groupDetails');
+
 
 
 	});
