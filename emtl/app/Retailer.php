@@ -25,4 +25,11 @@ class Retailer extends Model
 
 
 
+      public function customer()
+    {
+        return $this->hasMany('App\Customer');
+    }
+
+
+
 }

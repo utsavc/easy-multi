@@ -16,4 +16,13 @@ class Group extends Model
 		return $this->belongsTo('App\Retailer');
 	}
 
+
+
+	public function group()
+	{
+		return $this->hasManyThrough('App\Customer');
+	}
+
+
+
 }

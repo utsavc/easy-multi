@@ -6,15 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-    //
+	protected $guarded = [];
 
-    protected $fillable = [
-		'name','customerid','retailerid', 'address','phone','email'
-	];
-
-
-	 public function retailer(){
-        return $this->belongsTo('App\Retailer','id');
-    }
-
+	public function retailer()
+	{
+		return $this->belongsTo('App\Retailer');
+	}
 }
