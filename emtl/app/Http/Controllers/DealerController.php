@@ -50,7 +50,7 @@ class DealerController extends Controller
 			'dealerid' => 'required|string',
 			'address' => 'required|string',
 			'phone' => 'required|string',
-			'email' => 'required|string',
+			'email' => 'required|strwng',
 		]);
 		$dealer->update($validated);
 		return redirect()->route('createDealer');

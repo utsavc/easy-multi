@@ -25,7 +25,6 @@ class CustomerController extends Controller
 
 		Customer::create($validated);
 		return back()->with('success','Product created successfully!');
-
 		
 	}
 

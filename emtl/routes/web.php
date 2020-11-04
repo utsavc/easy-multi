@@ -52,6 +52,8 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::get('/create-group', 'GroupController@createGroupForm')->name('createGroupForm');
 		Route::post('/create-group', 'GroupController@createGroup')->name('createGroup');
 		Route::get('/group-details/{id}', 'GroupController@groupDetails')->name('groupDetails');
+		Route::get('/add-members', 'GroupController@addMembersForm')->name('addMembers');
+		Route::post('/add-members', 'GroupController@addMembers')->name('addMembers');
 
 
 

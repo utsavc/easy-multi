@@ -73,7 +73,9 @@ class ProductController extends Controller
 
 		//dd($dealerStocks);
 		
-		$singleDataForProductName=DealerStock::where('product_id',$id)->limit(1)->get();
+		//$singleDataForProductName=DealerStock::where('product_id',$id)->limit(1)->get();
+
+		$singleDataForProductName=Product::findOrFail($id);
 		//dd($singleDataForProductName);
 		return view('product.outstock',['dealerStocks'=>$dealerStocks,'singleDataForProductName'=>$singleDataForProductName]);
 

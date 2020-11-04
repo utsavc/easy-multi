@@ -91,12 +91,34 @@
                 </a>
               </li>
 
-
-              <li class="nav-item">
-                <a href="{{ route('createGroupForm') }}" class="nav-link">
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
                   <i class="fa fa-angle-double-right nav-icon"></i>
-                  <p>Group</p>
+                  <p>
+                    Group
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
                 </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{ route('createGroupForm') }}" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Create Group</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('addMembers') }}" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Add Members</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Level 3</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
 
 
@@ -362,49 +384,49 @@
             </ul>
           </li>
 
-          -->
+        -->
 
 
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-map"></i>   
-              <p>
-                Settings
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="nav-icon far fa-map"></i>   
+            <p>
+              Settings
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
 
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ url('admin/exams') }}" class="nav-link">
-                  <i class="fa fa-angle-double-right nav-icon"></i>
-                  <p>Roles</p>
-                </a>
-              </li>
-            </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ url('admin/exams') }}" class="nav-link">
+                <i class="fa fa-angle-double-right nav-icon"></i>
+                <p>Roles</p>
+              </a>
+            </li>
+          </ul>
 
 
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-
-    @yield('bodycontent')
-
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
   </div>
-  <!-- /.content-wrapper -->
+  <!-- /.sidebar -->
+</aside>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+  @yield('bodycontent')
+
+</div>
+<!-- /.content-wrapper -->
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 

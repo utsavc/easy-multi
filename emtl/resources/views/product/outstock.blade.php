@@ -11,9 +11,7 @@
 				<div class="card-header">
 					<h3 class="card-title font-weight-bold">Showing Transfer Reports of  
 						<span class="text-info"> 
-							@foreach ($singleDataForProductName as $DataForProductName)
-								{{$DataForProductName->product->productname}}
-							@endforeach
+							{{$singleDataForProductName->productname}}
 						</span>
 					</h3>
 				</div>

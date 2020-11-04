@@ -40,4 +40,19 @@ class GroupController extends Controller
 
 
 
+
+	function addMembersForm(Request $request){
+		return view('admin.addMembers');
+	}
+	
+
+	function addMembers(Request $request){
+	}
+
+
+
+
+
+
+
 }
