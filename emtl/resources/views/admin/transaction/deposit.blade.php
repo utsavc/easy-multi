@@ -32,37 +32,25 @@
 		<div class="col-lg-4">
 			<div class="card card-primary">
 				<div class="card-header">
-					<h3 class="card-title">Add Members</h3>
+					<h3 class="card-title">Deposit Amount</h3>
 				</div>
 				<!-- /.card-header -->
 				<!-- form start -->
-				<form role="form" action="{{ route('addMembers') }}" method="post" autocomplete="off">
+				<form role="form" action="{{ route('addProductStock') }}" method="post" autocomplete="off">
 
 					@csrf
 					<div class="card-body">
 
 						<div class="form-group">
 							<label for="exampleDropdown">Select Member</label>
-							<select data-live-search="true" title="Select Member" data-live-search-placeholder="Search Product" class="form-control selectpicker" name="customer_id">
-
-
-								@foreach ($customers as $customer)
-								<option value="{{$customer->id}}">{{$customer->name}}</option>
-								@endforeach
-
+							<select data-live-search="true" title="Select Member" data-live-search-placeholder="Search Username" class="form-control selectpicker" name="user_id">							
 								
 							</select>
 						</div>
 
 						<div class="form-group">
-							<label for="exampleDropdown">Select Group</label>
-							<select data-live-search="true" title="Please select Group" data-live-search-placeholder="Search Member" class="form-control selectpicker" name="group_id">	
-
-								@foreach ($groups as $group)
-								<option value="{{$group->id}}">{{$group->name}}</option>
-								@endforeach
-
-							</select>
+							<label for="exampleDropdown">Amount</label>
+							<input type="text" class="form-control" name="">
 						</div>
 
 						
@@ -74,7 +62,7 @@
 						</div>-->
 
 						
-						<button type="submit" class="btn btn-primary">Create</button>
+						<button type="submit" class="btn btn-primary">Deposit</button>
 						<button type="submit" class="btn btn-warning">Reset</button>
 					</div>
 					<!-- /.card-body -->

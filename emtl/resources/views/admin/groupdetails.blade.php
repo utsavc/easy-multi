@@ -13,7 +13,8 @@
 				<div class="info-box-content">
 					<span class="info-box-text">Members</span>
 					<span class="info-box-number">
-						10 Members
+						10 Members 
+
 						
 						<button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
 							See Members
@@ -23,6 +24,7 @@
 				<!-- /.info-box-content -->
 			</div>
 		</div>
+
 
 
 		<div class="col-lg-3">
@@ -61,9 +63,12 @@
 		<div class="card card-body">
 			<h4>Members</h4>
 			<ol>
-				<li>Aaksah Mahara</li>
-				<li>Subash aryal</li>
-				<li>Rupesh Baral</li>
+
+
+				@foreach ($customer_groups as $customers)
+				<ol value="">{{$customers->customer}}</ol>
+				@endforeach
+
 			</ol>
 		</div>
 	</div>

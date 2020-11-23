@@ -27,75 +27,55 @@
 	</div>
 	@endif
 
+	<div class="row">
+		<div class="col-lg-4">
+			<div class="card card-primary">
+				<div class="card-header">
+					<h3 class="card-title">Add Customer</h3>
+				</div>
+				<!-- /.card-header -->
+				<!-- form start -->
 
 
-	<div class="card card-primary">
-		<div class="card-header">
-			<h3 class="card-title">Add Customer</h3>
+				<div class="card-body">
+					<form role="form" class="form" action="{{ url('admin/user/add-customer') }}" method="post">
+
+						{{csrf_field()}}
+
+
+						<div class="form-group ">
+							<label >Customer Name</label>
+							<input type="text" name="name" class="form-control ml-2" placeholder="Eg. Ram Sharma" value="{{old('name')}}">
+						</div>
+
+
+
+
+						<div class="form-group ">
+							<label >Address</label>
+							<input type="text" name="address" class="form-control ml-2" placeholder="Eg. Bharatpur" value="{{old('address')}}">
+						</div>
+
+						<div class="form-group ">
+							<label >Phone Number</label>
+							<input type="text" name="phone" class="form-control ml-2" placeholder="Eg. 900010001" value="{{old('phone')}}">
+						</div>	
+						<div>
+
+							<button type="submit" class="btn btn-primary">Create</button>
+
+							<button type="submit" class="btn btn-warning">Reset</button>
+						</div>
+
+					</form>
+
+				</div>
+				<!-- /.card-body -->
+
+			</div>
 		</div>
-		<!-- /.card-header -->
-		<!-- form start -->
-
-
-		<div class="card-body">
-			<form role="form" class="form-inline" action="{{ url('admin/user/add-customer') }}" method="post">
-				
-				{{csrf_field()}}
-
-
-				<div class="input-group mr-2">
-					<label >Customer Name</label>
-					<input type="text" name="name" class="form-control ml-2" placeholder="Eg. Ram Sharma" value="{{old('name')}}">
-				</div>
-
-
-				
-
-				<div class="input-group mr-2">
-					<label for="exampleDropdown">Select Retailer</label>
-					<select data-live-search="true" title="Please select retailer" data-live-search-placeholder="Search Product" class="form-control selectpicker" name="retailer_id">
-
-						@foreach ($retailers as $retailer)
-						<option value="{{$retailer->id}}">{{$retailer->name}}</option>
-						@endforeach
-					</select>
-				</div>
-
-
-
-
-				<div class="input-group mr-2">
-					<label >Address</label>
-					<input type="text" name="address" class="form-control ml-2" placeholder="Eg. Bharatpur" value="{{old('address')}}">
-				</div>
-
-				<div class="m-5"></div>
-
-
-
-				<div class="form-group mr-2">
-					<label >Phone Number</label>
-					<input type="text" name="phone" class="form-control ml-2" placeholder="Eg. 900010001" value="{{old('phone')}}">
-				</div>		
-
-
-
-
-
-
-				<div>
-
-					<button type="submit" class="btn btn-primary">Create</button>
-
-					<button type="submit" class="btn btn-warning">Reset</button>
-				</div>
-
-			</form>
-
-		</div>
-		<!-- /.card-body -->
-
 	</div>
+
 
 
 

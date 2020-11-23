@@ -134,9 +134,55 @@
           </li>
 
 
+            <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-money-bill-alt "></i>   
+              <p>
+                Transactions
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('deposit') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Deposit</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('withdraw') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Withdraw</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('report') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report</p>
+                </a>
+              </li>
+            </ul>
+
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('transfer') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Transfer</p>
+                </a>
+              </li>
+            </ul>
+
+
+
+          </li>
+
+
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon far fa-money-bill-alt"></i>   
+              <i class="nav-icon fas fa-boxes"></i>   
               <p>
                 Product
                 <i class="right fas fa-angle-left"></i>

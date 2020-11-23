@@ -14,6 +14,14 @@ class Customer extends Model
 	}
 
 
+	public function customerGroups()
+	{
+		return $this->belongsTo('App\CustomerGroups');
+	}
+
+	
+
+
 	
 
 

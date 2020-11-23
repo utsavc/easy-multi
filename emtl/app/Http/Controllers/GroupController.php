@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Retailer;
 use App\Group;
+use App\Customer;
+use App\CustomerGroups;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
@@ -33,20 +35,35 @@ class GroupController extends Controller
 
 
 	function groupDetails(Request $request, $id){
-
 		$group=Group::findorFail($id);
-		return view('admin.groupdetails',['group'=>$group,]);
+		$customer_groups = CustomerGroups::where('group_id', $id)->get();
+
+		return view('admin.groupdetails',['group'=>$group,'customer_groups'=>$customer_groups,]);
 	}
 
 
 
 
 	function addMembersForm(Request $request){
-		return view('admin.addMembers');
+
+		$retailers=Retailer::all();
+		$groups=Group::all();
+		$customers=Customer::all();
+		return view('admin.addMembers',['customers'=>$customers,'groups'=>$groups]);
 	}
 	
 
 	function addMembers(Request $request){
+		$validated=$request->validate([
+			'customer_id' => 'required|String|exists:customers,id|unique:customer_groups',			
+			'group_id' => 'required|integer|exists:user_groups,id',
+		]);
+
+		CustomerGroups::create($validated);
+
+		return back()->with('success','Member Added successfully!');
+
+
 	}
 
 

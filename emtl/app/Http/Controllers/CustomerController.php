@@ -19,7 +19,6 @@ class CustomerController extends Controller
 		$validated=$request->validate([
 			'name' => 'required|String',
 			'address' => 'required|String',
-			'retailer_id' => 'required|integer|exists:retailers,id',
 			'phone' => 'required|String',
 		]);
 

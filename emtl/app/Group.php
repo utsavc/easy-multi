@@ -17,7 +17,6 @@ class Group extends Model
 	}
 
 
-
 	public function group()
 	{
 		return $this->hasManyThrough('App\Customer');

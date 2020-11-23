@@ -72,6 +72,15 @@ Route::group(['prefix'=>'admin'], function(){
 	});
 
 
+
+	Route::group(['prefix'=>'transaction'], function(){
+		Route::get('/deposit', 'TransactionController@deposit')->name('deposit');
+		Route::get('/withdraw', 'TransactionController@withdraw')->name('withdraw');
+		Route::get('/report', 'TransactionController@report')->name('report');
+		Route::get('/transfer', 'TransactionController@transfer')->name('transfer');
+	});
+
+
 /*
 	Route::group(['prefix'=>'dealer'], function(){
 
