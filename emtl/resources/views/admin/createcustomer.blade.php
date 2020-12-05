@@ -5,27 +5,7 @@
 <div class="container-fluid">
 
 
-	<!-- Displaying Error Messages-->
-	@if ($errors->any())
-	<div class="alert alert-danger alert-dismissible fade show" role="alert">		
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		@foreach ($errors->all() as $error)
-		<li>{{ $error }}</li>
-		@endforeach
-	</div>
-	@endif
-
-	
-	@if ($message = Session::get('success'))
-	<div class="alert alert-success alert-dismissible fade show" role="alert">		
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<strong>{{ $message }}</strong>
-	</div>
-	@endif
+	@include('admin.messages')
 
 	<div class="row">
 		<div class="col-lg-4">
@@ -56,10 +36,26 @@
 							<input type="text" name="address" class="form-control ml-2" placeholder="Eg. Bharatpur" value="{{old('address')}}">
 						</div>
 
+
 						<div class="form-group ">
 							<label >Phone Number</label>
 							<input type="text" name="phone" class="form-control ml-2" placeholder="Eg. 900010001" value="{{old('phone')}}">
-						</div>	
+						</div>
+
+
+
+						
+						<div class="form-group">
+							<label for="exampleDropdown">Select Retailer</label>
+							<select data-live-search="true" title="Please select retailer" data-live-search-placeholder="Search Product" class="form-control selectpicker" name="retailer_id">
+
+								@foreach ($retailers as $retailer)
+								<option value="{{$retailer->id}}">{{$retailer->name}}</option>
+								@endforeach
+							</select>
+						</div>
+
+
 						<div>
 
 							<button type="submit" class="btn btn-primary">Create</button>

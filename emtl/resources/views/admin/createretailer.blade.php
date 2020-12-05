@@ -4,17 +4,7 @@
 <br>
 <div class="container-fluid">
 
-	<!-- Displaying Error Messages-->
-	@if ($errors->any())
-	<div class="alert alert-danger alert-dismissible fade show" role="alert">		
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		@foreach ($errors->all() as $error)
-		<li>{{ $error }}</li>
-		@endforeach
-	</div>
-	@endif
+	@include('admin.messages')
 
 	<div class="card card-primary">
 		<div class="card-header">
@@ -136,7 +126,7 @@
 						<td>
 							<a href="{{ route('retailerEdit',['id' => $retailer->id]) }}" class="btn btn-success btn-sm">Edit</a>
 
-							<form class="form-inline d-inline" method="post" action="{{ route('retailerDelete', $retailer->id) }}" onclick="return confirm('Are you sure you want to delete this item?');"">
+							<form class="form-inline d-inline" method="post" action="{{ route('retailerDelete', $retailer->id) }}" onclick="return confirm('Are you sure you want to delete this item?');">
 							@csrf
 							<button type="submit" class="btn btn-danger btn-sm">Delete</button>
 						</form>

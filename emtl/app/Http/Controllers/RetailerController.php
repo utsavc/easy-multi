@@ -15,6 +15,7 @@ class RetailerController extends Controller{
 	function createRetailer(){
 		$retailer=Retailer::orderBy('id','DESC')->get();
 		$dealer=Dealer::orderBy('id','DESC')->get();
+
 		return view('admin.createretailer',['retailers'=>$retailer,'dealers'=>$dealer]);
 	}
 

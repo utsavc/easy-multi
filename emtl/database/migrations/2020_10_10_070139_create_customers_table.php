@@ -18,6 +18,8 @@ class CreateCustomersTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('phone');
+            $table->integer('retailer_id')->unsigned();
+            $table->foreign('retailer_id')->references('id')->on('retailers');
             $table->timestamps();
         });
     }

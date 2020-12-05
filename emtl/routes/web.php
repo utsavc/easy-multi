@@ -75,9 +75,14 @@ Route::group(['prefix'=>'admin'], function(){
 
 	Route::group(['prefix'=>'transaction'], function(){
 		Route::get('/deposit', 'TransactionController@deposit')->name('deposit');
+		Route::post('/deposit', 'TransactionController@processDeposit')->name('deposit');
+
 		Route::get('/withdraw', 'TransactionController@withdraw')->name('withdraw');
+		Route::post('/withdraw', 'TransactionController@processWithdraw')->name('withdraw');
 		Route::get('/report', 'TransactionController@report')->name('report');
+		Route::post('/report', 'TransactionController@processReport')->name('report');
 		Route::get('/transfer', 'TransactionController@transfer')->name('transfer');
+		Route::post('/transfer', 'TransactionController@processTransfer')->name('transfer');
 	});
 
 

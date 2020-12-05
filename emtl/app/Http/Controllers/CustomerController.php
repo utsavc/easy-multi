@@ -20,6 +20,7 @@ class CustomerController extends Controller
 			'name' => 'required|String',
 			'address' => 'required|String',
 			'phone' => 'required|String',
+			'retailer_id'=>'required|String|exists:retailers,id',
 		]);
 
 		Customer::create($validated);

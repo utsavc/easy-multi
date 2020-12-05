@@ -36,16 +36,14 @@ class GroupController extends Controller
 
 	function groupDetails(Request $request, $id){
 		$group=Group::findorFail($id);
-		$customer_groups = CustomerGroups::where('group_id', $id)->get();
-
-		return view('admin.groupdetails',['group'=>$group,'customer_groups'=>$customer_groups,]);
+		$customerGroup=CustomerGroups::where('group_id',$id)->get();
+		return view('admin.groupdetails',['group'=>$group,'customerGroup'=>$customerGroup]);
 	}
 
 
 
 
 	function addMembersForm(Request $request){
-
 		$retailers=Retailer::all();
 		$groups=Group::all();
 		$customers=Customer::all();
@@ -54,17 +52,31 @@ class GroupController extends Controller
 	
 
 	function addMembers(Request $request){
+
+		$limit=15;
+
 		$validated=$request->validate([
 			'customer_id' => 'required|String|exists:customers,id|unique:customer_groups',			
 			'group_id' => 'required|integer|exists:user_groups,id',
 		]);
 
-		CustomerGroups::create($validated);
+		$id=$request->group_id;
 
-		return back()->with('success','Member Added successfully!');
+		$count = CustomerGroups::where('group_id',$id)->get()->count();	
 
+		if ($count<$limit) {
 
+			CustomerGroups::create($validated);
+			return back()->with('success','Member Added successfully!');
+		}else{
+			return back()->with('danger','Member Exceeds in the Group!');
+
+		}
 	}
+
+
+
+
 
 
 

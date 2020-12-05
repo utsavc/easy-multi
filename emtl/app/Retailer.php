@@ -8,13 +8,11 @@ class Retailer extends Model
 {
     //
 
-    protected $fillable = [
-		'name','retailerid','dealer_id', 'address','phone','email'
-	];
+    protected $guarded = [];
 
 
 	 public function dealer(){
-        return $this->belongsTo('App\Dealer','id');
+        return $this->belongsTo('App\Dealer');
     }
 
 

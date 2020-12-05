@@ -13,7 +13,8 @@
 				<div class="info-box-content">
 					<span class="info-box-text">Members</span>
 					<span class="info-box-number">
-						10 Members 
+						
+						{{$customerGroup->count()}} Members 
 
 						
 						<button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -63,11 +64,15 @@
 		<div class="card card-body">
 			<h4>Members</h4>
 			<ol>
-
-
-				@foreach ($customer_groups as $customers)
-				<ol value="">{{$customers->customer}}</ol>
+				@foreach ($customerGroup as $customers)
+				<li >{{$customers->customer[0]->name}}</li>
 				@endforeach
+
+
+
+
+
+
 
 			</ol>
 		</div>
