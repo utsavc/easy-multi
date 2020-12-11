@@ -1,8 +1,6 @@
-<<<<<<< Updated upstream
-=======
+
 @if (session('role') == 'Admin')
-    
->>>>>>> Stashed changes
+
 @extends('layouts.app')
 
 @section('sidebar')
@@ -20,13 +18,10 @@
     <ul class="navbar-nav ml-auto">
 
       <li class="nav-item d-none d-sm-inline-block">
-<<<<<<< Updated upstream
-        <form>
-          <button class="btn btn-sm btn-danger p-1">Logout</button>
-=======
+
         <form method="GET" action="<?php if(isset($_GET['logout'])) { session()->forget('role'); echo redirect()->route('login'); }?>">
           <button type="submit" class="btn btn-sm btn-danger p-1" name="logout">Logout</button>
->>>>>>> Stashed changes
+
         </form>
       </li>
 
@@ -144,7 +139,7 @@
           </li>
 
 
-            <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-money-bill-alt "></i>   
               <p>
@@ -487,3 +482,11 @@
 <!-- ./wrapper -->
 
 @endsection
+
+@else
+
+<script>
+  window.location.href = '{{ route("login") }}';
+</script>
+
+@endif

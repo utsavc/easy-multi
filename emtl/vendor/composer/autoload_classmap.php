@@ -9,14 +9,11 @@ return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Customer' => $baseDir . '/app/Customer.php',
     'App\\CustomerGroups' => $baseDir . '/app/CustomerGroups.php',
-<<<<<<< Updated upstream
     'App\\Dealer' => $baseDir . '/app/Dealer.php',
-=======
     'App\\CustomerProduct' => $baseDir . '/app/CustomerProduct.php',
     'App\\Dealer' => $baseDir . '/app/Dealer.php',
     'App\\DealerCommission' => $baseDir . '/app/DealerCommission.php',
     'App\\DealerProduct' => $baseDir . '/app/DealerProduct.php',
->>>>>>> Stashed changes
     'App\\DealerStock' => $baseDir . '/app/DealerStock.php',
     'App\\Deposit' => $baseDir . '/app/Deposit.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',

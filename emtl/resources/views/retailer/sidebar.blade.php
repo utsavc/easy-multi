@@ -1,10 +1,6 @@
-<<<<<<< Updated upstream
-=======
-@if (session('role') == 'Retailer')
-    
->>>>>>> Stashed changes
-@extends('layouts.app')
 
+@if (session('role') == 'Retailer')
+@extends('layouts.app')
 @section('sidebar')
 <div class="wrapper">
   <!-- Navbar -->
@@ -20,13 +16,8 @@
     <ul class="navbar-nav ml-auto">
 
       <li class="nav-item d-none d-sm-inline-block">
-<<<<<<< Updated upstream
-        <form>
-          <button class="btn btn-sm btn-danger p-1">Logout</button>
-=======
         <form method="GET" action="<?php if(isset($_GET['logout'])) { session()->forget('role'); echo redirect()->route('login'); }?>">
           <button type="submit" class="btn btn-sm btn-danger p-1" name="logout">Logout</button>
->>>>>>> Stashed changes
         </form>
       </li>
 
@@ -72,7 +63,7 @@
 
 
 
-        
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-rupee-sign"></i>   
@@ -122,7 +113,7 @@
 
 
 
-         
+
 
 
           <li class="nav-item has-treeview">
@@ -167,5 +158,17 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
 @endsection
+
+@else
+
+<?php
+$message = [
+  'flashType'    => 'danger',
+  'flashMessage' => 'Session expired!'
+];
+
+echo redirect()->route('login')->with($message);
+?>
+
+@endif

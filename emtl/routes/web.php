@@ -126,25 +126,37 @@ Route::group(['prefix'=>'admin'], function(){
 
 
 
+
 Route::group(['prefix'=>'dealer'], function(){
 	
-	Route::get('/', 'DealerController@dashboard');
+	Route::get('/', 'DealerController@dashboard')->name('dealer');
 	Route::get('/productreport', 'DealerController@productreport');
 	Route::get('/commission', 'DealerController@commission');
 	Route::get('/stock', 'DealerController@stock');
 	Route::get('/transfer', 'DealerController@transferbyDealer');
+	Route::get('/transfertoretailer', 'DealerController@createTransfer')->name('createTransfer');
+	Route::get('/edit-transfer/{id}', 'DealerController@editTransfer')->name('transferproductEdit');
+	Route::post('/update-transfer/{id}', 'DealerController@updateTransfer')->name('transferproductUpdate');
+	Route::post('/delete-transfer/{id}', 'DealerController@deleteTransfer')->name('transferproductDelete');
+	Route::get('/profile', 'DealerController@profile');
 	
 });
 
 
 
 Route::group(['prefix'=>'retailer'], function(){
-	Route::get('/transfer', 'RetailerController@transfer');
-	Route::get('/report', 'RetailerController@productreport');
+
+	Route::get('/report', 'RetailerController@productreport')->name('retailer');
 	Route::get('/commission', 'RetailerController@commission');
 	Route::get('/stock', 'RetailerController@stock');
+	Route::get('/transfer', 'RetailerController@transfer');
+	Route::get('/transfertocustomer', 'RetailerController@createTransfer')->name('createTransfer');
+	Route::get('/edit-transfer/{id}', 'RetailerController@editTransfer')->name('transferproductEdit');
+	Route::post('/update-transfer/{id}', 'RetailerController@updateTransfer')->name('transferproductUpdate');
+	Route::post('/delete-transfer/{id}', 'RetailerController@deleteTransfer')->name('transferproductDelete');
+	Route::get('/profile', 'RetailerController@profile');
+	
 });
-
 
 
 /*For Tests Customer 
