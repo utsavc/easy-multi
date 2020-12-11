@@ -9,12 +9,20 @@ return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Customer' => $baseDir . '/app/Customer.php',
     'App\\CustomerGroups' => $baseDir . '/app/CustomerGroups.php',
+<<<<<<< Updated upstream
     'App\\Dealer' => $baseDir . '/app/Dealer.php',
+=======
+    'App\\CustomerProduct' => $baseDir . '/app/CustomerProduct.php',
+    'App\\Dealer' => $baseDir . '/app/Dealer.php',
+    'App\\DealerCommission' => $baseDir . '/app/DealerCommission.php',
+    'App\\DealerProduct' => $baseDir . '/app/DealerProduct.php',
+>>>>>>> Stashed changes
     'App\\DealerStock' => $baseDir . '/app/DealerStock.php',
     'App\\Deposit' => $baseDir . '/app/Deposit.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Group' => $baseDir . '/app/Group.php',
     'App\\GroupAccount' => $baseDir . '/app/GroupAccount.php',
+    'App\\GroupDeposit' => $baseDir . '/app/GroupDeposit.php',
     'App\\Http\\Controllers\\AdminController' => $baseDir . '/app/Http/Controllers/AdminController.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',

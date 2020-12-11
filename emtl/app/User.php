@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+<<<<<<< Updated upstream
     use Notifiable;
 
     /**
@@ -42,6 +43,19 @@ class User extends Authenticatable
     function dealers(){        
         return $this->hasOne('App\Dealers');
     }
+=======
+
+
+    protected $fillable = [
+        'username',
+        'password',
+        'role'
+        // add all other fields
+    ];
+
+    //Table name
+    protected $table= 'users';
+>>>>>>> Stashed changes
 
 
 }

@@ -1,3 +1,8 @@
+<<<<<<< Updated upstream
+=======
+@if (session('role') == 'Retailer')
+    
+>>>>>>> Stashed changes
 @extends('layouts.app')
 
 @section('sidebar')
@@ -15,8 +20,13 @@
     <ul class="navbar-nav ml-auto">
 
       <li class="nav-item d-none d-sm-inline-block">
+<<<<<<< Updated upstream
         <form>
           <button class="btn btn-sm btn-danger p-1">Logout</button>
+=======
+        <form method="GET" action="<?php if(isset($_GET['logout'])) { session()->forget('role'); echo redirect()->route('login'); }?>">
+          <button type="submit" class="btn btn-sm btn-danger p-1" name="logout">Logout</button>
+>>>>>>> Stashed changes
         </form>
       </li>
 

@@ -431,12 +431,20 @@ class ComposerStaticInit24eacad773a74ace78f5bddb455ef0f4
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Customer' => __DIR__ . '/../..' . '/app/Customer.php',
         'App\\CustomerGroups' => __DIR__ . '/../..' . '/app/CustomerGroups.php',
+<<<<<<< Updated upstream
         'App\\Dealer' => __DIR__ . '/../..' . '/app/Dealer.php',
+=======
+        'App\\CustomerProduct' => __DIR__ . '/../..' . '/app/CustomerProduct.php',
+        'App\\Dealer' => __DIR__ . '/../..' . '/app/Dealer.php',
+        'App\\DealerCommission' => __DIR__ . '/../..' . '/app/DealerCommission.php',
+        'App\\DealerProduct' => __DIR__ . '/../..' . '/app/DealerProduct.php',
+>>>>>>> Stashed changes
         'App\\DealerStock' => __DIR__ . '/../..' . '/app/DealerStock.php',
         'App\\Deposit' => __DIR__ . '/../..' . '/app/Deposit.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Group' => __DIR__ . '/../..' . '/app/Group.php',
         'App\\GroupAccount' => __DIR__ . '/../..' . '/app/GroupAccount.php',
+        'App\\GroupDeposit' => __DIR__ . '/../..' . '/app/GroupDeposit.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
