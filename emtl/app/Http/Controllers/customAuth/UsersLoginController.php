@@ -37,6 +37,8 @@ class UsersLoginController extends Controller
 		$password=$request->password;
 
 		
+
+		
 		$user= User::where('username', $username)->where('password', $password)->first();
 
 		

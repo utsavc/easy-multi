@@ -109,13 +109,15 @@ class TransactionController extends Controller
 		$transferAmount= $request->amount;
 		$groups_id=CustomerGroups::firstorFail()->where('customer_id',$customer_id)->get();
 
+
+
 		if ($groups_id->isEmpty()) {
 			return back()->with('danger','Customer is not in Group!');
 		}
 
 
 		//dd($groups_id->group_id);
-		$group_id= $groups_id->group_id;
+		$group_id= $groups_id[0]->group_id;
 
 		$validated['group_id']=$group_id;
 
@@ -125,8 +127,6 @@ class TransactionController extends Controller
 
 
 		$balance= $totalDeposit-$totalWithdrawl-$totalTransferred;
-
-
 		
 		if ($balance > $transferAmount ) {
 

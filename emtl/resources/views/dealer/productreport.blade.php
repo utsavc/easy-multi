@@ -26,7 +26,6 @@
                 <th>SN</th>
                 <th>DATE</th>
                 <th>QTY</th>
-                <th>PRICE</th>
               </tr>
             </thead>
   
@@ -35,7 +34,6 @@
                   <td> 1 </td>
                   <td> 20 Aug, 2020 </td>
                   <td> 5 </td>
-                  <td> 12344 </td>
               </tr>
             </tbody>
 					</table>

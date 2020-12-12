@@ -175,10 +175,19 @@
               </li>
             </ul>
 
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('adminreport') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Stock</p>
+                </a>
+              </li>
+            </ul>
+
 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                 <a href="{{ route('adminreport') }}" class="nav-link">
+                <a href="{{ url('admin/dealer/product-report/1') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Report</p>
                 </a>
