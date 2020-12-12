@@ -46,17 +46,6 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::post('/edit-retailer/{id}', 'RetailerController@updateRetailer')->name('retailerUpdate');
 		Route::post('/delete-retailer/{id}', 'RetailerController@deleteRetailer')->name('retailerDelete');
 
-
-
-
-		Route::get('/create-group', 'GroupController@createGroupForm')->name('createGroupForm');
-		Route::post('/create-group', 'GroupController@createGroup')->name('createGroup');
-		Route::get('/group-details/{id}', 'GroupController@groupDetails')->name('groupDetails');
-		Route::get('/add-members', 'GroupController@addMembersForm')->name('addMembers');
-		Route::post('/add-members', 'GroupController@addMembers')->name('addMembers');
-
-
-
 	});
 
 
@@ -65,63 +54,25 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::post('/create', 'ProductController@createProduct')->name('createProduct');
 		Route::get('/add', 'ProductController@addProductStockForm')->name('addProductStockForm');
 		Route::post('/add', 'ProductController@addProductStock')->name('addProductStock');
-		Route::get('/stock/{id}', 'ProductController@stockReport')->name('viewStocksReport');
+		Route::get('/stock', 'ProductController@stock')->name('stock');
+		Route::post('/stock', 'ProductController@stockReport')->name('stockReport');
+
+
+		Route::get('/stockin/{id}', 'ProductController@stockinReport')->name('viewStocksReport');
 		Route::get('/outstock/{id}', 'ProductController@outStockReport')->name('viewOutStockReport');
 		Route::get('/transfer', 'ProductController@dealerTransferForm')->name('dealerTransferForm');
 		Route::post('/transfer', 'ProductController@dealerTransfer')->name('dealerTransfer');
 	});
 
 
-
+	
 	Route::group(['prefix'=>'transaction'], function(){
-		Route::get('/deposit', 'TransactionController@deposit')->name('deposit');
-		Route::post('/deposit', 'TransactionController@processDeposit')->name('deposit');
-
-		Route::get('/withdraw', 'TransactionController@withdraw')->name('withdraw');
-		Route::post('/withdraw', 'TransactionController@processWithdraw')->name('withdraw');
-		Route::get('/report', 'TransactionController@report')->name('report');
-		Route::post('/report', 'TransactionController@processReport')->name('report');
-		Route::get('/transfer', 'TransactionController@transfer')->name('transfer');
-		Route::post('/transfer', 'TransactionController@processTransfer')->name('transfer');
+		Route::get('/comission', 'TransactionController@adminComission')->name('admincomission');
+		Route::get('/report', 'TransactionController@adminReport')->name('adminreport');
 	});
-
-
-/*
-	Route::group(['prefix'=>'dealer'], function(){
-
-		Route::get('/transfer', 'AdminController@dealerTransfer');
-		Route::get('/product-report/1', 'AdminController@dealerReport');
-		Route::get('/comission', 'AdminController@dealerComission');
-		Route::get('/stock', 'AdminController@dealerStock');
-
-	});
-
-
-	Route::group(['prefix'=>'retailer'], function(){
-
-		Route::get('/transfer', 'AdminController@retailerTransfer');
-		Route::get('/product-report/1', 'AdminController@retailerReport');
-		Route::get('/comission', 'AdminController@retailerComission');
-		Route::get('/stock', 'AdminController@retailerStock');
-
-	});
-
-
-	Route::group(['prefix'=>'customer'], function(){
-
-		Route::get('/purchase', 'CustomerController@purchase');
-		Route::get('/purchase/report', 'CustomerController@purchaseReport');
-		Route::get('/comission', 'CustomerController@comission');
-		Route::get('/deposit', 'CustomerController@deposit');
-		Route::get('/deposit/report', 'CustomerController@depositReport');
-		Route::get('/withdraw', 'CustomerController@withdraw');
-		Route::get('/withdraw/report', 'CustomerController@withdrawReport');
-		Route::get('/sales', 'CustomerController@sales');
-		Route::get('/sales/report', 'CustomerController@salesReport');
-
-	});*/
 
 });
+
 
 
 
@@ -155,6 +106,31 @@ Route::group(['prefix'=>'retailer'], function(){
 	Route::post('/update-transfer/{id}', 'RetailerController@updateTransfer')->name('transferproductUpdate');
 	Route::post('/delete-transfer/{id}', 'RetailerController@deleteTransfer')->name('transferproductDelete');
 	Route::get('/profile', 'RetailerController@profile');
+
+
+
+	Route::group(['prefix'=>'user'], function(){
+		
+		Route::get('/create-group', 'GroupController@createGroupForm')->name('createGroupForm');
+		Route::post('/create-group', 'GroupController@createGroup')->name('createGroup');
+		Route::get('/group-details/{id}', 'GroupController@groupDetails')->name('groupDetails');
+		Route::get('/add-members', 'GroupController@addMembersForm')->name('addMembers');
+		Route::post('/add-members', 'GroupController@addMembers')->name('addMembers');
+
+	});
+
+	
+	Route::group(['prefix'=>'transaction'], function(){
+		Route::get('/deposit', 'TransactionController@deposit')->name('deposit');
+		Route::post('/deposit', 'TransactionController@processDeposit')->name('deposit');
+
+		Route::get('/withdraw', 'TransactionController@withdraw')->name('withdraw');
+		Route::post('/withdraw', 'TransactionController@processWithdraw')->name('withdraw');
+		Route::get('/report', 'TransactionController@report')->name('report');
+		Route::post('/report', 'TransactionController@processReport')->name('report');
+		Route::get('/transfer', 'TransactionController@transfer')->name('transfer');
+		Route::post('/transfer', 'TransactionController@processTransfer')->name('transfer');
+	});
 	
 });
 

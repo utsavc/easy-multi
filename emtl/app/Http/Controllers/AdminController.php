@@ -1,6 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Customer;
+use App\CustomerGroups;
+use App\Dealer;
+use App\DealerStock;
+use App\Deposit;
+use App\Group;
+use App\GroupAccount;
+use App\GroupDeposit;
+use App\Product;
+use App\ProductStocks;
+use App\Retailer;
+use App\User;
+use App\Withdraw;
 
 use Illuminate\Http\Request;
 
@@ -8,20 +21,17 @@ class AdminController extends Controller
 {
 
 	function dashBoard(){
-		return view('admin.dashboard');
+		$dealer= Dealer::all();
+		$retailer= Retailer::all();
+		$customer= Customer::all();
+		$product= Product::all();
+		return view('admin.dashboard',['dealer'=>$dealer,'retailer'=>$retailer,'customer'=>$customer,'product'=>$product]);
 	}
 
 
 	public function createUser($value=''){
 		return view('admin.createuser');
 	}
-
-
-
-
-
-
-
 
 
 	function createProduct(){

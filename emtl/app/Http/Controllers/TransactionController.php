@@ -18,7 +18,7 @@ class TransactionController extends Controller
 
 	function deposit(){
 		$customer = Customer::all();
-		return view('admin.transaction.deposit',['customer'=>$customer]);
+		return view('transaction.deposit',['customer'=>$customer]);
 	}
 
 
@@ -38,12 +38,8 @@ class TransactionController extends Controller
 
 	function withdraw(){
 		$customer = Customer::all();
-		return view('admin.transaction.withdraw',['customer'=>$customer]);
+		return view('transaction.withdraw',['customer'=>$customer]);
 	}
-
-
-
-
 
 
 	function processWithdraw(Request $request){
@@ -73,7 +69,7 @@ class TransactionController extends Controller
 
 	function report(){
 		$customer = Customer::all();
-		return view('admin.transaction.report',['customer'=>$customer]);
+		return view('transaction.report',['customer'=>$customer]);
 	}
 
 
@@ -88,7 +84,7 @@ class TransactionController extends Controller
 
 		$balance=$this->getBalance($customer_id);
 
-		return view('admin.transaction.viewreport',['deposit'=>$deposit, 'withdraw'=>$withdraw,'balance'=>$balance]);
+		return view('transaction.viewreport',['deposit'=>$deposit, 'withdraw'=>$withdraw,'balance'=>$balance]);
 
 
 	}
@@ -96,7 +92,7 @@ class TransactionController extends Controller
 
 	function transfer(){
 		$customer = Customer::all();
-		return view('admin.transaction.transfer',['customer'=>$customer]);
+		return view('transaction.transfer',['customer'=>$customer]);
 	}
 
 
@@ -155,6 +151,17 @@ class TransactionController extends Controller
 	}
 
 
+	function adminComission(){
+		$customer = Customer::all();
+		return view('admin.transaction.report',['customer'=>$customer]);
+	}
+
+
+
+	function adminReport(){
+		$customer = Customer::all();
+		return view('admin.transaction.report',['customer'=>$customer]);		
+	}
 
 
 }

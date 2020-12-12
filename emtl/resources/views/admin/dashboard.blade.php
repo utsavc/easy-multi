@@ -7,7 +7,7 @@
 	<div class="container-fluid">
 		<div class="row mb-2">
 			<div class="col-sm-6">
-				<h1 class="m-0 text-dark">Dashboard Insights</h1>
+				<h1 class="m-0 text-dark">Dashboard</h1>
 			</div><!-- /.col -->
 			<div class="col-sm-6">
 				<ol class="breadcrumb float-sm-right">
@@ -23,7 +23,10 @@
 <section class="content">
 	<div class="container-fluid">
 		<!-- Info boxes -->
+
 		<div class="row">
+
+
 			<div class="col-12 col-sm-6 col-md-3">
 				<div class="info-box">
 					<span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
@@ -31,14 +34,16 @@
 					<div class="info-box-content">
 						<span class="info-box-text">Dealers</span>
 						<span class="info-box-number">
-							10
-							<small>%</small>
+							{{$dealer->count()}}
 						</span>
 					</div>
 					<!-- /.info-box-content -->
 				</div>
 				<!-- /.info-box -->
 			</div>
+
+
+
 			<!-- /.col -->
 			<div class="col-12 col-sm-6 col-md-3">
 				<div class="info-box mb-3">
@@ -46,13 +51,15 @@
 
 					<div class="info-box-content">
 						<span class="info-box-text">Products</span>
-						<span class="info-box-number">41,410</span>
+						<span class="info-box-number">{{ $product->count()}}</span>
 					</div>
 					<!-- /.info-box-content -->
 				</div>
 				<!-- /.info-box -->
 			</div>
 			<!-- /.col -->
+
+
 
 			<!-- fix for small devices only -->
 			<div class="clearfix hidden-md-up"></div>
@@ -63,12 +70,14 @@
 
 					<div class="info-box-content">
 						<span class="info-box-text">Retailers</span>
-						<span class="info-box-number">760</span>
+						<span class="info-box-number">{{$retailer->count()}}</span>
 					</div>
 					<!-- /.info-box-content -->
 				</div>
 				<!-- /.info-box -->
 			</div>
+
+
 			<!-- /.col -->
 			<div class="col-12 col-sm-6 col-md-3">
 				<div class="info-box mb-3">
@@ -76,7 +85,7 @@
 
 					<div class="info-box-content">
 						<span class="info-box-text">Customers</span>
-						<span class="info-box-number">2,000</span>
+						<span class="info-box-number">{{$customer->count()}}</span>
 					</div>
 					<!-- /.info-box-content -->
 				</div>
@@ -84,10 +93,51 @@
 			</div>
 			<!-- /.col -->
 		</div>
-		<!-- /.row -->			
+		<!-- /.row -->	
+
+
+		<div class="row">
+			
+			<div class="col-lg-4">
+				<div class="card card-warning">
+					<div class="card-header">
+						<h3 class="card-title">Product with less stocks</h3>
+					</div>
+
+					<ol>
+						<li>Laptop</li>
+						<li>Phone</li>
+						<li>TV</li>
+						<li>Furniture</li>
+						<li>Bike</li>
+					</ol>
+
+				</div>
+			</div>
+
+			<div class="col-lg-4">
+				<div class="card card-success">
+					<div class="card-header">
+						<h3 class="card-title">Product Most Loved</h3>
+					</div>
+
+					<ol>
+						<li>Apple</li>
+						<li>Apple</li>
+						<li>Apple</li>
+						<li>Apple</li>
+						<li>Apple</li>
+					</ol>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section>	
 
 
 
 
 
-		@endsection
+@endsection

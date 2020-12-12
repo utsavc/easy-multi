@@ -5,7 +5,7 @@
 <div class="container-fluid">
 
 
-	@include('admin.messages')
+	@include('messages.messages')
 
 
 

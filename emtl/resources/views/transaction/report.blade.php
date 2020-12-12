@@ -1,4 +1,4 @@
-@extends('admin.sidebar')
+@extends('retailer.sidebar')
 
 @section('bodycontent')
 <br>

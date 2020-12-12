@@ -10,13 +10,13 @@ class UsersLoginController extends Controller
 {
 
 	function login(){
-		if(session('role') == 'Admin'){
+		if(session('role') == 'admin'){
 			return redirect()->route('dashboard');
 		}
-		elseif(session('role') == 'Dealer'){
+		elseif(session('role') == 'dealer'){
 			return redirect()->route('dealer');
 		}
-		elseif(session('role') == 'Retailer'){
+		elseif(session('role') == 'retailer'){
 			return redirect()->route('retailer');
 		}
 		else{
@@ -49,7 +49,7 @@ class UsersLoginController extends Controller
 					'flashMessage' => 'Logged in Successfully'
 				];
 				// $request->session()->put('role', 'admin');
-				session(['role' => 'Admin']);
+				session(['role' => 'Admin',]);
 				return redirect()->route('dashboard')->with($message);
 
 				

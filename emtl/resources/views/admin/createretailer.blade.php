@@ -4,7 +4,7 @@
 <br>
 <div class="container-fluid">
 
-	@include('admin.messages')
+	@include('messages.messages')
 
 	<div class="card card-primary">
 		<div class="card-header">

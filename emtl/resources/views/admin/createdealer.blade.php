@@ -6,7 +6,7 @@
 
 
 
-	@include('admin.messages')
+	@include('messages.messages')
 
 
 	<div class="card card-primary">

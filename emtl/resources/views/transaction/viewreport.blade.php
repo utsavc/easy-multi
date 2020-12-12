@@ -1,11 +1,11 @@
-@extends('admin.sidebar')
+@extends('retailer.sidebar')
 
 @section('bodycontent')
 <br>
 <div class="container-fluid">
 
 
-	@include('admin.messages')
+	@include('messages.messages')
 
 	<div class="card card-info">
 		<div class="card-header">

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 use App\Dealer;
+use App\Product;
+use App\Retailer;
+
+
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class DealerController extends Controller
 {
@@ -91,8 +95,12 @@ class DealerController extends Controller
 	}
 
 
-	function transferbyDealer(){
-		return view('dealer.transfer');
+	function transferbyDealer(Request $request){
+		//$value = $request->session()->get('role');
+		//return $value;
+		$product=Product::all();
+		$retailer=Retailer::all();
+		return view('dealer.transfer',['product'=>$product,'retailer'=>$retailer]);
 	}
 
 

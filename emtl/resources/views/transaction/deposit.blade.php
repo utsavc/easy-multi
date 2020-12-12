@@ -1,4 +1,4 @@
-@extends('admin.sidebar')
+@extends('retailer.sidebar')
 
 @section('bodycontent')
 <br>
@@ -6,7 +6,7 @@
 
 
 
-	@include('admin.messages')
+	@include('messages.messages')
 
 
 	<div class="row">

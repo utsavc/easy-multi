@@ -15,7 +15,7 @@ class GroupController extends Controller
 
 		$retailers=Retailer::all();
 		$groups=Group::all();
-		return view('admin.creategroup',['retailers'=>$retailers,'groups'=>$groups]);
+		return view('groups.creategroup',['retailers'=>$retailers,'groups'=>$groups]);
 	}
 
 
@@ -37,7 +37,7 @@ class GroupController extends Controller
 	function groupDetails(Request $request, $id){
 		$group=Group::findorFail($id);
 		$customerGroup=CustomerGroups::where('group_id',$id)->get();
-		return view('admin.groupdetails',['group'=>$group,'customerGroup'=>$customerGroup]);
+		return view('groups.groupdetails',['group'=>$group,'customerGroup'=>$customerGroup]);
 	}
 
 
@@ -47,7 +47,7 @@ class GroupController extends Controller
 		$retailers=Retailer::all();
 		$groups=Group::all();
 		$customers=Customer::all();
-		return view('admin.addMembers',['customers'=>$customers,'groups'=>$groups]);
+		return view('groups.addMembers',['customers'=>$customers,'groups'=>$groups]);
 	}
 	
 
@@ -73,14 +73,6 @@ class GroupController extends Controller
 
 		}
 	}
-
-
-
-
-
-
-
-
 
 
 

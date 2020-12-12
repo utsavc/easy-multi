@@ -57,7 +57,7 @@ class ProductController extends Controller
 
 
 
-	function stockReport($id, Request $request){
+	function stockinReport($id, Request $request){
 		$product=Product::findOrFail($id);
 		return view('product.stock',['product'=>$product]);
 
@@ -110,6 +110,24 @@ class ProductController extends Controller
 		}else{			
 			return back()->with('error','You are trying to enter maximum value than available stock');
 		}
+
+	}
+
+
+	function stock(){
+
+		$products=Product::all();
+		return view('product.reportsearch',['products'=>$products]);
+	}
+
+
+	function stockReport(Request $request){
+		$product_id=$request->product_id;
+		$totalStock=ProductStocks::where('product_id',$product_id)->get();
+		$dealerStock=DealerStock::where('product_id',$product_id)->get();
+
+
+		return view('product.report',['totalStock'=>$totalStock,'dealerStock'=>$dealerStock,'product_id'=>$product_id]);
 
 	}
 
