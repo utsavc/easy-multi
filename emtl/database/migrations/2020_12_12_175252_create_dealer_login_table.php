@@ -13,7 +13,7 @@ class CreateDealerLoginTable extends Migration
      */
     public function up()
     {
-        Schema::create('dealer_login', function (Blueprint $table) {
+        Schema::create('dealer_logins', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('username')->unique();
             $table->string('password');

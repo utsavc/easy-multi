@@ -19,10 +19,15 @@
 
 						<div class="form-group">
 							<label>Select User Type</label>
-							<select class="form-control">
-								<option>Retailer</option>
-								<option>Dealer</option>
+							<select id="userType" class="form-control" onchange="showUser()">
+								<option value="retailer">Retailer</option>
+								<option value="dealer">Dealer</option>
 							</select>
+						</div>
+
+
+						<div  id="users">
+							
 						</div>
 						
 						<div class="form-group">
@@ -62,7 +67,39 @@
 </div>
 
 
+<script type="text/javascript">
+
+	var request=new XMLHttpRequest();
+
+	function showUser(){  
+		var x = document.getElementById("userType").value;
+		var url;
+		if (x==="retailer") {
+			url="{{route('showRetailer')}}";
+		}else if(x==="dealer"){
+			url="{{route('showDealer')}}";
+		}
+
+		try{  
+			request.onreadystatechange=function(){  
+				if(request.readyState===4){  
+					var users=request.responseText;  	
+					document.getElementById('users').innerHTML=users;  
+				}  
+                }//end of function  
+                request.open("GET",url,true);  
+                request.send();  
+            }catch(e){
+            	alert(e);
+            } 
+        }
 
 
 
-@endsection
+    </script>
+
+
+
+
+
+    @endsection

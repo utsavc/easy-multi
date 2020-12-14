@@ -23,7 +23,11 @@ Route::group(['prefix'=>'admin'], function(){
 
 
 	Route::group(['prefix'=>'user'], function(){
-		Route::get('/create-user', 'AdminController@createUser');
+		Route::get('/create-user', 'customAuth\UserCreationController@createUserForm');
+		Route::post('/create-user', 'customAuth\UserCreationController@createUser')->name('createUser');
+		
+		Route::get('/show-user/retailer', 'customAuth\UserCreationController@showRetailer')->name('showRetailer');
+		Route::get('/show-user/dealer', 'customAuth\UserCreationController@showDealer')->name('showDealer');
 		Route::get('/add-dealer', 'DealerController@createDealerForm')->name('createDealer');
 		Route::post('/add-dealer', 'DealerController@addDealer');
 
@@ -63,7 +67,6 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::get('/transfer', 'ProductController@dealerTransferForm')->name('dealerTransferForm');
 		Route::post('/transfer', 'ProductController@dealerTransfer')->name('dealerTransfer');
 	});
-
 
 	
 	Route::group(['prefix'=>'transaction'], function(){

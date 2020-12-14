@@ -23,6 +23,12 @@ class Dealer extends Model
 	}
 
 
+	public function dealerLogin(){
+		return $this->hasOne('App\DealerLogin');
+	}
+
+
+
 
 
 }

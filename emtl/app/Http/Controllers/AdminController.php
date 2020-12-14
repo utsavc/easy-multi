@@ -29,9 +29,7 @@ class AdminController extends Controller
 	}
 
 
-	public function createUser($value=''){
-		return view('admin.createuser');
-	}
+	
 
 
 	function createProduct(){

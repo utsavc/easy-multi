@@ -29,5 +29,10 @@ class Retailer extends Model
     }
 
 
+    public function retailerLogin()
+    {
+        return $this->hasMany('App\RetailerLogin');
+    }
+
 
 }

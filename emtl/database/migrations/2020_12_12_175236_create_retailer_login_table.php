@@ -13,7 +13,7 @@ class CreateRetailerLoginTable extends Migration
      */
     public function up()
     {
-        Schema::create('retailer_login', function (Blueprint $table) {
+        Schema::create('retailer_logins', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('username');
             $table->string('password');
