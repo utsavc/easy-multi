@@ -17,7 +17,7 @@ class TransactionController extends Controller
 
 
 	function deposit(){
-		$customer = Customer::all();
+		$customer = Customer::where('retailer_id',session('session_id'))->get();
 		return view('transaction.deposit',['customer'=>$customer]);
 	}
 
@@ -37,7 +37,7 @@ class TransactionController extends Controller
 
 
 	function withdraw(){
-		$customer = Customer::all();
+		$customer =  Customer::where('retailer_id',session('session_id'))->get();
 		return view('transaction.withdraw',['customer'=>$customer]);
 	}
 
@@ -68,7 +68,7 @@ class TransactionController extends Controller
 
 
 	function report(){
-		$customer = Customer::all();
+		$customer = Customer::where('retailer_id',session('session_id'))->get();
 		return view('transaction.report',['customer'=>$customer]);
 	}
 
@@ -85,13 +85,13 @@ class TransactionController extends Controller
 		$balance=$this->getBalance($customer_id);
 
 		return view('transaction.viewreport',['deposit'=>$deposit, 'withdraw'=>$withdraw,'balance'=>$balance]);
-
-
 	}
+
+	
 
 
 	function transfer(){
-		$customer = Customer::all();
+		$customer = Customer::where('retailer_id',session('session_id'))->get();
 		return view('transaction.transfer',['customer'=>$customer]);
 	}
 

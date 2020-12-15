@@ -18,15 +18,8 @@
 				<form role="form" method="post" action="{{route('createGroup')}}">
 					@csrf
 					<div class="card-body">
-						<div class="form-group">
-							<label for="exampleDropdown">Select Retailer</label>
-							<select data-live-search="true" title="Please select retailer" data-live-search-placeholder="Search Retailer" class="form-control selectpicker" name="retailer_id">
 
-								@foreach ($retailers as $retailer)
-								<option value="{{$retailer->id}}">{{$retailer->name}} </option>
-								@endforeach
-							</select>
-						</div>
+						<input type="hidden" name="retailer_id" value="{{$retailers->id}}">					
 
 						<div class="form-group">
 							<label for="exampleInputEmail1">Group Name</label>

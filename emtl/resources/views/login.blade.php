@@ -12,7 +12,7 @@
             <p class="login-box-msg">Sign in to start your session</p>           
 
             <form action="/login" method="post"> 
-                
+
                 {{csrf_field()}}
 
                 <div class="input-group mb-3">
@@ -31,40 +31,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-8">
-                        <div class="icheck-primary">
-                            <input type="checkbox" id="remember">
-                            <label for="remember">
-                                Remember Me
-                            </label>
-                        </div>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                    </div>
-                    <!-- /.col -->
-                </div>
-            </form>         
+                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                <br>
 
-            <p class="mb-1">
-                <a href="forgot-password.html">I forgot my password</a>
-            </p>
+
+
+                @include('messages.messages')
+            </form> 
         </div>
         <!-- /.login-card-body -->
     </div>
 
 
 
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <button type="button" class="close" data-dismiss="alert">×</button> 
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </div>
-    @endif
 
 
 

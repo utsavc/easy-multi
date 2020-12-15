@@ -5,6 +5,8 @@ namespace App\Http\Controllers\customAuth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\RetailerLogin;
+use App\DealerLogin;
 
 class UsersLoginController extends Controller
 {
@@ -21,8 +23,7 @@ class UsersLoginController extends Controller
 		}
 		else{
 			return view('login');
-		}
-		
+		}		
 	}
 
 
@@ -36,67 +37,44 @@ class UsersLoginController extends Controller
 		$username=$request->username;
 		$password=$request->password;
 
-		
 
+		
 		
 		$user= User::where('username', $username)->where('password', $password)->first();
-
 		
 		if($user != null){
-
-			if ($user->role == 'admin') {
-
-				$message = [
-					'flashType'    => 'success',
-					'flashMessage' => 'Logged in Successfully'
-				];
-				// $request->session()->put('role', 'admin');
-				session(['role' => 'Admin',]);
-				return redirect()->route('dashboard')->with($message);
-
-				
-			} elseif($user->role == 'dealer'){
-
-				$message = [
-					'flashType'    => 'success',
-					'flashMessage' => 'Logged in Successfully'
-				];
-				session(['role' => 'Dealer']);
-				return redirect()->route('dealer')->with($message);
-
-
-			} elseif($user->role == 'retailer'){
-
-				$message = [
-					'flashType'    => 'success',
-					'flashMessage' => 'Logged in Successfully'
-				];
-				session(['role' => 'Retailer']);
-				return redirect()->route('retailer')->with($message);
-
-
-			} else{
-
-				$message = [
-					'flashType'    => 'danger',
-					'flashMessage' => 'Cannot find role'
-				];
-
-				return back()->with($message);
-
-			}
-
-		} else{
-
-			$message = [
-				'flashType'    => 'danger',
-				'flashMessage' => 'Wrong Username or Password'
-			];
-
-			return back()->with($message);
+			session(['role' => 'Admin',]);
+			return redirect()->route('dashboard')->with('success','Logged In Successfully');
 		}
 
 
+
+		$retailer= RetailerLogin::where('username', $username)->where('password', $password)->first();
+		if($retailer != null){	
+			session(['role' => 'Retailer','session_id'=> $retailer->retailer_id]);
+			return redirect()->route('retailer')->with('success','Logged In Successfully');
+		}
+
+
+
+		$dealer= DealerLogin::where('username', $username)->where('password', $password)->first();
+		if($dealer != null){
+
+			session(['role' => 'Dealer','session_id'=> $dealer->dealer_id]);
+			return redirect()->route('dealer')->with('success','Logged In Successfully');
+		}
+
+		if($user==null && $dealer==null && $retailer==null){			
+
+			return back()->with('danger','Wrong Username or Password!');
+		}
+
+	}
+
+
+	function logout(Request $request){
+		session()->forget('role');
+		return redirect()->route('login');
 
 	}
 

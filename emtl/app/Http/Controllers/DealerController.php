@@ -9,6 +9,16 @@ use App\DealerProduct;
 use App\RetailerProduct;
 use App\DealerCommission;
 use App\Product;
+use App\Customer;
+use App\CustomerGroups;
+use App\DealerStock;
+use App\Deposit;
+use App\Group;
+use App\GroupAccount;
+use App\GroupDeposit;
+use App\ProductStocks;
+use App\User;
+use App\Withdraw;
 
 class DealerController extends Controller
 {
@@ -78,8 +88,11 @@ class DealerController extends Controller
 
 
 	function dashboard(){
-		$products= DealerProduct::orderBy('id','DESC')->get();
-		return view('dealer.index')->with('products', $products);
+		$dealer= Dealer::all();
+		$retailer= Retailer::where('dealer_id',session('session_id'))->get();
+		$customer= Customer::all();
+		$product= DealerStock::where('dealer_id',session('session_id'))->distinct('product_id');
+		return view('dealer.dashboard',['dealer'=>$dealer,'retailer'=>$retailer,'customer'=>$customer,'product'=>$product]);
 	}
 
 
@@ -103,10 +116,10 @@ class DealerController extends Controller
 	function transferbyDealer(){
 		$products= Product::orderBy('id','DESC')->get();
 		$stocks= DealerProduct::orderBy('id','DESC')->get();
-		$retailers= Retailer::orderBy('id','DESC')->get();
-
+		$retailers= Retailer::where('dealer_id',session('session_id'))->get();
 		$products= [$stocks, $retailers, $products];
 		return view('dealer.transfer')->with('products', $products);
+		
 	}
 
 

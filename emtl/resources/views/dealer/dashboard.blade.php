@@ -1,4 +1,4 @@
-@extends('admin.sidebar')
+@extends('dealer.sidebar')
 
 @section('bodycontent')
 
@@ -9,6 +9,7 @@
 			<div class="col-sm-6">
 				<h1 class="m-0 text-dark">Dashboard</h1>
 			</div><!-- /.col -->
+			
 		</div><!-- /.row -->
 	</div><!-- /.container-fluid -->
 </div>
@@ -27,9 +28,9 @@
 					<span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
 
 					<div class="info-box-content">
-						<span class="info-box-text">Dealers</span>
+						<span class="info-box-text">Retailers</span>
 						<span class="info-box-number">
-							{{$dealer->count()}}
+							{{$retailer->count()}}
 						</span>
 					</div>
 					<!-- /.info-box-content -->
@@ -54,44 +55,22 @@
 			</div>
 			<!-- /.col -->
 
-
-
-			<!-- fix for small devices only -->
-			<div class="clearfix hidden-md-up"></div>
-
-			<div class="col-12 col-sm-6 col-md-3">
+				<!-- /.col -->
+				<div class="col-12 col-sm-6 col-md-3">
 				<div class="info-box mb-3">
-					<span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+					<span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
 					<div class="info-box-content">
-						<span class="info-box-text">Retailers</span>
-						<span class="info-box-number">{{$retailer->count()}}</span>
-					</div>
-					<!-- /.info-box-content -->
-				</div>
-				<!-- /.info-box -->
-			</div>
-
-
-			<!-- /.col -->
-			<div class="col-12 col-sm-6 col-md-3">
-				<div class="info-box mb-3">
-					<span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
-
-					<div class="info-box-content">
-						<span class="info-box-text">Customers</span>
-						<span class="info-box-number">{{$customer->count()}}</span>
+						<span class="info-box-text">Comission</span>
+						<span class="info-box-number">{{ $product->count()}}</span>
 					</div>
 					<!-- /.info-box-content -->
 				</div>
 				<!-- /.info-box -->
 			</div>
 			<!-- /.col -->
-		</div>
-		<!-- /.row -->	
 
 
-		<div class="row">
 			
 			<div class="col-lg-4">
 				<div class="card card-warning">
@@ -100,34 +79,16 @@
 					</div>
 
 					<ol>
-						@foreach($product as $products)
-
-						<li>{{$products->productname}}</li>
-
-						@endforeach
-
-
+						<li>Laptop</li>
+						<li>Phone</li>
+						<li>TV</li>
+						<li>Furniture</li>
+						<li>Bike</li>
 					</ol>
 
 				</div>
 			</div>
 
-			<div class="col-lg-4">
-				<div class="card card-success">
-					<div class="card-header">
-						<h3 class="card-title">Product Most Loved</h3>
-					</div>
-
-					<ol>
-						<li>Dining Table</li>
-						<li>Redmi Note 9 Pro</li>
-						<li>Hoodies</li>
-						<li>Samsung 4k TV</li>
-						<li>LG Refrigerator</li>
-					</ol>
-
-				</div>
-			</div>
 		</div>
 
 	</div>

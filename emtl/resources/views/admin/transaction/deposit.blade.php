@@ -1,9 +1,13 @@
-@extends('retailer.sidebar')
+@extends('admin.sidebar')
 
 @section('bodycontent')
 <br>
 <div class="container-fluid">
+
+
+
 	@include('messages.messages')
+
 
 	<div class="row">
 		<div class="col-lg-4">

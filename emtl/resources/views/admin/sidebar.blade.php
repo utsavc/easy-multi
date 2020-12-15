@@ -19,9 +19,9 @@
 
       <li class="nav-item d-none d-sm-inline-block">
 
-        <form method="GET" action="<?php if(isset($_GET['logout'])) { session()->forget('role'); echo redirect()->route('login'); }?>">
+        <form method="POST" action="{{route('logout')}}">
+          @csrf
           <button type="submit" class="btn btn-sm btn-danger p-1" name="logout">Logout</button>
-
         </form>
       </li>
 
@@ -96,7 +96,7 @@
                 </a>
               </li>
 
-            
+
 
 
               <li class="nav-item">
@@ -170,7 +170,7 @@
               <li class="nav-item">
                 <a href="{{ route('admincomission')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Comission</p>
+                  <p>Customer</p>
                 </a>
               </li>
             </ul>
@@ -179,7 +179,7 @@
               <li class="nav-item">
                 <a href="{{ route('adminreport') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Stock</p>
+                  <p>Retailers</p>
                 </a>
               </li>
             </ul>
@@ -189,31 +189,12 @@
               <li class="nav-item">
                 <a href="{{ url('admin/dealer/product-report/1') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Report</p>
+                  <p>Dealers</p>
                 </a>
               </li>
             </ul>
           </li>
 
-
-      <!--
-          <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="nav-icon far fa-map"></i>   
-            <p>
-              Settings
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="{{ url('admin/exams') }}" class="nav-link">
-                <i class="fa fa-angle-double-right nav-icon"></i>
-                <p>Roles</p>
-              </a>
-            </li>
-          </ul>
         </li>  -->
 
 

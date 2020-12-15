@@ -100,7 +100,8 @@ Route::group(['prefix'=>'dealer'], function(){
 
 Route::group(['prefix'=>'retailer'], function(){
 
-	Route::get('/report', 'RetailerController@productreport')->name('retailer');
+	Route::get('/', 'RetailerController@dashboard')->name('retailer');
+	Route::get('/report', 'RetailerController@productreport');
 	Route::get('/commission', 'RetailerController@commission');
 	Route::get('/stock', 'RetailerController@stock');
 	Route::get('/transfer', 'RetailerController@transfer');
@@ -109,7 +110,6 @@ Route::group(['prefix'=>'retailer'], function(){
 	Route::post('/update-transfer/{id}', 'RetailerController@updateTransfer')->name('transferproductUpdate');
 	Route::post('/delete-transfer/{id}', 'RetailerController@deleteTransfer')->name('transferproductDelete');
 	Route::get('/profile', 'RetailerController@profile');
-
 
 
 	Route::group(['prefix'=>'user'], function(){
@@ -121,7 +121,6 @@ Route::group(['prefix'=>'retailer'], function(){
 		Route::post('/add-members', 'GroupController@addMembers')->name('addMembers');
 
 	});
-
 	
 	Route::group(['prefix'=>'transaction'], function(){
 		Route::get('/deposit', 'TransactionController@deposit')->name('deposit');
@@ -138,16 +137,13 @@ Route::group(['prefix'=>'retailer'], function(){
 });
 
 
-/*For Tests Customer 
-Route::group(['prefix'=>'customer'], function(){
-
-});*/
 
 
 
 //login
 Route::get('/', 'customAuth\UsersLoginController@login')->name('login');
 Route::post('/login', 'customAuth\UsersLoginController@authenticate')->name('logins');
+Route::post('/logout', 'customAuth\UsersLoginController@logout')->name('logout');
 
 
 

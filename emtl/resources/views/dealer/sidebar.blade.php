@@ -18,7 +18,9 @@
     <ul class="navbar-nav ml-auto">
 
       <li class="nav-item d-none d-sm-inline-block">
-        <form method="GET" action="<?php if(isset($_GET['logout'])) { session()->forget('role'); echo redirect()->route('login'); }?>">
+        
+        <form method="POST" action="{{route('logout')}}">
+          @csrf
           <button type="submit" class="btn btn-sm btn-danger p-1" name="logout">Logout</button>
         </form>
       </li>
@@ -96,67 +98,67 @@
                 </a>
               </li>
 
-            <li class="nav-item">
-              <a href="{{ url('dealer/commission') }}" class="nav-link">
-                <i class="fa fa-angle-double-right nav-icon"></i>
-                <p>Commission</p>
-              </a>
-            </li>
+              <li class="nav-item">
+                <a href="{{ url('dealer/commission') }}" class="nav-link">
+                  <i class="fa fa-angle-double-right nav-icon"></i>
+                  <p>Commission</p>
+                </a>
+              </li>
 
 
-            <li class="nav-item">
-              <a href="{{ url('dealer/stock') }}" class="nav-link">
-                <i class="fa fa-angle-double-right nav-icon"></i>
-                <p>Stock</p>
-              </a>
-            </li>
-          </ul>
-        </li>
+              <li class="nav-item">
+                <a href="{{ url('dealer/stock') }}" class="nav-link">
+                  <i class="fa fa-angle-double-right nav-icon"></i>
+                  <p>Stock</p>
+                </a>
+              </li>
+            </ul>
+          </li>
 
 
-        
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="nav-icon far fa-map"></i>   
-            <p>
-              Settings
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
+          
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-map"></i>   
+              <p>
+                Settings
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
 
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="{{ url('admin/exams') }}" class="nav-link">
-                <i class="fa fa-angle-double-right nav-icon"></i>
-                <p>Exam List</p>
-              </a>
-            </li>
-          </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('admin/exams') }}" class="nav-link">
+                  <i class="fa fa-angle-double-right nav-icon"></i>
+                  <p>Exam List</p>
+                </a>
+              </li>
+            </ul>
 
 
-        </li>
+          </li>
 
-      </ul>
-    </nav>
-    <!-- /.sidebar-menu -->
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+
+
+    @yield('bodycontent')
+
   </div>
-  <!-- /.sidebar -->
-</aside>
+  <!-- /.content-wrapper -->
 
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-
-
-  @yield('bodycontent')
-
-</div>
-<!-- /.content-wrapper -->
-
-<!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-  <!-- Control sidebar content goes here -->
-</aside>
-<!-- /.control-sidebar -->
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
 
 </div>
 <!-- ./wrapper -->

@@ -35,7 +35,7 @@
 				<div class="info-box-content">
 					<span class="info-box-text">Total Deposit Amount</span>
 					<span class="info-box-number">
-						10,000/-
+						{{$groupDeposit}}
 					</span>
 				</div>
 				<!-- /.info-box-content -->
@@ -51,7 +51,7 @@
 				<div class="info-box-content">
 					<span class="info-box-text">Balance</span>
 					<span class="info-box-number">
-						3000
+						{{$groupDeposit-3000}}
 					</span>
 				</div>
 				<!-- /.info-box-content -->
@@ -64,61 +64,27 @@
 		<div class="card card-body">
 			<h4>Members</h4>
 			<ol>
-				@foreach ($customerGroup as $customers)
-				<li >{{$customers->customer[0]->name}}</li>
+
+				@foreach ($customerGroup as $customergroup)
+				@foreach ($customers as $customer)
+
+				@if ($customergroup->customer_id==$customer->id)
+				<li>{{$customer->name}}</li>
+
+				@endif
 				@endforeach
-
-
-
-
+				@endforeach
 
 
 
 			</ol>
 		</div>
-	</div>
+	</div>			
 
-			<!--
-			<div class="col-lg-8">		
-
-				<div class="card">
-					<div class="card-header">
-						<h3 class="card-title font-weight-bold">Showing Group Details
-						</h3>
-					</div>
-					<div class="card-body">
-						<div class="datatable-dashv1-list custom-datatable-overright">
-							<div id="toolbar">
-								<select class="form-control dt-tb">
-									<option value="">Export Basic</option>
-									<option value="all">Export All</option>
-									<option value="selected">Export Selected</option>
-								</select>
-							</div>
-							<table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
-							data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
-							<thead>
-								<tr>
-									<th data-field="id">SN</th>
-									<th data-field="name" >Date</th>
-									<th>Dealer Name</th>
-									<th data-field="email" >Quanity</th>
-								</tr>
-							</thead>
-							<tbody>
+</div>
 
 
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>-->
-
-
-		</div>
-
-
-	</div>
+</div>
 
 
 </div>

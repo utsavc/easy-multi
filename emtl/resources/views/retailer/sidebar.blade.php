@@ -17,7 +17,9 @@
     <ul class="navbar-nav ml-auto">
 
       <li class="nav-item d-none d-sm-inline-block">
-        <form method="GET" action="<?php if(isset($_GET['logout'])) { session()->forget('role'); echo redirect()->route('login'); }?>">
+        
+        <form method="POST" action="{{route('logout')}}">
+          @csrf
           <button type="submit" class="btn btn-sm btn-danger p-1" name="logout">Logout</button>
         </form>
       </li>

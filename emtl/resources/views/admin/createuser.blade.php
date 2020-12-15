@@ -14,12 +14,13 @@
 				</div>
 				<!-- /.card-header -->
 				<!-- form start -->
-				<form role="form">
+				<form role="form" method="post" action="{{route('createUser')}}">
+					@csrf
 					<div class="card-body">
 
 						<div class="form-group">
 							<label>Select User Type</label>
-							<select id="userType" class="form-control" onchange="showUser()">
+							<select id="userType" class="form-control" onchange="showUser()" name="userType">
 								<option value="retailer">Retailer</option>
 								<option value="dealer">Dealer</option>
 							</select>
@@ -30,29 +31,7 @@
 							
 						</div>
 						
-						<div class="form-group">
-							<label for="exampleInputEmail1">Username</label>
-							<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Username">
-						</div>
 
-						<div class="form-group">
-							<label for="exampleInputPassword1">Password</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-						</div>
-
-						<div class="form-group">
-							<label for="exampleInputPassword1">Re-type Password</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-						</div>
-
-
-
-
-
-
-						<button type="submit" class="btn btn-primary">Create</button>
-
-						<button type="submit" class="btn btn-warning">Reset</button>
 
 					</div>
 					<!-- /.card-body -->
