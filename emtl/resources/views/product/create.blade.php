@@ -8,10 +8,6 @@
 
 	@include('messages.messages')
 
-
-
-
-
 	<div class="row">
 		<div class="col-lg-5">
 			<div class="card card-primary">
@@ -38,17 +34,17 @@
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">Dealer Comission</label>
-							<input type="text" name="dealerComission" class="form-control"  placeholder="5%">
+							<input type="text" name="dealerComission" class="form-control"  placeholder="5">
 						</div>
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">Retailer Comission</label>
-							<input type="text" name="retailerComission" class="form-control"  placeholder="10%">
+							<input type="text" name="retailerComission" class="form-control"  placeholder="10">
 						</div>		
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">Customer Comission</label>
-							<input type="text" name="customerComission" class="form-control"  placeholder="2%">
+							<input type="text" name="customerComission" class="form-control"  placeholder="2">
 						</div>	
 
 						<button type="submit" class="btn btn-primary">Create</button>

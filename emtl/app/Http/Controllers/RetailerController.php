@@ -11,7 +11,9 @@ use App\Customer;
 use App\DealerProduct;
 use App\RetailerProduct;
 use App\CustomerProduct;
-use App\DealerCommission;
+use App\DealerComission;
+use App\CustomerComission;
+use App\RetailerComission;
 use App\Product;
 use App\CustomerGroups;
 use App\DealerStock;
@@ -23,12 +25,13 @@ use App\GroupDeposit;
 use App\ProductStocks;
 use App\User;
 use App\Withdraw;
+use App\CustomerPurchase;
+use App\ProductFromUser;
 
 class RetailerController extends Controller{
 
 
-	function dashboard(){
-		
+	function dashboard(){		
 		$customerGroups= Group::where('retailer_id',session('session_id'))->get();
 		$dealer= Group::where('retailer_id',session('session_id'))->get();
 		$retailer= Retailer::where('dealer_id',session('session_id'))->get();
@@ -36,6 +39,8 @@ class RetailerController extends Controller{
 		$product= DealerStock::where('dealer_id',session('session_id'))->distinct('product_id');
 		return view('retailer.dashboard',['dealer'=>$dealer,'retailer'=>$retailer,'customer'=>$customer,'product'=>$product,'customerGroups'=>$customerGroups]);
 	}
+
+
 
 	function createRetailer(){
 		$retailer=Retailer::orderBy('id','DESC')->get();
@@ -45,34 +50,17 @@ class RetailerController extends Controller{
 
 
 	function addRetailer(Request $request){
-
 		$validated=$request->validate([
 			'name' => 'required|string',
 			'retailerid' => 'required|string|unique:retailers',
 			'dealer_id' => 'required|string',
 			'address' => 'required|string',
 			'phone' => 'required|string',
-			'email' => 'required|string',
 		]);
 
-
-		/*$retailer= new Retailer;
-		$retailer->name=$request->name;
-		$retailer->retailerid=$request->retailerid;
-		$retailer->dealerid=$request->dealerid;
-
-		$retailer->address=$request->address;
-		$retailer->phone=$request->phone;
-		$retailer->email=$request->email;
-
-		$retailer->save();		*/
-
+		
 		Retailer::create($validated);
 		return back()->with('success','Item created successfully!');
-
-		//$dealer=Dealer::orderBy('id','DESC')->get();
-
-		//return $retailer;
 
 	}
 
@@ -116,43 +104,99 @@ class RetailerController extends Controller{
 		return view('retailer.retailerproductreport')->with('products', $products);
 
 	}
- 
-	function transfer(){
-		$products= CustomerProduct::orderBy('id','DESC')->get();
-		$stocks= RetailerProduct::orderBy('id','DESC')->get();
-		$customers= Customer::where('retailer_id',session('session_id'))->get();
 
-		$products= [$stocks, $customers, $products];
-		return view('retailer.retailerproducttransfer')->with('products', $products);
+	function transfer(){
+
+		$products= RetailerStock::where('retailer_id',session('session_id'))->distinct()->get('product_id');
+		$customer= Customer::where('retailer_id',session('session_id'))->get();
+		return view('retailer.transfer',['products'=>$products,'customers'=>$customer]);
+
 
 	}
 
-	function createTransfer(Request $request){
+	function sellProduct(Request $request){
 
-		$validated= $request->validate([
-			'name' => 'required|string',
-			'quantity' => 'required|string',
-			'price' => 'required|string',
-			'customerid' => 'required|string',
-			'date' => 'required|string'
+		$validated=$request->validate([
+			'product_id' => 'required|integer|exists:products,id',
+			'qty' => 'required|integer',
+			'customer_id'=>'required|integer|exists:customers,id',
+			'retailer_id'=>'required|integer|exists:retailers,id',
 		]);
 
-		$retailerproduct= RetailerProduct::orderBy('id','DESC')->where('name', $request->name)->first();
-		$checkdataexistance= CustomerProduct::orderBy('id','DESC')->where('name', $request->name)->get();
+		$product=Product::findOrFail($request->product_id);
+		$dealer_id=Retailer::findOrFail($request->retailer_id)->dealer_id;
 
-		if ($request->quantity <= $retailerproduct->quantity) {
-			if(count($checkdataexistance) == 0) {
-				CustomerProduct::create($validated);
-				$retailerproduct->update(array('quantity' => $retailerproduct->quantity - $request->quantity));
-				return back()->with('success', 'Item created successfully!');
-			} else{
-				return back()->with('errors', 'Product name already exist!');
-			}
-		} else{
-			return back()->with('errors', 'Quantity should be in range of 1 to '.$retailerproduct->quantity.'for '.$request->name.'.');
+
+		$customer_id=$request->customer_id;
+		$customer=CustomerGroups::where('customer_id',$customer_id)->get();
+		$group_id= $customer[0]->group_id;
+
+		if (count($customer)<=0) {
+			return back()->with('danger',"Customer should be in group");
 		}
-	
+
+		$price=Product::findOrFail($request->product_id)->mrp;
+		$productAmount= $request->qty * $price;
+		
+
+		//$validated['amount']=$productAmount;
+
+		$amtInGroup=GroupDeposit::where('customer_id',$customer_id)->sum('amount');
+		$usedAmount=CustomerPurchase::where('group_id',$group_id)->sum('group_amount');
+
+		$requiredAmount= (35/100) * $productAmount;
+
+		$validated['group_id'] = $group_id;
+		$amountFromGroup=$productAmount-$amtInGroup;
+
+		if ($amountFromGroup<0) {
+			$validated['group_amount']=0;
+		}else{
+			$validated['group_amount']=$amountFromGroup;
+		}
+
+
+		$validated['customer_amount']=(int)$amtInGroup;
+
+
+		if ($amtInGroup >= $requiredAmount) {
+			$id=CustomerPurchase::create($validated)->id;
+
+
+			$customerComission = new CustomerComission;
+			$customerComission->customer_id=$customer_id;
+			$customerComission->purchase_id=$id;
+			$customerComission->comission_amount=($product->customerComission/100)*$productAmount;
+
+
+
+			$dealerComission = new DealerComission;
+			$dealerComission->dealer_id=$dealer_id;	
+			$dealerComission->purchase_id=$id;
+			$dealerComission->comission_amount=($product->dealerComission/100)*$productAmount;
+
+
+
+
+			$retailerComission = new RetailerComission;
+			$retailerComission->retailer_id=session('session_id');	
+			$retailerComission->purchase_id=$id;
+			$retailerComission->comission_amount=($product->retailerComission/100)*$productAmount;
+
+
+			$customerComission->save();
+			$retailerComission->save();
+			$dealerComission->save();
+
+			return back()->with("success", "Product has been sold");
+		}else{
+			return back()->with("danger","Customer has insufficient Amount");
+		}
 	}
+
+
+
+
 
 
 	function editTransfer($id, Request $request){
@@ -161,6 +205,8 @@ class RetailerController extends Controller{
 
 		return view('retailer.edittransferproduct', ['customer'=>$customer,'allcustomer'=>$allcustomer]);
 	}
+
+
 
 
 	function updateTransfer($id, Request $request){
@@ -202,7 +248,7 @@ class RetailerController extends Controller{
 
 
 	function commission(){
-		$commissions= DealerCommission::orderBy('id','DESC')->get();
+		$commissions= RetailerComission::orderBy('id','DESC')->get();
 		return view('retailer.retailercommission')->with('commissions', $commissions);
 
 	}
@@ -213,8 +259,43 @@ class RetailerController extends Controller{
 
 	}
 
-	function profile()	{
-		return view('retailer.profile');
+	function purchase(){	
+		$products= RetailerStock::where('retailer_id',session('session_id'))->distinct()->get('product_id');
+		$customer= Customer::where('retailer_id',session('session_id'))->get();
+		return view('retailer.purchase',['products'=>$products,'customers'=>$customer]);
+
 	}
+
+	function processPurchase(Request $request){	
+
+		$validated=$request->validate([
+			'customer_id' => 'required|string|exists:customers,id',
+			'retailer_id' => 'required|string|exists:retailers,id',
+			'product_name' => 'required|string',
+			'quantity' => 'required|string',
+			'amount' => 'required|string',
+		]);
+		
+		ProductFromUser::create($validated);		
+		return back()->with("success", "Product has been purchased");
+	}
+
+
+
+	function purchaseForm(){
+		$customer= Customer::where('retailer_id',session('session_id'))->get();
+		return view('retailer.checkpurchase',['customers'=>$customer]);
+
+	}
+
+	function purchaseReport(Request $request){
+		$id=$request->customer_id;
+		$customer= ProductFromUser::where('customer_id',$id)->get();
+		return $customer;
+//		return view('retailer.checkpurchase',['customers'=>$customer]);
+
+	}
+
+
 
 }

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 use App\Retailer;
+use App\Dealer;
 use App\Group;
 use App\Customer;
 use App\CustomerGroups;
 use App\Deposit;
 use App\Withdraw;
 use App\GroupDeposit;
+use App\RetailerComission;
+use App\DealerComission;
 
 use Illuminate\Http\Request;
 
@@ -18,6 +21,8 @@ class TransactionController extends Controller
 
 	function deposit(){
 		$customer = Customer::where('retailer_id',session('session_id'))->get();
+
+
 		return view('transaction.deposit',['customer'=>$customer]);
 	}
 
@@ -69,6 +74,9 @@ class TransactionController extends Controller
 
 	function report(){
 		$customer = Customer::where('retailer_id',session('session_id'))->get();
+		if (session('role')=='Admin') {
+			return view('admin.transaction.deposit',['customer'=>$customer]);	
+		}
 		return view('transaction.report',['customer'=>$customer]);
 	}
 
@@ -84,7 +92,14 @@ class TransactionController extends Controller
 
 		$balance=$this->getBalance($customer_id);
 
-		return view('transaction.viewreport',['deposit'=>$deposit, 'withdraw'=>$withdraw,'balance'=>$balance]);
+		$groupBalance=$this->getBalanceinGroup($customer_id);
+
+		if (session('role')=='Admin') {
+			
+			return view('admin.transaction.viewreport',['groupBalance'=>$groupBalance,'deposit'=>$deposit, 'withdraw'=>$withdraw,'balance'=>$balance]);
+		}
+
+		return view('transaction.viewreport',['groupBalance'=>$groupBalance,'deposit'=>$deposit, 'withdraw'=>$withdraw,'balance'=>$balance]);
 	}
 
 	
@@ -151,17 +166,60 @@ class TransactionController extends Controller
 	}
 
 
+	function getBalanceinGroup($customer_id){
+
+		$totalDeposit = GroupDeposit::where('customer_id',$customer_id)->sum('amount');
+
+		return $totalDeposit;
+
+	}
+
+
 	function adminComission(){
 		$customer = Customer::all();
 		return view('admin.transaction.report',['customer'=>$customer]);
 	}
 
-
-
-	function adminReport(){
+	function customerReport(){
 		$customer = Customer::all();
-		return view('admin.transaction.report',['customer'=>$customer]);		
+		return view('admin.transaction.customerreport',['customer'=>$customer]);		
 	}
+
+	function retailerReport(){
+		$retailer = Retailer::all();
+		return view('admin.transaction.report',['retailer'=>$retailer]);		
+	}
+
+
+	function retailerComissionReport(Request $request){
+		$validated=$request->validate([
+			'retailer_id' => 'required|integer|exists:retailers,id',
+		]);	
+
+		$report= RetailerComission::where('retailer_id',$request->retailer_id)->sum('comission_amount');
+
+		return view('admin.transaction.retailercomissionreport',['report'=>$report]);
+	}
+
+
+	function dealerReport(){
+		$dealer = Dealer::all();
+		return view('admin.transaction.dealerreport',['dealer'=>$dealer]);		
+	}
+
+
+	function dealerComissionReport(Request $request){
+		$validated=$request->validate([
+			'dealer_id' => 'required|integer|exists:dealers,id',
+		]);	
+
+		$report= DealerComission::where('dealer_id',$request->dealer_id)->sum('comission_amount');
+
+		return view('admin.transaction.dealercomissionreport',['report'=>$report]);
+	}
+
+
+
 
 
 }

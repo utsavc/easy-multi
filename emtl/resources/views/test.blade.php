@@ -2,9 +2,11 @@
 
 
 
-@foreach($test as $tests)
+@foreach($stocks as $stock)
 
-{{$tests->customer[0]->name}}
-
+{{$stock->product->productname}}
 
 @endforeach
+
+
+

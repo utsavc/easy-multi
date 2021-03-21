@@ -19,7 +19,6 @@ class CreateRetailersTable extends Migration
             $table->string('retailerid')->unique();
             $table->string('address');
             $table->string('phone');
-            $table->string('email');
             $table->string('dealer_id');
             $table->foreign('dealer_id')->references('id')->on('dealers')->onDelete('cascade');
             $table->string('status')->default('active');

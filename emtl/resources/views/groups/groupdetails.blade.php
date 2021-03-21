@@ -5,7 +5,7 @@
 <div class="container-fluid">
 	<h4>Details of {{$group->name}}</h4>
 	<div class="row">
-		<div class="col-lg-6">
+		<div class="col-lg-5">
 
 			<div class="info-box">
 				<span class="info-box-icon bg-primary elevation-1"><i class="fas fa-users"></i></span>
@@ -25,8 +25,6 @@
 				<!-- /.info-box-content -->
 			</div>
 		</div>
-
-
 
 		<div class="col-lg-3">
 			<div class="info-box">
@@ -51,7 +49,7 @@
 				<div class="info-box-content">
 					<span class="info-box-text">Balance</span>
 					<span class="info-box-number">
-						{{$groupDeposit-3000}}
+						{{$groupDeposit-$usedFromGroup}}
 					</span>
 				</div>
 				<!-- /.info-box-content -->

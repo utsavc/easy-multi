@@ -39,13 +39,14 @@
 
 						<div class="info-box-content">
 							<span class="info-box-text">Balance in Group</span>
-							<span class="info-box-number">{{$balance}}</span>
+							<span class="info-box-number">{{$groupBalance}}</span>
 						</div>
 						<!-- /.info-box-content -->
 					</div>
 					<!-- /.info-box -->
 				</div>
 				<!-- /.col -->
+
 
 
 				<div class="col-12 col-sm-6 col-md-3">
@@ -59,6 +60,30 @@
 					</div>
 					<!-- /.info-box -->
 				</div>
+
+
+
+				<div class="col-12 col-sm-6 col-md-3">
+					<div class="info-box mb-3">
+						<span class="info-box-icon bg-dark elevation-1"><i class="fas fa-money-bill-alt"></i></span>
+
+						<div class="info-box-content">
+							<span class="info-box-text">Interest Accrued</span>
+							<span class="info-box-number">
+								@php
+
+								$si=($groupBalance*12*12)/100;
+								echo $si;
+								@endphp
+
+
+							</span>
+						</div>
+						<!-- /.info-box-content -->
+					</div>
+					<!-- /.info-box -->
+				</div>
+				<!-- /.col -->
 			</div>		
 		</div>
 		

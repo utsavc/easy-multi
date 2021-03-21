@@ -111,30 +111,9 @@
 
 				</div>
 			</div>
-
-			<div class="col-lg-4">
-				<div class="card card-success">
-					<div class="card-header">
-						<h3 class="card-title">Product Most Loved</h3>
-					</div>
-
-					<ol>
-						<li>Dining Table</li>
-						<li>Redmi Note 9 Pro</li>
-						<li>Hoodies</li>
-						<li>Samsung 4k TV</li>
-						<li>LG Refrigerator</li>
-					</ol>
-
-				</div>
-			</div>
 		</div>
 
 	</div>
 </section>	
-
-
-
-
 
 @endsection

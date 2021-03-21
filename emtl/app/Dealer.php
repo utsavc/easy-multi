@@ -9,7 +9,7 @@ class Dealer extends Model
     //
 
 	protected $fillable = [
-		'name', 'dealerid', 'address','phone','email'
+		'name', 'dealerid', 'address','phone'
 	];
 
 

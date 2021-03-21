@@ -17,7 +17,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
 
-      <li class="nav-item d-none d-sm-inline-block">
+      <li class="nav-item d-sm-inline-block">
 
         <form method="POST" action="{{route('logout')}}">
           @csrf
@@ -42,11 +42,8 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
-        </div>
         <div class="info">
-          <a href="{{url('profile')}}" class="d-block">Utsav Chaudhary</a>
+          <a class="d-block">Hello {{session('name')}}</a>
         </div>
       </div>
 
@@ -168,7 +165,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('admincomission')}}" class="nav-link">
+                <a href="{{ route('customerDeposit')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Customer</p>
                 </a>
@@ -177,9 +174,9 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('adminreport') }}" class="nav-link">
+                <a href="{{ route('retailerreport') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Retailers</p>
+                  <p>Retailers Comission</p>
                 </a>
               </li>
             </ul>
@@ -187,15 +184,18 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('admin/dealer/product-report/1') }}" class="nav-link">
+                <a href="{{ route('dealerreport') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dealers</p>
+                  <p>Dealers Comission</p>
                 </a>
               </li>
             </ul>
           </li>
 
-        </li>  -->
+        </li> 
+
+
+
 
 
         

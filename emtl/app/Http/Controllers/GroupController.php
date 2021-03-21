@@ -8,6 +8,7 @@ use App\Group;
 use App\Customer;
 use App\CustomerGroups;
 use App\GroupDeposit;
+use App\CustomerPurchase;
 
 class GroupController extends Controller
 {
@@ -37,7 +38,12 @@ class GroupController extends Controller
 		$customerGroup=CustomerGroups::where('group_id',$id)->get();
 		$customer=Customer::all();
 		$groupDeposit= GroupDeposit::where('group_id',$id)->get()->sum('amount');
-		return view('groups.groupdetails',['group'=>$group,'customerGroup'=>$customerGroup,'groupDeposit'=>$groupDeposit,'customers'=>$customer]);
+
+		$usedFromGroup= CustomerPurchase::where('group_id',$id)->get()->sum('customer_amount');
+		$usedFromGroup= $usedFromGroup + CustomerPurchase::where('group_id',$id)->get()->sum('group_amount');
+
+
+		return view('groups.groupdetails',['group'=>$group,'customerGroup'=>$customerGroup,'groupDeposit'=>$groupDeposit,'customers'=>$customer,'usedFromGroup'=>$usedFromGroup]);
 	}
 
 

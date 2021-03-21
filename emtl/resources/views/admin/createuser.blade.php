@@ -26,23 +26,27 @@
 							</select>
 						</div>
 
-
 						<div  id="users">
 							
 						</div>
-						
-
-
 					</div>
 					<!-- /.card-body -->
-
 				</form>
 			</div>
 		</div>
 
-		<div class="col-lg-4"></div>
+		<div class="col-lg-8">
+
+			
+		</div>
+		
+
+
+
 
 	</div>
+
+</div>
 </div>
 
 
@@ -50,7 +54,8 @@
 
 	var request=new XMLHttpRequest();
 
-	function showUser(){  
+	function showForm(){
+
 		var x = document.getElementById("userType").value;
 		var url;
 		if (x==="retailer") {
@@ -71,6 +76,17 @@
             }catch(e){
             	alert(e);
             } 
+
+        }
+
+
+        
+
+
+
+
+        function showUser(){  
+        	showForm();
         }
 
 

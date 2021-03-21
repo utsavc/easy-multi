@@ -16,17 +16,17 @@
 				</div>
 				<!-- /.card-header -->
 				<!-- form start -->
-				<form role="form" action="{{ route('report') }}" method="post" autocomplete="off">
+				<form role="form" action="{{ route('dealercomission') }}" method="post" autocomplete="off">
 
 					@csrf
 					<div class="card-body">
 
 						<div class="form-group">
 							<label for="exampleDropdown">Select Member</label>
-							<select data-live-search="true" title="Select Member" data-live-search-placeholder="Search Product" class="form-control selectpicker" name="customer_id">
+							<select data-live-search="true" title="Select Member" data-live-search-placeholder="Search Product" class="form-control selectpicker" name="dealer_id">
 
-								@foreach ($customer as $customers)
-								<option value="{{$customers->id}}" >{{$customers->name}} - {{$customers->id}}</option>
+								@foreach ($dealer as $dealers)
+								<option value="{{$dealers->id}}" >{{$dealers->name}} - {{$dealers->id}}</option>
 								@endforeach
 
 

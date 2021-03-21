@@ -31,6 +31,11 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::get('/add-dealer', 'DealerController@createDealerForm')->name('createDealer');
 		Route::post('/add-dealer', 'DealerController@addDealer');
 
+		Route::get('/dealerLogin', 'customAuth\UserCreationController@showDealersLogin')->name('showDealersLogin');
+		Route::get('/retailerLogin', 'customAuth\UserCreationController@showRetailersLogin')->name('showRetailersLogin');
+
+
+
 
 		Route::get('/add-customer', 'CustomerController@createCustomerForm')->name('createCustomerForm');
 		Route::post('/add-customer', 'CustomerController@createCustomer')->name('createCustomer');
@@ -49,6 +54,14 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::get('/edit-retailer/{id}', 'RetailerController@editRetailer')->name('retailerEdit');
 		Route::post('/edit-retailer/{id}', 'RetailerController@updateRetailer')->name('retailerUpdate');
 		Route::post('/delete-retailer/{id}', 'RetailerController@deleteRetailer')->name('retailerDelete');
+
+		Route::get('/dealer/changepassword', 'customAuth\UserCreationController@dealerchangePasswordform')->name('dealerchangepassword');
+		Route::post('/dealer/changepassword', 'customAuth\UserCreationController@dealerchangePassword')->name('dealerchangepassword');
+
+
+		Route::get('/retailer/changepassword', 'customAuth\UserCreationController@retailerchangePasswordform')->name('retailerchangepassword');
+		Route::post('/retailer/changepassword', 'customAuth\UserCreationController@retailerchangePassword')->name('retailerchangepassword');
+
 
 	});
 
@@ -71,14 +84,14 @@ Route::group(['prefix'=>'admin'], function(){
 	
 	Route::group(['prefix'=>'transaction'], function(){
 		Route::get('/comission', 'TransactionController@adminComission')->name('admincomission');
-		Route::get('/report', 'TransactionController@adminReport')->name('adminreport');
+		Route::get('/retailer', 'TransactionController@retailerReport')->name('retailerreport');
+		Route::post('/retailercomission', 'TransactionController@retailerComissionReport')->name('retailercomission');
+		Route::get('/customer', 'TransactionController@customerReport')->name('customerDeposit');
+		Route::get('/dealer', 'TransactionController@dealerReport')->name('dealerreport');
+		Route::post('/dealercomission', 'TransactionController@dealerComissionReport')->name('dealercomission');
 	});
 
 });
-
-
-
-
 
 
 Route::group(['prefix'=>'dealer'], function(){
@@ -88,11 +101,10 @@ Route::group(['prefix'=>'dealer'], function(){
 	Route::get('/commission', 'DealerController@commission');
 	Route::get('/stock', 'DealerController@stock');
 	Route::get('/transfer', 'DealerController@transferbyDealer');
-	Route::get('/transfertoretailer', 'DealerController@createTransfer')->name('createTransfer');
+	Route::post('/transfertoretailer', 'DealerController@createTransfer')->name('createTransfer');
 	Route::get('/edit-transfer/{id}', 'DealerController@editTransfer')->name('transferproductEdit');
 	Route::post('/update-transfer/{id}', 'DealerController@updateTransfer')->name('transferproductUpdate');
 	Route::post('/delete-transfer/{id}', 'DealerController@deleteTransfer')->name('transferproductDelete');
-	Route::get('/profile', 'DealerController@profile');
 	
 });
 
@@ -105,11 +117,14 @@ Route::group(['prefix'=>'retailer'], function(){
 	Route::get('/commission', 'RetailerController@commission');
 	Route::get('/stock', 'RetailerController@stock');
 	Route::get('/transfer', 'RetailerController@transfer');
-	Route::get('/transfertocustomer', 'RetailerController@createTransfer')->name('createTransfer');
+	Route::post('/sale', 'RetailerController@sellProduct')->name('sale');
 	Route::get('/edit-transfer/{id}', 'RetailerController@editTransfer')->name('transferproductEdit');
 	Route::post('/update-transfer/{id}', 'RetailerController@updateTransfer')->name('transferproductUpdate');
 	Route::post('/delete-transfer/{id}', 'RetailerController@deleteTransfer')->name('transferproductDelete');
-	Route::get('/profile', 'RetailerController@profile');
+	Route::get('/purchase', 'RetailerController@purchase')->name('purchase');
+	Route::post('/purchase', 'RetailerController@processPurchase')->name('purchase');
+	Route::get('/checkpurchase', 'RetailerController@purchaseForm')->name('purchasereport');
+	Route::post('/checkpurchase', 'RetailerController@purchaseReport')->name('purchasereport');
 
 
 	Route::group(['prefix'=>'user'], function(){
@@ -147,10 +162,10 @@ Route::post('/logout', 'customAuth\UsersLoginController@logout')->name('logout')
 
 
 
-
+/*
 Route::group(['prefix'=>'auth'], function(){
 
 	Route::get('/login', 'CustomerController@purchase');
 	Route::get('/purchase/report', 'CustomerController@purchaseReport');
 
-});
+});*/

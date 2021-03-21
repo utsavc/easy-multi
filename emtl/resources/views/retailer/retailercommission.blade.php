@@ -24,21 +24,26 @@
                         <thead>
                             <tr>
                                 <th data-field="id">SN</th>
-                                <th data-field="id">Retailer Name</th>
-                                <th data-field="name" >ITEM</th>
-                                <th data-field="id">QTY</th>
-                                <th data-field="id">Price</th>
+                                <th data-field="id">Purchase Id</th>
+                                <th data-field="name" >Comission amount</th>
                                 <th data-field="id">Commission</th>
                             </tr>
                         </thead>
                         <tbody>
+
+                            @foreach ($commissions as $comission)
+
+
                             <tr>
-                                <td>1</td>
-                                <td>Utsav</td>
-                                <td>12344</td>
-                                <td>12344</td>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$comission->purchase_id}}</td>
+                                <td>{{$comission->comission_amount}}</td>
                                 <td>12344</td>
                             </tr>
+
+                            @endforeach
+
+
                         </tbody>
                     </table>
                 </div>

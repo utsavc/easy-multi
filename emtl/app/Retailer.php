@@ -35,4 +35,10 @@ class Retailer extends Model
     }
 
 
+
+    public function retailerStock(){
+        return $this->hasMany('App\RetailerStock');
+    }
+
+
 }

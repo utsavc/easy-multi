@@ -30,7 +30,6 @@
 					<div class="info-box-content">
 						<span class="info-box-text">Customers</span>
 						<span class="info-box-number">
-							{{$customer->count()}}
 						</span>
 					</div>
 					<!-- /.info-box-content -->
@@ -47,7 +46,6 @@
 
 					<div class="info-box-content">
 						<span class="info-box-text">Group</span>
-						<span class="info-box-number">{{ $customerGroups->count()}}</span>
 					</div>
 					<!-- /.info-box-content -->
 				</div>
@@ -62,7 +60,6 @@
 
 					<div class="info-box-content">
 						<span class="info-box-text">Comission</span>
-						<span class="info-box-number">{{ $product->count()}}000</span>
 					</div>
 					<!-- /.info-box-content -->
 				</div>

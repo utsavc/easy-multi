@@ -47,18 +47,6 @@
 				</div>
 				<!-- /.col -->
 
-
-				<div class="col-12 col-sm-6 col-md-3">
-					<div class="info-box mb-3">
-						<span class="info-box-icon bg-success elevation-1"><i class="fas fa-upload"></i></span>
-
-						<div class="info-box-content">
-							<a href="{{route('transfer')}}" class="btn btn-primary">Transfer</a>
-						</div>
-						<!-- /.info-box-content -->
-					</div>
-					<!-- /.info-box -->
-				</div>
 			</div>		
 		</div>
 		

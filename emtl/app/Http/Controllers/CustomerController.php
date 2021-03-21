@@ -10,7 +10,8 @@ class CustomerController extends Controller
 {
 	function createCustomerForm(){		
 		$retailers=Retailer::all();
-		return view('admin.createcustomer',['retailers'=>$retailers]);
+		$customers=Customer::all();
+		return view('admin.createcustomer',['retailers'=>$retailers,'customers'=>$customers]);
 	}
 
 

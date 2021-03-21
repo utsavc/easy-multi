@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\customAuth;
-
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
@@ -43,7 +43,12 @@ class UserCreationController extends Controller{
 			return back()->with('success','Dealer created successfully!');
 		}else{
 			abort(404);
-		}
+		}		
+
+	}
+
+
+	function showDealersLogin(){
 		
 
 	}
@@ -52,9 +57,6 @@ class UserCreationController extends Controller{
 	function showDealer(){
 
 		$dealer= Dealer::doesnthave('dealerLogin')->get();
-
-
-
 
 
 		if (count($dealer)==0) {
@@ -87,6 +89,8 @@ class UserCreationController extends Controller{
 			</div>
 
 			<button type='submit' class='btn btn-primary'>Create</button> ";
+
+
 
 		}		
 	}
@@ -133,5 +137,143 @@ class UserCreationController extends Controller{
 		}		
 	}
 
+
+	function dealerchangePasswordform(){
+		return view("dealer.dealerchangepassword");
+	}
+
+
+
+	function retailerchangePasswordform(){
+		return view("retailer.retailerchangepassword");
+	}
+
+
+
+
+	function adminchangePasswordform(){
+		return view();
+	}
+
+
+
+
+	function dealerchangePassword(Request $request){
+
+
+		$newpassword=$request->newpassword;
+		$confirmpassword=$request->confirmpassword;
+
+		if ($newpassword==$confirmpassword) {
+
+			$currentPassword=$request->currentpassword;
+			$users = DB::table('dealer_logins')
+			->where('password', '=', $currentPassword)
+			->where('id', '=', session('session_id'))
+			->get();
+
+
+			if (!empty($users[0])) {
+
+
+				DB::table('dealer_logins')
+				->where('id',session('session_id') )
+				->update(['password' => $newpassword]);
+
+
+				return back()->with("success","Password changed success");
+
+			}else{
+
+				return back()->with("danger","Old password is incorrect");
+			}
+
+		}else{
+
+			return back()->with("danger","Password doesn't match");
+
+		}
+
+	}
+
+
+
+	function retailerchangePassword(Request $request){
+
+		$newpassword=$request->newpassword;
+		$confirmpassword=$request->confirmpassword;
+
+		if ($newpassword==$confirmpassword) {
+
+			$currentPassword=$request->currentpassword;
+			$users = DB::table('retailer_logins')
+			->where('password', '=', $currentPassword)
+			->where('id', '=', session('session_id'))
+			->get();
+
+
+			if (!empty($users[0])) {
+
+
+				DB::table('retailer_logins')
+				->where('id',session('session_id') )
+				->update(['password' => $newpassword]);
+
+
+				return back()->with("success","Password changed success");
+
+			}else{
+
+				return back()->with("danger","Old password is incorrect");
+			}
+
+		}else{
+
+			return back()->with("danger","Password doesn't match");
+
+		}
+
+		//return $users;
+	}
+
+
+
+
+	function adminchangePassword(){
+
+		$newpassword=$request->newpassword;
+		$confirmpassword=$request->confirmpassword;
+
+		if ($newpassword==$confirmpassword) {
+
+			$currentPassword=$request->currentpassword;
+			$users = DB::table('users')
+			->where('password', '=', $currentPassword)
+			->where('id', '=', session('session_id'))
+			->get();
+
+
+			if (!empty($users[0])) {
+
+
+				DB::table('users')
+				->where('id',session('session_id') )
+				->update(['password' => $newpassword]);
+
+
+				return back()->with("success","Password changed success");
+
+			}else{
+
+				return back()->with("danger","Old password is incorrect");
+			}
+
+		}else{
+
+			return back()->with("danger","Password doesn't match");
+
+		}
+		
+	}
 
 }

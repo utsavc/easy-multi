@@ -77,7 +77,7 @@
 
 	<div class="card card-info">
 		<div class="card-header">
-			<h3 class="card-title font-weight-bold">List of Dealers</h3>
+			<h3 class="card-title font-weight-bold">List of Customers</h3>
 		</div>
 		<div class="card-body">
 			<div class="datatable-dashv1-list custom-datatable-overright">
@@ -94,16 +94,25 @@
 				<thead>
 					<tr>
 						<th>SN</th>
-						<th>Dealer Name</th>
-						<th>Dealer Id</th>
+						<th>Customer Name</th>
+						<th>Retailer Name</th>
 						<th>Address</th>
 						<th>Phone</th>
-						<th>Email</th>
 						<th>Remarks</th>
 					</tr>
 				</thead>
 				<tbody>
 
+					@foreach ($customers as $customer)
+					<tr>
+						<td>{{ $loop->iteration }}</td>
+						<td>{{$customer->name}}</td>
+						<td>{{$customer->retailer->name}}</td>
+						<td>{{$customer->address}}</td>
+						<td>{{$customer->phone}}</td>
+						<td><a class="btn btn-warning btn-sm" href="">edit</a> <a class="btn btn-danger btn-sm" href="">delete</a></td>
+					</tr>
+					@endforeach
 					
 				</tbody>
 			</table>

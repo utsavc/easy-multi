@@ -19,9 +19,9 @@ use App\GroupDeposit;
 use App\ProductStocks;
 use App\User;
 use App\Withdraw;
+use App\RetailerStock;
 
-class DealerController extends Controller
-{
+class DealerController extends Controller{
 
 	function createDealerForm(){
 		$dealer= Dealer::orderBy('id','DESC')->get();
@@ -36,7 +36,6 @@ class DealerController extends Controller
 			'dealerid' => 'required|string|unique:dealers',
 			'address' => 'required|string',
 			'phone' => 'required|string',
-			'email' => 'required|string',
 		]);
 
 		/* $dealer = new Dealer;
@@ -103,8 +102,9 @@ class DealerController extends Controller
 
 
 	function stock(){
-		$products= DealerProduct::orderBy('id','DESC')->get();
+		$products= DealerStock::orderBy('id','DESC')->get();
 		return view('dealer.stock')->with('products', $products);
+
 	}
 
 
@@ -114,53 +114,50 @@ class DealerController extends Controller
 
 
 	function transferbyDealer(){
-		$products= Product::orderBy('id','DESC')->get();
-		$stocks= DealerProduct::orderBy('id','DESC')->get();
+		$products= DealerStock::distinct()->get('product_id');
 		$retailers= Retailer::where('dealer_id',session('session_id'))->get();
-		$products= [$stocks, $retailers, $products];
-		return view('dealer.transfer')->with('products', $products);
-		
+		return view('dealer.transfer',['products'=>$products,'retailers'=>$retailers]);
 	}
 
 
 	function createTransfer(Request $request){
 
-		$validated= $request->validate([
-			'name' => 'required|string',
-			'quantity' => 'required|string',
-			'retailerid' => 'required|string',
-			'date' => 'required|string'
+
+		$validated=$request->validate([
+			'product_id' => 'required|integer|exists:products,id',
+			'qty' => 'required|integer',
+			'dealer_id'=>'required|integer|exists:dealers,id',
+			'retailer_id'=>'required|integer|exists:retailers,id',
 		]);
 
-		$dealerproduct= DealerProduct::orderBy('id','DESC')->where('name', $request->name)->first();
-		$checkdataexistance= RetailerProduct::orderBy('id','DESC')->where('name', $request->name)->get();
 
-		if ($request->quantity <= $dealerproduct->quantity){
-			if(count($checkdataexistance) == 0){
-				RetailerProduct::create($validated);
-				$dealerproduct->update(array('quantity' => $dealerproduct->quantity - $request->quantity));
-				return back()->with('success', 'Item created successfully!');
-			} else{
-				return back()->with('errors', 'Product name already exist!');
-			}
-		} else{
-			return back()->with('errors', 'Quantity should be in range of 1 to '.$dealerproduct->quantity.'for '.$request->name.'.');
+		$retailerStock=RetailerStock::where('product_id',$request->product_id)->where('dealer_id',session('session_id'))->sum('qty');
+		$dealerStock=DealerStock::where('product_id',$request->product_id)->where('dealer_id',session('session_id'))->sum('qty');
+
+		$activeStock=$dealerStock-$retailerStock;
+
+		if ($request->qty <= $activeStock) {
+			RetailerStock::create($validated);
+			return back()->with('success','Product Transferred to Retailer stock successfully!');
+		}else{			
+			return back()->with('error','You are trying to enter maximum value than available stock');
 		}
-	
 	}
+
+
 
 
 	function editTransfer($id, Request $request){
 		$retailer= RetailerProduct::firstWhere('id', $id);	
 		$allretailer= RetailerProduct::orderBy('id','DESC')->get();
-
 		return view('dealer.edittransferproduct', ['retailer'=>$retailer,'allretailer'=>$allretailer]);
 	}
 
 
+
+
 	function updateTransfer($id, Request $request){
 		$retailer= RetailerProduct::findOrFail($id);
-
 		$dealerproduct= DealerProduct::firstWhere('name', $request->name);
 
 		if (($request->quantity - $customer->quantity) <= $dealerproduct->quantity){
@@ -199,6 +196,10 @@ class DealerController extends Controller
 	function profile()	{
 		return view('dealer.profile');
 	}
+
+
+
+
 
 
 }
