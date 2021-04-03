@@ -290,9 +290,9 @@ class RetailerController extends Controller{
 
 	function purchaseReport(Request $request){
 		$id=$request->customer_id;
-		$customer= ProductFromUser::where('customer_id',$id)->get();
-		return $customer;
-//		return view('retailer.checkpurchase',['customers'=>$customer]);
+		$products= ProductFromUser::where('customer_id',$id)->get();
+		//return $products;
+		return view('retailer.purchasereport',['products'=>$products]);
 
 	}
 

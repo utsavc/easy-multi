@@ -20,6 +20,28 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
 
+	function addAdminForm(){
+
+		return view('admin.add-admin');
+	}
+
+	function addAdmin(Request $request){
+
+		$validated=$request->validate([
+			'name' => 'required|string',
+			'username'=>'required|string|unique:users',
+			'password'=>'required|string|confirmed',
+			'role'=>'required|string'
+		]);
+
+		User::create($validated);
+		return redirect(route('login'))->with('success', 'Admin Added successfully!');
+		//return back()->with('success','Admin Added successfully!');
+
+	}
+
+
+
 	function dashBoard(){
 		$dealer= Dealer::all();
 		$retailer= Retailer::all();

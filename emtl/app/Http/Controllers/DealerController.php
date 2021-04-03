@@ -102,7 +102,7 @@ class DealerController extends Controller{
 
 
 	function stock(){
-		$products= DealerStock::orderBy('id','DESC')->get();
+		$products= DealerStock::where('dealer_id',session('session_id'))->get();
 		return view('dealer.stock')->with('products', $products);
 
 	}

@@ -26,33 +26,18 @@
 								<th>SN</th>
 								<th>PRODUCT NAME</th>
 								<th>QTY</th>
-								<th>REPORT</th>
 							</tr>
 						</thead>
-			
+
 						<tbody>
-							<?php $countdata = 0 ?>
-							@if (count($products) > 0)
-								@foreach ($products as $product)
-									<?php $countdata++ ?>
-									@if (!($countdata%2 == 0))
-										<tr role="row" class="odd">
-											<td tabindex="0" class="sorting_1">{{ $countdata }}</td>
-											<td>{{ $product->name }}</td>
-											<td>{{ $product->quantity }}</td>
-											<td><a href="dealer/productreport/{{ $product->id }}"><button class="btn btn-primary">View Report</button></a></td>
-										</tr>
-									@else
-										<tr role="row" class="even">
-											<td tabindex="0" class="sorting_1">{{ $countdata }}</td>
-											<td>{{ $product->name }}</td>
-											<td>{{ $product->quantity }}</td>
-											<td><a href="dealer/productreport/{{ $product->id }}"><button class="btn btn-primary">View Report</button></a></td>
-										</tr>
-									@endif											
-								@endforeach
-							@endif
-							
+							@foreach ($products as $product)
+							<tr role="row" class="odd">
+								<td tabindex="0" class="sorting_1">{{ $loop->iteration }}</td>
+								<td>{{ $product->product->productname }}</td>
+								<td>{{ $product->qty }}</td>
+								
+							</tr>									
+							@endforeach
 						</tbody>
 					</table>
 				</div>

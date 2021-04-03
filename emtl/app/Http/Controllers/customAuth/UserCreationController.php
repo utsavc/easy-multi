@@ -9,6 +9,7 @@ use App\Dealer;
 use App\Retailer;
 use App\DealerLogin;
 use App\RetailerLogin;
+use App\Manager;
 
 class UserCreationController extends Controller{
 
@@ -274,6 +275,26 @@ class UserCreationController extends Controller{
 
 		}
 		
+	}
+
+	function createManagerForm(){
+		return view('manager.createmanager');
+	}
+
+
+	function createManager(Request $request){
+		$validated=$request->validate([
+			'name' => 'required|string',
+			'address' => 'required|string',
+			'phone' => 'required|string',
+			'username'=>'required|string|unique:managers',
+			'password'=>'required|string|confirmed',
+			'role'=>'required|string'
+		]);
+
+		Manager::create($validated);
+		return back()->with('success','Manager created successfully!');
+
 	}
 
 }

@@ -15,6 +15,11 @@
 Auth::routes();
 
 
+Route::get('/install','AdminController@installApp')->name('install');
+Route::get('/add-admin','AdminController@addAdminForm')->name('add-admin');
+Route::post('/add-admin','AdminController@addAdmin')->name('add-admin');
+
+
 
 Route::group(['prefix'=>'admin'], function(){
 
@@ -26,8 +31,16 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::get('/create-user', 'customAuth\UserCreationController@createUserForm');
 		Route::post('/create-user', 'customAuth\UserCreationController@createUser')->name('createUser');
 		
+		Route::get('/add-manager', 'customAuth\UserCreationController@createManagerForm')->name('createManager');
+		
+		Route::post('/add-manager', 'customAuth\UserCreationController@createManager')->name('createManager');
+		
+
+
 		Route::get('/show-user/retailer', 'customAuth\UserCreationController@showRetailer')->name('showRetailer');
 		Route::get('/show-user/dealer', 'customAuth\UserCreationController@showDealer')->name('showDealer');
+
+
 		Route::get('/add-dealer', 'DealerController@createDealerForm')->name('createDealer');
 		Route::post('/add-dealer', 'DealerController@addDealer');
 
@@ -98,7 +111,7 @@ Route::group(['prefix'=>'dealer'], function(){
 	
 	Route::get('/', 'DealerController@dashboard')->name('dealer');
 	Route::get('/productreport', 'DealerController@productreport');
-	Route::get('/commission', 'DealerController@commission');
+	Route::get('/commission', 'DealerControll`er@commission');
 	Route::get('/stock', 'DealerController@stock');
 	Route::get('/transfer', 'DealerController@transferbyDealer');
 	Route::post('/transfertoretailer', 'DealerController@createTransfer')->name('createTransfer');

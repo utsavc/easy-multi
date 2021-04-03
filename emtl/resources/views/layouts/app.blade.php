@@ -38,7 +38,7 @@
 </head>
 
 
-<body class="hold-transition {{ Route::currentRouteNamed('login') ? 'login-page' : 'sidebar-mini layout-fixed' }} ">
+<body class="hold-transition {{ Route::currentRouteNamed('add-admin') ? 'login-page' : Route::currentRouteNamed('login') ? 'login-page' : 'sidebar-mini layout-fixed' }} ">
 
   @yield('sidebar')
 

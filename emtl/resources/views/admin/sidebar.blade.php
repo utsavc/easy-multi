@@ -1,5 +1,5 @@
 
-@if (session('role') == 'Admin')
+@if (session('role') == 'Admin' || session ('role')=='Manager')
 
 @extends('layouts.app')
 
@@ -54,6 +54,10 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+
+          @if (session('role') == 'Admin' )
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-plus"></i>
@@ -63,6 +67,8 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+
+
               <li class="nav-item">
                 <a href="{{ url('admin/user/add-manager') }}" class="nav-link">
                   <i class="fa fa-angle-double-right nav-icon"></i>
@@ -106,6 +112,8 @@
 
             </ul>
           </li>
+
+          @endif
 
 
           <li class="nav-item has-treeview">
@@ -191,7 +199,6 @@
               </li>
             </ul>
           </li>
-
         </li> 
 
 
