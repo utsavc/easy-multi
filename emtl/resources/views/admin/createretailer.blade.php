@@ -104,8 +104,7 @@
 						<th>Dealer Id</th>
 						<th>Address</th>
 						<th>Phone</th>
-						<th>Email</th>
-						<!--<th>Remarks</th>-->
+						<th>Remarks</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -117,16 +116,15 @@
 						<td>{{ $retailer->dealer->name }}</td>
 						<td>{{ $retailer->address }}</td>
 						<td>{{ $retailer->phone }}</td>
-						<td>{{ $retailer->email }}</td>
 						
-						<!--<td>
+						<td>
 							<a href="{{ route('retailerEdit',['id' => $retailer->id]) }}" class="btn btn-success btn-sm">Edit</a>
 
 							<form class="form-inline d-inline" method="post" action="{{ route('retailerDelete', $retailer->id) }}" onclick="return confirm('Are you sure you want to delete this item?');">
 								@csrf
 								<button type="submit" class="btn btn-danger btn-sm">Delete</button>
 							</form>
-						</td>-->
+						</td>
 					</tr>
 					@endforeach
 				</tbody>

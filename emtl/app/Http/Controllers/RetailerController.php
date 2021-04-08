@@ -44,7 +44,7 @@ class RetailerController extends Controller{
 
 	function createRetailer(){
 		$retailer=Retailer::orderBy('id','DESC')->get();
-		$dealer=Dealer::orderBy('id','DESC')->get();
+		$dealer=Dealer::where('status','active')->get();
 		return view('admin.createretailer',['retailers'=>$retailer,'dealers'=>$dealer]);
 	}
 
@@ -67,8 +67,10 @@ class RetailerController extends Controller{
 
 	public function editRetailer($id, Request $request){
 		$retailer=Retailer::firstWhere('id', $id);	
+
+		$dealer=Dealer::orderBy('id','DESC')->get();
 		$allretailer=Retailer::orderBy('id','DESC')->get();
-		return view('admin.editretailer',['retailer'=>$retailer,'allretailer'=>$allretailer]);
+		return view('admin.editretailer',['retailer'=>$retailer,'allretailer'=>$allretailer,'dealers'=>$dealer]);
 	}
 
 
@@ -79,13 +81,12 @@ class RetailerController extends Controller{
 		$validated=$request->validate([
 			'name' => 'required|string',
 			'retailerid' => 'required|string',
-			'dealerid' => 'required|string|exists:dealers',
+			'dealer_id' => 'required|string|exists:dealers,id',
 			'address' => 'required|string',
 			'phone' => 'required|string',
-			'email' => 'required|string',
 		]);
 		$retailer->update($validated);
-		return redirect()->route('createRetailer');
+		return redirect()->route('createRetailer')->with('success','Updated successfully!');
 
 	}
 
@@ -166,14 +167,14 @@ class RetailerController extends Controller{
 			$customerComission = new CustomerComission;
 			$customerComission->customer_id=$customer_id;
 			$customerComission->purchase_id=$id;
-			$customerComission->comission_amount=($product->customerComission/100)*$productAmount;
+			$customerComission->comission_amount=$product->customerComission;
 
 
 
 			$dealerComission = new DealerComission;
 			$dealerComission->dealer_id=$dealer_id;	
 			$dealerComission->purchase_id=$id;
-			$dealerComission->comission_amount=($product->dealerComission/100)*$productAmount;
+			$dealerComission->comission_amount=$product->dealerComission;
 
 
 
@@ -181,7 +182,7 @@ class RetailerController extends Controller{
 			$retailerComission = new RetailerComission;
 			$retailerComission->retailer_id=session('session_id');	
 			$retailerComission->purchase_id=$id;
-			$retailerComission->comission_amount=($product->retailerComission/100)*$productAmount;
+			$retailerComission->comission_amount=$product->retailerComission;
 
 
 			$customerComission->save();

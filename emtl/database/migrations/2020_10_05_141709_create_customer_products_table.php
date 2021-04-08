@@ -20,6 +20,7 @@ class CreateCustomerProductsTable extends Migration
             $table->string('price');
             $table->integer('customer_id')->unsigned();
             $table->foreign('customer_id')->references('id')->on('customers');
+            $table->string('status')->default('active');
             $table->timestamps();
         });
     }

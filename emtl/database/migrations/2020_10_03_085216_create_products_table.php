@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->bigInteger('dealerComission');
             $table->bigInteger('retailerComission');
             $table->bigInteger('customerComission');
+            $table->string('status')->default('active');
             $table->timestamps();
         });
     }

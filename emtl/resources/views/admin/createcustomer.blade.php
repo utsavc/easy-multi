@@ -110,15 +110,22 @@
 						<td>{{$customer->retailer->name}}</td>
 						<td>{{$customer->address}}</td>
 						<td>{{$customer->phone}}</td>
-						<td><a class="btn btn-warning btn-sm" href="">edit</a> <a class="btn btn-danger btn-sm" href="">delete</a></td>
-					</tr>
-					@endforeach
-					
-				</tbody>
-			</table>
+						<td><a class="btn btn-warning btn-sm" href="{{route('customerEdit',$customer->id)}}">edit</a> 
+
+							<form class="form-inline d-inline" method="post" action="{{route('customerDelete',$customer->id)}}" onclick="return confirm('Are you sure you want to Disable this customer?');">
+								@csrf
+								<button type="submit" class="btn btn-danger btn-sm">{{ $customer->status =='inactive' ? 'Enable': 'Disable'}}</button>
+
+
+							</td>
+						</tr>
+						@endforeach
+
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
-</div>
 
 
 </div>

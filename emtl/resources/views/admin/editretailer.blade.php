@@ -5,74 +5,76 @@
 <div class="container-fluid">
 
 	@include('messages.messages')
+	<div class="row">
+		<div class="col-sm-5">
+			<div class="card card-primary">
+				<div class="card-header">
+					<h3 class="card-title">Update Retailer</h3>
+				</div>
 
-	<div class="card card-primary">
-		<div class="card-header">
-			<h3 class="card-title">Add Retailer</h3>
+				<div class="card-body">	
+
+					<form role="form" method="post" action="{{ route('retailerUpdate',$retailer->id) }}">
+
+						{{ csrf_field() }}					
+						<div class="form-group">
+							<label >Retailer Name</label>
+							<input type="text" name="name" class="form-control ml-2" placeholder="Eg. ABC Traders" value="{{ old('name', $retailer->name) }} "> 
+						</div>
+
+
+						<div class="form-group">
+							<label >Retailer Id</label>
+							<input type="text" name="retailerid" class="form-control ml-2" placeholder="Eg. 1002345"  value="{{ old('retailerid', $retailer->retailerid) }} "> 
+						</div>
+
+
+
+						
+						<div class="form-group ">
+							<div class="form-group">
+								<label for="exampleDropdown">Select Dealer</label>
+								<select data-live-search="true" title="Please select Dealer" data-live-search-placeholder="Search Product" class="form-control selectpicker" name="dealer_id">
+									@foreach ($dealers as $dealer)
+									<option value="{{$dealer->id}}">{{$dealer->name }} -{{$dealer->dealerid}}  </option>
+									@endforeach
+								</select>
+							</div>
+
+
+
+						</div>
+
+						<div class="form-group">
+							<label >Address</label>
+							<input type="text" name="address" class="form-control ml-2" placeholder="Eg. Bharatpur" value="{{ old('address', $retailer->address) }} "> 
+						</div>
+
+
+
+						<div class="form-group">
+							<label >Phone Number</label>
+							<input type="text" name="phone" class="form-control ml-2" placeholder="Eg. 900010001" value="{{ old('phone', $retailer->phone) }} "> 
+						</div>		
+
+
+						<div class="mt-3">
+
+							<button type="submit" class="btn btn-primary">Update</button>
+
+							<button type="submit" class="btn btn-warning">Reset</button>
+						</div>
+
+
+					</form>
+
+				</div>
+				<!-- /.card-body -->
+
+			</div>
 		</div>
-		<!-- /.card-header -->
-		<!-- form start -->
 
-
-		<div class="card-body">	
-
-			<form role="form" class="form-inline" method="post" action="{{ route('retailerUpdate',$retailer->id) }}">
-
-				{{ csrf_field() }}					
-				<div class="input-group mr-2">
-					<label >Retailer Name</label>
-					<input type="text" name="name" class="form-control ml-2" placeholder="Eg. ABC Traders" value="{{ old('name', $retailer->name) }} "> 
-				</div>
-
-
-				<div class="input-group mr-2">
-					<label >Retailer Id</label>
-					<input type="text" name="retailerid" class="form-control ml-2" placeholder="Eg. 1002345"  value="{{ old('retailerid', $retailer->retailerid) }} "> 
-				</div>
-
-
-
-				<div class="input-group mr-2">
-					<label >Dealer Id</label>
-					<input type="text" name="dealerid" class="form-control ml-2" placeholder="Eg. 10101" value="{{ old('dealerid', $retailer->dealerid) }} "> 
-				</div>
-
-
-				<div class="mt-5 mb-5"></div>
-
-
-
-				<div class="input-group mr-2">
-					<label >Address</label>
-					<input type="text" name="address" class="form-control ml-2" placeholder="Eg. Bharatpur" value="{{ old('address', $retailer->address) }} "> 
-				</div>
-
-
-
-				<div class="input-group mr-2">
-					<label >Phone Number</label>
-					<input type="text" name="phone" class="form-control ml-2" placeholder="Eg. 900010001" value="{{ old('phone', $retailer->phone) }} "> 
-				</div>	
-
-				<div class="input-group mr-2">
-					<label >Email</label>
-					<input type="email" name="email" class="form-control ml-2" placeholder="Eg. 900010001" value="{{ old('email', $retailer->email) }} "> 
-				</div>		
-
-
-				<div class="mt-3">
-
-					<button type="submit" class="btn btn-primary">Add</button>
-
-					<button type="submit" class="btn btn-warning">Reset</button>
-				</div>
-
-
-			</form>
-
-		</div>
-		<!-- /.card-body -->
-
+		<div class="col-sm-7"></div>
 	</div>
 
 
@@ -102,8 +104,6 @@
 						<th>Dealer Id</th>
 						<th>Address</th>
 						<th>Phone</th>
-						<th>Email</th>
-						<th>Remarks</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -112,24 +112,15 @@
 					<tr>
 						<td>{{ $loop->iteration }}</td>
 						<td>{{ $retailer->name }}</td>
-						<td>{{ $retailer->dealerid }}</td>
+						<td>{{ $retailer->dealer->name }}</td>
 						<td>{{ $retailer->address }}</td>
-						<td>{{ $retailer->phone }}</td>
-						<td>{{ $retailer->email }}</td>
-						<td>
-							<a href="{{ route('retailerEdit',['id' => $retailer->id]) }}" class="btn btn-success btn-sm">Edit</a>
-
-							<form class="form-inline d-inline" method="post" action="{{ route('retailerDelete', $retailer->id) }}" onclick="return confirm('Are you sure you want to delete this item?');"">
-							@csrf
-							<button type="submit" class="btn btn-danger btn-sm">Delete</button>
-						</form>
-					</td>
-				</tr>
-				@endforeach
-			</tbody>
-		</table>
+						<td>{{ $retailer->phone }}</td>						
+					</tr>
+					@endforeach
+				</tbody>
+			</table>
+		</div>
 	</div>
-</div>
 </div>
 
 

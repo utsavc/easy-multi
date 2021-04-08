@@ -37,7 +37,7 @@ class ProductController extends Controller
 
 	function addProductStockForm(){
 
-		$products=Product::all();
+		$products=Product::where('status','active')->get();
 		return view('product.add',['products'=>$products]);
 
 	}	
@@ -130,6 +130,51 @@ class ProductController extends Controller
 		return view('product.report',['totalStock'=>$totalStock,'dealerStock'=>$dealerStock,'product_id'=>$product_id]);
 
 	}
+
+
+
+
+	public function editProduct($id, Request $request){
+		$product=Product::firstWhere('id', $id);
+		return view('product.editproduct',['product'=>$product]);
+	}
+
+
+
+	public function updateProduct($id, Request $request){
+
+		$product=Product::findOrFail($id);
+		$validated=$request->validate([
+			'productname' => 'required|String',
+			'mrp' => 'required|integer',
+			'dealerComission' => 'required|integer',
+			'retailerComission' => 'required|integer',
+			'customerComission' => 'required|integer',
+		]);
+		$product->update($validated);
+		return redirect()->route('creaeteProductForm')->with('success','Updated successfully!');
+
+	}
+
+
+
+	function deleteProduct($id){
+		$product=Product::findOrFail($id);
+		$status=$product->status;
+		if ($status=="active") {
+			$product->status="inactive";
+
+		}else{
+			$product->status="active";
+
+		}
+		$product->save();
+		return redirect()->route('creaeteProductForm')->with('success','Disabled successfully!');
+	}
+
+
+
+
 
 
 

@@ -278,7 +278,8 @@ class UserCreationController extends Controller{
 	}
 
 	function createManagerForm(){
-		return view('manager.createmanager');
+		$manager=Manager::all();
+		return view('manager.createmanager',['managers'=>$manager,]);
 	}
 
 
@@ -296,5 +297,34 @@ class UserCreationController extends Controller{
 		return back()->with('success','Manager created successfully!');
 
 	}
+
+	function managerEdit($id, Request $request){
+		$manager=Manager::findOrFail($id);
+		return view('manager.editmanager',['manager'=>$manager,]);
+	}
+
+
+	public function managerDelete($id){
+		$manager=Manager::findOrFail($id);
+		$manager->delete();
+		return redirect()->route('createManager')->with('success','Manager Deleted successfully!');;
+	}
+
+
+
+	function managerUpdate(Request $request, $id){
+		$manager=Manager::findOrFail($id);
+		$validated=$request->validate([
+			'name' => 'required|string',
+			'address' => 'required|string',
+			'phone' => 'required|string',
+			'username'=>'required|string',
+			'password'=>'required|string|confirmed'
+		]);
+
+		$manager->update($validated);
+		return redirect()->route('createManager')->with('success','Manager updated successfully!');;
+	}
+
 
 }

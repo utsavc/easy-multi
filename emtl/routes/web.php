@@ -34,6 +34,13 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::get('/add-manager', 'customAuth\UserCreationController@createManagerForm')->name('createManager');
 		
 		Route::post('/add-manager', 'customAuth\UserCreationController@createManager')->name('createManager');
+
+
+		Route::get('/edit-manager/{id}', 'customAuth\UserCreationController@managerEdit')->name('managerEdit');
+		Route::post('/edit-manager/{id}', 'customAuth\UserCreationController@managerUpdate')->name('managerUpdate');
+
+		Route::post('/delete-manager/{id}', 'customAuth\UserCreationController@managerDelete')->name('managerDelete');
+
 		
 
 
@@ -54,6 +61,15 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::post('/add-customer', 'CustomerController@createCustomer')->name('createCustomer');
 
 
+		Route::get('/edit-customer/{id}', 'CustomerController@editCustomer')->name('customerEdit');
+		Route::post('/edit-customer/{id}', 'CustomerController@updateCustomer')->name('customerUpdate');
+		Route::post('/delete-customer/{id}', 'CustomerController@deleteCustomer')->name('customerDelete');
+
+
+
+
+
+
 
 
 		Route::get('/edit-dealer/{id}', 'DealerController@editDealer')->name('dealerEdit');
@@ -62,10 +78,12 @@ Route::group(['prefix'=>'admin'], function(){
 
 		Route::get('/add-retailer', 'RetailerController@createRetailer')->name('createRetailer');
 		Route::post('/add-retailer', 'RetailerController@addRetailer');
-
+		
 
 		Route::get('/edit-retailer/{id}', 'RetailerController@editRetailer')->name('retailerEdit');
 		Route::post('/edit-retailer/{id}', 'RetailerController@updateRetailer')->name('retailerUpdate');
+
+
 		Route::post('/delete-retailer/{id}', 'RetailerController@deleteRetailer')->name('retailerDelete');
 
 		Route::get('/dealer/changepassword', 'customAuth\UserCreationController@dealerchangePasswordform')->name('dealerchangepassword');
@@ -88,8 +106,15 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::post('/stock', 'ProductController@stockReport')->name('stockReport');
 
 
+
+		Route::get('/edit-product/{id}', 'ProductController@editProduct')->name('productEdit');
+		Route::post('/edit-product/{id}', 'ProductController@updateProduct')->name('productUpdate');
+		Route::post('/delete-product/{id}', 'ProductController@deleteProduct')->name('productDelete');
+
+
 		Route::get('/stockin/{id}', 'ProductController@stockinReport')->name('viewStocksReport');
 		Route::get('/outstock/{id}', 'ProductController@outStockReport')->name('viewOutStockReport');
+		
 		Route::get('/transfer', 'ProductController@dealerTransferForm')->name('dealerTransferForm');
 		Route::post('/transfer', 'ProductController@dealerTransfer')->name('dealerTransfer');
 	});

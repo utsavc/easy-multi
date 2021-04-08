@@ -102,17 +102,19 @@
 						<td>{{$product->retailerComission}}</td>
 						<td>{{$product->customerComission}}</td>
 						<td>
-							<a href="" class="btn btn-success btn-sm">Edit</a>
-							<a href="" class="btn btn-danger btn-sm">Delete</a>
-						</td>
-					</tr>
-					@endforeach
-				</tbody>
-			</table>
+							<a href="{{route('productEdit',$product->id)}}" class="btn btn-success btn-sm">Edit</a>
+							<form class="form-inline d-inline" method="post" action="{{route('productDelete',$product->id)}}" onclick="return confirm('Are you sure you want to Disable this customer?');">
+								@csrf
+								<button type="submit" class="btn btn-danger btn-sm">{{ $product->status =='inactive' ? 'Enable': 'Disable'}}</button>
+							</td>
+						</tr>
+						@endforeach
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
-</div>
-@endif
+	@endif
 
 </div>
 

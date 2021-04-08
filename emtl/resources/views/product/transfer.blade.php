@@ -52,7 +52,7 @@
 							</select>
 						</div>
 
-						<button type="submit" class="btn btn-primary">Create</button>
+						<button type="submit" class="btn btn-primary">Transfer</button>
 
 						<button type="submit" class="btn btn-warning">Reset</button>
 
@@ -77,6 +77,7 @@
 								<tr>
 									<th data-field="id">SN</th>
 									<th data-field="name" >Date</th>
+									<th>Prouct Name</th>
 									<th>Dealer Name</th>
 									<th data-field="email" >Quanity</th>
 								</tr>
@@ -93,6 +94,7 @@
 										echo $dt->format('Y-m-d');
 										@endphp
 									</td>
+									<td>{{$dealerStock->product->productname}}</td>
 									<td>{{$dealerStock->dealer->name}}</td>
 									<td>{{$dealerStock->qty}}</td>
 								</tr>
