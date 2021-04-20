@@ -250,12 +250,14 @@ class RetailerController extends Controller{
 
 	function commission(){
 		$commissions= RetailerComission::orderBy('id','DESC')->get();
+		
 		return view('retailer.retailercommission')->with('commissions', $commissions);
 
 	}
 
 	function stock(){
-		$products= RetailerProduct::orderBy('id','DESC')->get();
+		$products= RetailerStock::orderBy('id','DESC')->get();
+		//return $products;
 		return view('retailer.retailerstock')->with('products', $products);
 
 	}

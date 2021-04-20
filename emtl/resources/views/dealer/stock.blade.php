@@ -30,9 +30,9 @@
 						</thead>
 
 						<tbody>
-							@foreach ($products as $product)
+							@foreach ($products  as $product)
 							<tr role="row" class="odd">
-								<td tabindex="0" class="sorting_1">{{ $loop->iteration }}</td>
+								<td tabindex="0" class="sorting_1">{{$loop->iteration}}</td>
 								<td>{{ $product->product->productname }}</td>
 								<td>{{ $product->qty }}</td>
 								

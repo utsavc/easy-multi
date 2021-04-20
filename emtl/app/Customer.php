@@ -21,4 +21,10 @@ class Customer extends Model
 
 
 
+	public function customerPurchase(){
+		return $this->hasMany('App\CustomerPurchase');
+	}
+
+
+
 }

@@ -24,9 +24,8 @@
                         <thead>
                             <tr>
                                 <th data-field="id">SN</th>
-                                <th data-field="id">Purchase Id</th>
+                                <th data-field>Purchase Id</th>
                                 <th data-field="name" >Comission amount</th>
-                                <th data-field="id">Commission</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,7 +37,6 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$comission->purchase_id}}</td>
                                 <td>{{$comission->comission_amount}}</td>
-                                <td>12344</td>
                             </tr>
 
                             @endforeach

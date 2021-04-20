@@ -1,4 +1,4 @@
-@extends('dealer.sidebar')
+@extends('retailer.sidebar')
 
 @section('bodycontent')
 <br>
@@ -8,7 +8,7 @@
 
 			<div class="card">
 				<div class="card-header">
-					<h3 class="card-title font-weight-bold">Commission</h3>
+					<h3 class="card-title font-weight-bold">Stock Report</h3>
 				</div>
 				<div class="card-body">
 					<div class="datatable-dashv1-list custom-datatable-overright">
@@ -24,22 +24,20 @@
 						<thead>
 							<tr>
 								<th>SN</th>
-								<th>Purchase ID</th>
-								<th>COMMISSION AMOUNT</th>
+								<th>PRODUCT NAME</th>
+								<th>QTY</th>
 							</tr>
 						</thead>
 
 						<tbody>
-							<tr>
-								@foreach ($commissions as $commission)
-								<tr role="row" class="odd">
-									<td tabindex="0" class="sorting_1">{{ $loop->iteration }}</td>
-									<td>{{ $commission->purchase_id}}</td>
-									<td>{{ $commission->comission_amount }}</td>
-								</tr>
-								@endforeach
-
-							</tr>
+							@foreach ($products  as $product)
+							<tr role="row" class="odd">
+								<td tabindex="0" class="sorting_1">{{$loop->iteration}}</td>
+								<td>{{ $product->product->productname }}</td>
+								<td>{{ $product->qty }}</td>
+								
+							</tr>									
+							@endforeach
 						</tbody>
 					</table>
 				</div>

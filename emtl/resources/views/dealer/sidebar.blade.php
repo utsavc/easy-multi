@@ -74,7 +74,7 @@
 
 
               <li class="nav-item">
-                <a href="{{ url('dealer/') }}" class="nav-link">
+                <a href="{{ route('dealerStock') }}" class="nav-link">
                   <i class="fa fa-angle-double-right nav-icon"></i>
                   <p>Report</p>
                 </a>

@@ -29,7 +29,6 @@
 								<option value="{{$retailers->id}}" >{{$retailers->name}} - {{$retailers->id}}</option>
 								@endforeach
 
-
 							</select>
 						</div>						
 						<button type="submit" class="btn btn-primary">Search</button>

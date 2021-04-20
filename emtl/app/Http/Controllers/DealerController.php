@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\DealerProduct;
 use App\RetailerProduct;
-use App\DealerCommission;
+use App\DealerComission;
 use App\Product;
 use App\Customer;
 use App\CustomerGroups;
@@ -96,7 +96,7 @@ class DealerController extends Controller{
 
 
 	function commission(){
-		$commissions= DealerCommission::orderBy('id','DESC')->get();
+		$commissions= DealerComission::where('dealer_id',session('session_id'))->get();
 		return view('dealer.commission')->with('commissions', $commissions);
 	}
 

@@ -33,7 +33,7 @@ class CustomerController extends Controller
 	public function editCustomer($id, Request $request){
 		$customer=Customer::firstWhere('id', $id);	
 		$allretailer=Retailer::orderBy('id','DESC')->get();
-		return view('admin.editCustomer',['customer'=>$customer,'retailers'=>$allretailer]);
+		return view('admin.editcustomer',['customer'=>$customer,'retailers'=>$allretailer]);
 	}
 
 

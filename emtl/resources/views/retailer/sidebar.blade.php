@@ -98,7 +98,7 @@
 
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ url('retailer/stock') }}" class="nav-link">
+            <a href="{{ route('retailerStock') }}" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Stock</p>
             </a>
@@ -197,11 +197,6 @@
           <p>Check Customer Purchase</p>
         </a>
       </li>
-
-
-
-
-
 
     </ul>
   </nav>

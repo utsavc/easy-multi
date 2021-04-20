@@ -79,11 +79,7 @@
 					</div>
 
 					<ol>
-						<li>Laptop</li>
-						<li>Phone</li>
-						<li>TV</li>
-						<li>Furniture</li>
-						<li>Bike</li>
+						
 					</ol>
 
 				</div>
