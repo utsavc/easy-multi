@@ -46,7 +46,8 @@ class AdminController extends Controller
 		$dealer= Dealer::all();
 		$retailer= Retailer::all();
 		$customer= Customer::all();
-		$product= Product::all();
+		$product= ProductStocks::where('qty','<=',100)->get();
+
 		return view('admin.dashboard',['dealer'=>$dealer,'retailer'=>$retailer,'customer'=>$customer,'product'=>$product]);
 	}
 

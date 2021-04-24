@@ -34,7 +34,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary ">
   <!-- Brand Logo -->
-  <a href="index3.html" class="brand-link text-center">
+  <a href="{{route('retailer')}}" class="brand-link text-center">
     Haate Maalo
   </a>
 
@@ -163,13 +163,7 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="{{ route('report') }}" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Report</p>
-            </a>
-          </li>
-        </ul>
+       
 
 
         <ul class="nav nav-treeview">

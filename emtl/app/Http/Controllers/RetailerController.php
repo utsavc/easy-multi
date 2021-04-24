@@ -36,8 +36,10 @@ class RetailerController extends Controller{
 		$dealer= Group::where('retailer_id',session('session_id'))->get();
 		$retailer= Retailer::where('dealer_id',session('session_id'))->get();
 		$customer= Customer::where('retailer_id',session('session_id'))->get();
-		$product= DealerStock::where('dealer_id',session('session_id'))->distinct('product_id');
-		return view('retailer.dashboard',['dealer'=>$dealer,'retailer'=>$retailer,'customer'=>$customer,'product'=>$product,'customerGroups'=>$customerGroups]);
+		$product= RetailerStock::where('qty','<=',100)->where('retailer_id',session('session_id'))->get();
+		$comission=RetailerComission::where('retailer_id',session('session_id'))->sum('comission_amount');		
+		return view('retailer.dashboard',['dealer'=>$dealer,'retailer'=>$retailer,'customer'=>$customer,'product'=>$product,'customerGroups'=>$customerGroups,'comission'=>$comission]);
+
 	}
 
 

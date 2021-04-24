@@ -102,7 +102,7 @@
 					<ol>
 						@foreach($product as $products)
 
-						<li>{{$products->productname}}</li>
+						<li>{{$products->product->productname}}</li>
 
 						@endforeach
 

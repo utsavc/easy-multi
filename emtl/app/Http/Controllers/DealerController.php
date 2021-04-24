@@ -90,8 +90,9 @@ class DealerController extends Controller{
 		$dealer= Dealer::all();
 		$retailer= Retailer::where('dealer_id',session('session_id'))->get();
 		$customer= Customer::all();
-		$product= DealerStock::where('dealer_id',session('session_id'))->distinct('product_id');
-		return view('dealer.dashboard',['dealer'=>$dealer,'retailer'=>$retailer,'customer'=>$customer,'product'=>$product]);
+		$product= DealerStock::where('qty','<=',100)->where('dealer_id',session('session_id'))->get();
+		$comission=DealerComission::where('dealer_id',session('session_id'))->sum('comission_amount');	
+		return view('dealer.dashboard',['dealer'=>$dealer,'retailer'=>$retailer,'customer'=>$customer,'product'=>$product,'comission'=>$comission]);
 	}
 
 

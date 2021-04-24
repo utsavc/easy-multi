@@ -30,6 +30,7 @@
 					<div class="info-box-content">
 						<span class="info-box-text">Customers</span>
 						<span class="info-box-number">
+							{{$customer->count()}}
 						</span>
 					</div>
 					<!-- /.info-box-content -->
@@ -46,6 +47,7 @@
 
 					<div class="info-box-content">
 						<span class="info-box-text">Group</span>
+						{{$customerGroups->count()}}
 					</div>
 					<!-- /.info-box-content -->
 				</div>
@@ -53,13 +55,14 @@
 			</div>
 			<!-- /.col -->
 
-				<!-- /.col -->
-				<div class="col-12 col-sm-6 col-md-3">
+			<!-- /.col -->
+			<div class="col-12 col-sm-6 col-md-3">
 				<div class="info-box mb-3">
 					<span class="info-box-icon bg-success elevation-1"><i class="fas fa-money-bill"></i></span>
 
 					<div class="info-box-content">
 						<span class="info-box-text">Comission</span>
+						{{$comission}}
 					</div>
 					<!-- /.info-box-content -->
 				</div>
@@ -76,11 +79,14 @@
 					</div>
 
 					<ol>
-						<li>Laptop</li>
-						<li>Phone</li>
-						<li>TV</li>
-						<li>Furniture</li>
-						<li>Bike</li>
+
+						@foreach($product as $products)
+
+						<li>{{$products->product->productname}}</li>
+
+						@endforeach
+
+						
 					</ol>
 
 				</div>
